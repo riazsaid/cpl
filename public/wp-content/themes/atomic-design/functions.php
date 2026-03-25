@@ -22,8 +22,8 @@ function atomic_design_setup()
 
     register_nav_menus(
         [
-            'primary' => __('Primary Menu', 'atomic-design'),
-            'footer'  => __('Footer Menu', 'atomic-design'),
+            'primary' => 'Primary Menu',
+            'footer'  => 'Footer Menu',
         ]
     );
 }
@@ -105,12 +105,17 @@ add_action('enqueue_block_editor_assets', 'atomic_design_editor_assets');
  * - JSON save/load paths
  * - Placeholder for ACF block registration
  */
-if (function_exists('acf_add_options_page')) {
+function atomic_design_register_acf_options_pages()
+{
+    if (!function_exists('acf_add_options_page')) {
+        return;
+    }
+
     // Parent menu: keep synced reusable content grouped in one place.
     acf_add_options_page(
         [
-            'page_title' => __('Synced Components', 'atomic-design'),
-            'menu_title' => __('Synced Components', 'atomic-design'),
+            'page_title' => 'Synced Components',
+            'menu_title' => 'Synced Components',
             'menu_slug'  => 'atomic-design-synced-components',
             'capability' => 'manage_options',
             'redirect'   => true,
@@ -120,8 +125,8 @@ if (function_exists('acf_add_options_page')) {
     // Child page for global contact values used across templates.
     acf_add_options_sub_page(
         [
-            'page_title'  => __('Contact Details', 'atomic-design'),
-            'menu_title'  => __('Contact Details', 'atomic-design'),
+            'page_title'  => 'Contact Details',
+            'menu_title'  => 'Contact Details',
             'menu_slug'   => 'atomic-design-contact-details',
             'parent_slug' => 'atomic-design-synced-components',
             'capability'  => 'manage_options',
@@ -131,8 +136,8 @@ if (function_exists('acf_add_options_page')) {
     // Central testimonials store — one set of reviews reused across all CPT templates.
     acf_add_options_sub_page(
         [
-            'page_title'  => __('Testimonials', 'atomic-design'),
-            'menu_title'  => __('Testimonials', 'atomic-design'),
+            'page_title'  => 'Testimonials',
+            'menu_title'  => 'Testimonials',
             'menu_slug'   => 'atomic-design-testimonials',
             'parent_slug' => 'atomic-design-synced-components',
             'capability'  => 'manage_options',
@@ -142,8 +147,8 @@ if (function_exists('acf_add_options_page')) {
     // Industry Solutions — same grid on all service template pages (icon, title, description, link).
     acf_add_options_sub_page(
         [
-            'page_title'  => __('Industry Solutions', 'atomic-design'),
-            'menu_title'  => __('Industry Solutions', 'atomic-design'),
+            'page_title'  => 'Industry Solutions',
+            'menu_title'  => 'Industry Solutions',
             'menu_slug'   => 'atomic-design-industry-solutions',
             'parent_slug' => 'atomic-design-synced-components',
             'capability'  => 'manage_options',
@@ -153,14 +158,15 @@ if (function_exists('acf_add_options_page')) {
     // Trust Bar — key facts / selling points (icon + two-line text). Same on template and static pages.
     acf_add_options_sub_page(
         [
-            'page_title'  => __('Trust Bar', 'atomic-design'),
-            'menu_title'  => __('Trust Bar', 'atomic-design'),
+            'page_title'  => 'Trust Bar',
+            'menu_title'  => 'Trust Bar',
             'menu_slug'   => 'atomic-design-trust-bar',
             'parent_slug' => 'atomic-design-synced-components',
             'capability'  => 'manage_options',
         ]
     );
 }
+add_action('acf/init', 'atomic_design_register_acf_options_pages');
 
 /**
  * Register ACF field groups in code (no manual UI setup needed).
@@ -697,4 +703,3 @@ function atomic_design_set_flush_on_activation()
     set_transient('atomic_design_flush_rewrites', true);
 }
 add_action('after_switch_theme', 'atomic_design_set_flush_on_activation');
-

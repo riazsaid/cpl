@@ -82,6 +82,10 @@ define( 'WP_DEBUG', true );
 define( 'WP_DEBUG_LOG', true );
 define( 'WP_DEBUG_DISPLAY', false );
 
+if ( file_exists( __DIR__ . '/wp-config-ddev.php' ) ) {
+	require_once __DIR__ . '/wp-config-ddev.php';
+}
+
 
 
 /**
