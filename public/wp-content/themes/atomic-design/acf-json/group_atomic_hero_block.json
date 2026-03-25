@@ -1,0 +1,93 @@
+{
+    "key": "group_atomic_hero_block",
+    "title": "Hero Block",
+    "fields": [
+        {
+            "key": "field_atomic_hero_kicker",
+            "label": "Kicker (optional)",
+            "name": "hero_kicker",
+            "type": "text",
+            "instructions": "Small label above the heading (e.g. Custom Engraving). Leave blank to hide.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "default_value": "",
+            "placeholder": "e.g. Custom Engraving",
+            "prepend": "",
+            "append": "",
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_atomic_hero_title",
+            "label": "Title",
+            "name": "hero_title",
+            "type": "text",
+            "instructions": "Main heading.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "default_value": "",
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_atomic_hero_subtitle",
+            "label": "Subtitle",
+            "name": "hero_subtitle",
+            "type": "textarea",
+            "instructions": "Supporting text under the title.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "default_value": "",
+            "rows": 3,
+            "new_lines": "wpautop",
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_atomic_hero_primary_link",
+            "label": "Primary CTA Link",
+            "name": "hero_primary_link",
+            "type": "link",
+            "instructions": "Primary button link (e.g. Request a Quote).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "return_format": "array",
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_atomic_hero_media",
+            "label": "Background Image (optional)",
+            "name": "hero_media",
+            "type": "image",
+            "instructions": "Full-width background image behind the hero. A dark overlay is added automatically for readability.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "allow_in_bindings": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/hero"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Fields for the Hero ACF block (acf/hero).",
+    "show_in_rest": 1,
+    "modified": 1742256004
+}
+

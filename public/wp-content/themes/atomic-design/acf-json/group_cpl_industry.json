@@ -1,0 +1,152 @@
+{
+    "key": "group_cpl_industry",
+    "title": "Industry Fields",
+    "fields": [
+        {
+            "key": "field_industry_hero_heading",
+            "label": "Hero Heading",
+            "name": "industry_hero_heading",
+            "type": "text",
+            "instructions": "Main H1.",
+            "required": 0,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "default_value": "",
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_industry_hero_subtext",
+            "label": "Hero Subtext",
+            "name": "industry_hero_subtext",
+            "type": "textarea",
+            "instructions": "Short intro under the hero heading.",
+            "required": 0,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "default_value": "",
+            "rows": 3,
+            "new_lines": "wpautop",
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_industry_hero_image",
+            "label": "Hero Background Image",
+            "name": "industry_hero_image",
+            "type": "image",
+            "required": 0,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "return_format": "array",
+            "preview_size": "medium",
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_industry_intro_content",
+            "label": "Intro Content",
+            "name": "industry_intro_content",
+            "type": "wysiwyg",
+            "instructions": "Main body content. Use full toolbar — add headings, links, lists.",
+            "required": 0,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0,
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_industry_use_cases",
+            "label": "Use Cases",
+            "name": "industry_use_cases",
+            "type": "repeater",
+            "instructions": "Common labeling use cases in this industry.",
+            "required": 0,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "layout": "block",
+            "button_label": "Add Use Case",
+            "sub_fields": [
+                {
+                    "key": "field_industry_use_case_title",
+                    "label": "Use Case Title",
+                    "name": "use_case_title",
+                    "type": "wysiwyg",
+                    "instructions": "Short title. Can include a link.",
+                    "wrapper": { "width": "", "class": "", "id": "" },
+                    "tabs": "all",
+                    "toolbar": "basic",
+                    "media_upload": 0,
+                    "delay": 0,
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_industry_use_cases"
+                },
+                {
+                    "key": "field_industry_use_case_description",
+                    "label": "Use Case Description",
+                    "name": "use_case_description",
+                    "type": "wysiwyg",
+                    "instructions": "Supporting description. Add internal links for SEO.",
+                    "wrapper": { "width": "", "class": "", "id": "" },
+                    "tabs": "all",
+                    "toolbar": "basic",
+                    "media_upload": 0,
+                    "delay": 0,
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_industry_use_cases"
+                }
+            ]
+        },
+        {
+            "key": "field_industry_cta_heading",
+            "label": "CTA Heading",
+            "name": "industry_cta_heading",
+            "type": "wysiwyg",
+            "instructions": "Call-to-action heading.",
+            "required": 0,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0,
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_industry_cta_text",
+            "label": "CTA Button Text",
+            "name": "industry_cta_text",
+            "type": "text",
+            "instructions": "Plain button label — no HTML needed.",
+            "required": 0,
+            "wrapper": { "width": "50", "class": "", "id": "" },
+            "default_value": "Request a Quote",
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_industry_cta_url",
+            "label": "CTA Button URL",
+            "name": "industry_cta_url",
+            "type": "url",
+            "required": 0,
+            "wrapper": { "width": "50", "class": "", "id": "" },
+            "default_value": "/request-quote/",
+            "allow_in_bindings": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "industry"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Fields for /industries/{slug}/ pages. FAQs are in the shared FAQs field group below.",
+    "show_in_rest": 1,
+    "modified": 1742169600
+}
