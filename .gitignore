@@ -5,9 +5,9 @@ Thumbs.db
 .idea/
 
 ### Node / build artifacts (if used later)
-node_modules/
-dist/
-build/
+/node_modules/
+/dist/
+/build/
 
 ### Composer / PHP
 /vendor/
