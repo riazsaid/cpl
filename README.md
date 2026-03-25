@@ -74,6 +74,8 @@ This folder is a git repository. Recommended flow:
   - Uploads
   - Local environment or log files
 
+Database dumps and team media backups are handled outside Git. See `docs/team-db-sync.md`.
+
 ---
 
 ### 5. Next Steps
@@ -88,4 +90,3 @@ Planned next steps for this project:
    - Basic templates (`front-page.php`, `page.php`, etc.).
 3. Define initial ACF field groups and blocks for key components.
 4. Map URLs from `CPL 2026 Website - URLs.csv` to templates and content types.
-

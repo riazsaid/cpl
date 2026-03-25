@@ -19,6 +19,7 @@ composer.lock
 .ddev/.homeadditions/
 .ddev/.logs/
 .ddev/.global_commands/
+.ddev/backups/
 .ddev/commands/host/*
 !.ddev/commands/host/.gitkeep
 .ddev/commands/web/*
@@ -35,4 +36,3 @@ public/wp-content/upgrade/
 *.log
 *.sql
 *.sql.gz
-
