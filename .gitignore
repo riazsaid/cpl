@@ -10,8 +10,8 @@ dist/
 build/
 
 ### Composer / PHP
-vendor/
-composer.lock
+/vendor/
+/composer.lock
 
 ### DDEV
 .ddev/.downloads/
