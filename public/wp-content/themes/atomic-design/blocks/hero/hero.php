@@ -36,48 +36,16 @@ if (!empty($bg_image) && is_array($bg_image) && !empty($bg_image['url'])) {
     $bg_url = $bg_image['url'];
 }
 
-$style_attr = '';
-if ($bg_url) {
-    // Full background image with a dark left overlay for text readability.
-    $style_attr = ' style="background-image: linear-gradient(90deg, rgba(2, 6, 23, 0.92) 0%, rgba(2, 6, 23, 0.78) 40%, rgba(2, 6, 23, 0.35) 70%, rgba(2, 6, 23, 0.05) 100%), url(' . esc_url($bg_url) . ');"';
-}
-
-// Block alignment class from Gutenberg (e.g. alignfull / alignwide).
-$align_class = '';
-if (!empty($block['align'])) {
-    $align_class = 'align' . $block['align'];
-}
-$extra_class = !empty($block['className']) ? $block['className'] : '';
-$section_class = trim('hero ' . $align_class . ' ' . $extra_class);
-?>
-
-<section class="<?php echo esc_attr($section_class); ?>"<?php echo $style_attr; ?>>
-    <div class="container hero__inner hero__inner--single">
-
-        <div class="hero__content">
-            <?php if (!empty($kicker)) : ?>
-                <span class="eyebrow hero__kicker"><?php echo esc_html($kicker); ?></span>
-            <?php endif; ?>
-
-            <?php if (!empty($title)) : ?>
-                <h1 class="hero__title"><?php echo esc_html($title); ?></h1>
-            <?php endif; ?>
-
-            <?php if (!empty($subtitle)) : ?>
-                <div class="hero__subtitle body-lg"><?php echo wpautop(esc_html($subtitle)); ?></div>
-            <?php endif; ?>
-
-            <?php if (!empty($primary) && !empty($primary['url']) && !empty($primary['title'])) : ?>
-                <div class="hero__actions">
-                    <a class="btn btn-primary"
-                       href="<?php echo esc_url($primary['url']); ?>"
-                       target="<?php echo esc_attr($primary['target'] ?: '_self'); ?>">
-                        <?php echo esc_html($primary['title']); ?>
-                    </a>
-                </div>
-            <?php endif; ?>
-        </div>
-
-    </div>
-</section>
-
+get_template_part(
+    'template-parts/shared/hero',
+    null,
+    [
+        'kicker'     => $kicker,
+        'title'      => $title,
+        'subtitle'   => $subtitle,
+        'primary'    => $primary,
+        'bg_url'     => $bg_url,
+        'align'      => !empty($block['align']) ? $block['align'] : 'full',
+        'class_name' => !empty($block['className']) ? $block['className'] : '',
+    ]
+);

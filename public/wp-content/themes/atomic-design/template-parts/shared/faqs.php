@@ -3,15 +3,31 @@
  * Shared FAQ template.
  *
  * Args:
- * - post_id (int) Optional. Defaults to current post ID.
+ * - post_id (int) Optional. Defaults to current post ID when field data is not passed.
+ * - section_heading (string) Optional.
+ * - faq_layout (string) Optional.
+ * - faq_items (array) Optional.
+ * - section_id (string) Optional.
  */
 
 $faq_post_id = isset($args['post_id']) ? (int) $args['post_id'] : get_the_ID();
-$section_id  = 'faqs-' . $faq_post_id;
+$section_id  = isset($args['section_id']) ? (string) $args['section_id'] : 'faqs-' . $faq_post_id;
 
-$section_heading = function_exists('get_field') ? get_field('faqs_section_heading', $faq_post_id) : '';
-$faq_layout      = function_exists('get_field') ? (get_field('faq_layout', $faq_post_id) ?: 'two-column') : 'two-column';
-$faq_items       = function_exists('get_field') ? get_field('faq_items', $faq_post_id) : [];
+$section_heading = $args['section_heading'] ?? null;
+$faq_layout      = $args['faq_layout'] ?? null;
+$faq_items       = $args['faq_items'] ?? null;
+
+if ($section_heading === null) {
+    $section_heading = function_exists('get_field') ? get_field('faqs_section_heading', $faq_post_id) : '';
+}
+
+if ($faq_layout === null) {
+    $faq_layout = function_exists('get_field') ? (get_field('faq_layout', $faq_post_id) ?: 'two-column') : 'two-column';
+}
+
+if ($faq_items === null) {
+    $faq_items = function_exists('get_field') ? get_field('faq_items', $faq_post_id) : [];
+}
 
 if (empty($faq_items) || !is_array($faq_items)) {
     return;
