@@ -1,12 +1,12 @@
-name: Deploy to DreamHost
+name: Deploy WordPress Site
 
 on:
   push:
     branches:
-      - main   # deploy whenever you push to main
+      - main   # deploy when you push to main
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -14,20 +14,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Step 2: (Optional) Build step for Node/React/etc.
-      # Remove if you don’t need a build
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build project
-        run: npm run build
-
-      # Step 3: Deploy via SCP
+      # Step 2: Deploy files via SCP
       - name: Copy files to DreamHost
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.DH_HOST }}
           username: ${{ secrets.DH_USER }}
           key: ${{ secrets.DH_SSH_KEY }}
-          source: "build/*"   # or "." if no build step
+          source: "."   # copy everything in repo
           target: "second2026.dreamhosters.com"
