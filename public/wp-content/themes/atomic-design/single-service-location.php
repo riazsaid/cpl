@@ -1,7 +1,8 @@
 <?php
 /**
- * Single Location template
+ * Single Service Location template
  *
+ * e.g. /locations/{city-slug}/{service-slug}/
  * Structure: Gutenberg blocks → Industry Solutions → Testimonials → FAQs.
  */
 get_header();
