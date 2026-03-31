@@ -1,14 +1,14 @@
 {
-    "key": "group_atomic_hero_block",
-    "title": "Hero Block",
+    "key": "group_atomic_hero_shared",
+    "title": "Hero",
     "fields": [
         {
-            "key": "field_atomic_hero_kicker",
+            "key": "field_atomic_shared_hero_kicker",
             "label": "Kicker (optional)",
             "name": "hero_kicker",
             "aria-label": "",
             "type": "text",
-            "instructions": "Small label above the heading (e.g. Custom Engraving). Leave blank to hide.",
+            "instructions": "Small label above the heading.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -17,19 +17,19 @@
                 "id": ""
             },
             "default_value": "",
-            "placeholder": "e.g. Custom Engraving",
+            "placeholder": "",
             "prepend": "",
             "append": "",
             "allow_in_bindings": 0,
             "maxlength": ""
         },
         {
-            "key": "field_atomic_hero_title",
+            "key": "field_atomic_shared_hero_title",
             "label": "Title",
             "name": "hero_title",
             "aria-label": "",
             "type": "wysiwyg",
-            "instructions": "Main heading. Basic toolbar so you can add internal links for SEO.",
+            "instructions": "Main heading for the hero.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -45,12 +45,12 @@
             "allow_in_bindings": 0
         },
         {
-            "key": "field_atomic_hero_subtitle",
+            "key": "field_atomic_shared_hero_subtitle",
             "label": "Subtitle",
             "name": "hero_subtitle",
             "aria-label": "",
             "type": "wysiwyg",
-            "instructions": "Supporting text under the title. Basic toolbar so you can add internal links.",
+            "instructions": "Supporting text under the title.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -66,12 +66,12 @@
             "allow_in_bindings": 0
         },
         {
-            "key": "field_atomic_hero_primary_link",
+            "key": "field_atomic_shared_hero_primary_link",
             "label": "Primary CTA Link",
             "name": "hero_primary_link",
             "aria-label": "",
             "type": "link",
-            "instructions": "Primary button link (e.g. Request a Quote).",
+            "instructions": "Primary button link.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -83,12 +83,12 @@
             "allow_in_bindings": 0
         },
         {
-            "key": "field_atomic_hero_media",
-            "label": "Media (optional)",
+            "key": "field_atomic_shared_hero_media",
+            "label": "Background Image",
             "name": "hero_media",
             "aria-label": "",
             "type": "image",
-            "instructions": "Optional image on the right side.",
+            "instructions": "Background image for the hero.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -112,9 +112,30 @@
     "location": [
         [
             {
-                "param": "block",
+                "param": "post_type",
                 "operator": "==",
-                "value": "acf\/hero"
+                "value": "service"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "industry"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "location"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "service-location"
             }
         ]
     ],
@@ -125,7 +146,7 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
-    "description": "Fields for the Hero ACF block (acf\/hero).",
+    "description": "Shared Hero fields for CPT templates.",
     "show_in_rest": 1,
     "display_title": "",
     "modified": 1775022000

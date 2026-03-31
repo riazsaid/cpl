@@ -101,6 +101,35 @@ function atomic_design_editor_assets()
 add_action('enqueue_block_editor_assets', 'atomic_design_editor_assets');
 
 /**
+ * Ensure common layout blocks expose Gutenberg's custom class field.
+ *
+ * Some environments hide the "Additional CSS class(es)" control unless the
+ * block explicitly supports customClassName. We force-enable it for the
+ * section-like core blocks editors use as wrappers in page layouts.
+ */
+function atomic_design_enable_custom_block_classes($args, $block_type)
+{
+    $allowed_blocks = [
+        'core/group',
+        'core/cover',
+        'core/columns',
+        'core/column',
+        'core/media-text',
+    ];
+
+    if (in_array($block_type, $allowed_blocks, true)) {
+        if (!isset($args['supports']) || !is_array($args['supports'])) {
+            $args['supports'] = [];
+        }
+
+        $args['supports']['customClassName'] = true;
+    }
+
+    return $args;
+}
+add_filter('register_block_type_args', 'atomic_design_enable_custom_block_classes', 10, 2);
+
+/**
  * ACF integration
  * - JSON save/load paths
  * - Placeholder for ACF block registration
@@ -258,11 +287,16 @@ function atomic_design_acf_json_load_point($paths)
 add_filter('acf/settings/load_json', 'atomic_design_acf_json_load_point');
 
 /**
- * REST API support for FAQ ACF fields.
+ * REST API support for shared CPT ACF fields.
  *
  * Accepts payloads like:
  * {
  *   "acf": {
+ *     "hero_kicker": "Custom Engraving",
+ *     "hero_title": "Industrial Phenolic Labels",
+ *     "hero_subtitle": "<p>Built for harsh environments.</p>",
+ *     "hero_primary_link": {"title":"Request a Quote","url":"\/contact","target":"_self"},
+ *     "hero_media": 123,
  *     "faqs_section_heading": "FAQs",
  *     "faq_layout": "two-column",
  *     "faq_items": [
@@ -277,17 +311,25 @@ add_filter('acf/settings/load_json', 'atomic_design_acf_json_load_point');
  */
 function atomic_design_get_rest_post_types()
 {
-    // CPTs that carry FAQ ACF fields (imported via n8n REST API).
-    // Normal pages/posts use the acf/faq-accordion block instead.
-    return ['service', 'industry', 'location', 'location_service'];
+    // CPTs that carry shared template ACF fields (imported via n8n REST API).
+    return ['service', 'industry', 'location', 'service-location'];
 }
 
-function atomic_design_get_allowed_faq_acf_fields()
+function atomic_design_get_allowed_template_acf_fields()
 {
-    return ['faqs_section_heading', 'faq_layout', 'faq_items'];
+    return [
+        'hero_kicker',
+        'hero_title',
+        'hero_subtitle',
+        'hero_primary_link',
+        'hero_media',
+        'faqs_section_heading',
+        'faq_layout',
+        'faq_items',
+    ];
 }
 
-function atomic_design_get_faq_acf_for_rest($object)
+function atomic_design_get_template_acf_for_rest($object)
 {
     if (!function_exists('get_field')) {
         return [];
@@ -296,14 +338,14 @@ function atomic_design_get_faq_acf_for_rest($object)
     $post_id  = isset($object['id']) ? (int) $object['id'] : 0;
     $response = [];
 
-    foreach (atomic_design_get_allowed_faq_acf_fields() as $field_name) {
+    foreach (atomic_design_get_allowed_template_acf_fields() as $field_name) {
         $response[$field_name] = get_field($field_name, $post_id);
     }
 
     return $response;
 }
 
-function atomic_design_register_faq_acf_rest_fields()
+function atomic_design_register_template_acf_rest_fields()
 {
     if (!function_exists('get_field')) {
         return;
@@ -314,15 +356,15 @@ function atomic_design_register_faq_acf_rest_fields()
             $post_type,
             'acf',
             [
-                'get_callback' => 'atomic_design_get_faq_acf_for_rest',
+                'get_callback' => 'atomic_design_get_template_acf_for_rest',
                 'schema'       => null,
             ]
         );
     }
 }
-add_action('rest_api_init', 'atomic_design_register_faq_acf_rest_fields');
+add_action('rest_api_init', 'atomic_design_register_template_acf_rest_fields');
 
-function atomic_design_capture_faq_acf_rest_payload($prepared_post, $request)
+function atomic_design_capture_template_acf_rest_payload($prepared_post, $request)
 {
     if (!function_exists('update_field')) {
         return $prepared_post;
@@ -333,10 +375,10 @@ function atomic_design_capture_faq_acf_rest_payload($prepared_post, $request)
         return $prepared_post;
     }
 
-    $allowed_fields = array_flip(atomic_design_get_allowed_faq_acf_fields());
-    $faq_payload    = array_intersect_key($acf_data, $allowed_fields);
+    $allowed_fields = array_flip(atomic_design_get_allowed_template_acf_fields());
+    $template_payload = array_intersect_key($acf_data, $allowed_fields);
 
-    if (empty($faq_payload)) {
+    if (empty($template_payload)) {
         return $prepared_post;
     }
 
@@ -347,8 +389,8 @@ function atomic_design_capture_faq_acf_rest_payload($prepared_post, $request)
 
     add_action(
         "rest_after_insert_{$post_type}",
-        function ($post) use ($faq_payload) {
-            foreach ($faq_payload as $field_name => $field_value) {
+        function ($post) use ($template_payload) {
+            foreach ($template_payload as $field_name => $field_value) {
                 update_field($field_name, $field_value, $post->ID);
             }
         },
@@ -359,18 +401,18 @@ function atomic_design_capture_faq_acf_rest_payload($prepared_post, $request)
     return $prepared_post;
 }
 
-function atomic_design_register_faq_acf_rest_savers()
+function atomic_design_register_template_acf_rest_savers()
 {
     foreach (atomic_design_get_rest_post_types() as $post_type) {
         add_filter(
             "rest_pre_insert_{$post_type}",
-            'atomic_design_capture_faq_acf_rest_payload',
+            'atomic_design_capture_template_acf_rest_payload',
             10,
             2
         );
     }
 }
-add_action('init', 'atomic_design_register_faq_acf_rest_savers');
+add_action('init', 'atomic_design_register_template_acf_rest_savers');
 
 /**
  * Register ACF blocks
@@ -396,8 +438,10 @@ function atomic_design_register_acf_blocks()
             'supports'        => [
                 'align' => ['wide', 'full'],
                 // Lock edit mode so editors always see the fields UI.
-                'mode'  => false,
-                'jsx'   => true,
+                'mode'            => false,
+                'jsx'             => true,
+                // Keep the Gutenberg "Additional CSS class(es)" field visible.
+                'customClassName' => true,
             ],
         ]
     );
@@ -417,9 +461,10 @@ function atomic_design_register_acf_blocks()
             'keywords'        => ['industry', 'solutions', 'grid'],
             'mode'            => 'preview',
             'supports'        => [
-                'align' => false,
-                'mode'  => false,
-                'jsx'   => true,
+                'align'           => false,
+                'mode'            => false,
+                'jsx'             => true,
+                'customClassName' => true,
             ],
         ]
     );
@@ -438,9 +483,10 @@ function atomic_design_register_acf_blocks()
             'keywords'        => ['trust', 'facts', 'selling points', 'key points'],
             'mode'            => 'preview',
             'supports'        => [
-                'align' => ['wide', 'full'],
-                'mode'  => false,
-                'jsx'   => true,
+                'align'           => ['wide', 'full'],
+                'mode'            => false,
+                'jsx'             => true,
+                'customClassName' => true,
             ],
         ]
     );
@@ -460,9 +506,10 @@ function atomic_design_register_acf_blocks()
             'keywords'        => ['testimonials', 'reviews', 'clients', 'ratings'],
             'mode'            => 'preview',
             'supports'        => [
-                'align' => false,
-                'mode'  => false,
-                'jsx'   => true,
+                'align'           => false,
+                'mode'            => false,
+                'jsx'             => true,
+                'customClassName' => true,
             ],
         ]
     );
@@ -484,9 +531,10 @@ function atomic_design_register_acf_blocks()
             'keywords'        => ['faq', 'questions', 'accordion', 'help'],
             'mode'            => 'edit',
             'supports'        => [
-                'align' => false,
-                'mode'  => false,
-                'jsx'   => true,
+                'align'           => false,
+                'mode'            => false,
+                'jsx'             => true,
+                'customClassName' => true,
             ],
         ]
     );
@@ -561,145 +609,4 @@ function atomic_design_register_group_block_styles()
 }
 add_action('init', 'atomic_design_register_group_block_styles');
 
-// ============================================================
-// CUSTOM POST TYPES
-// URL structure mapped from CPL 2026 Website - URLs.csv
-//
-//  service          → /services/{slug}/
-//  industry         → /industries/{slug}/
-//  location         → /locations/{slug}/
-//  location_service → /locations/{city-slug}/{service-slug}/
-//
-// All CPTs are REST-enabled for n8n / REST API bulk imports.
-// ============================================================
-
-function atomic_design_register_post_types()
-{
-    // ----------------------------------------------------------
-    // 1. SERVICE
-    //    /services/phenolic-labels/
-    //    /services/phenolic-tags/  etc.
-    // ----------------------------------------------------------
-    register_post_type('service', [
-        'labels' => [
-            'name'               => __('Services', 'atomic-design'),
-            'singular_name'      => __('Service', 'atomic-design'),
-            'add_new_item'       => __('Add New Service', 'atomic-design'),
-            'edit_item'          => __('Edit Service', 'atomic-design'),
-            'view_item'          => __('View Service', 'atomic-design'),
-            'search_items'       => __('Search Services', 'atomic-design'),
-            'not_found'          => __('No services found.', 'atomic-design'),
-            'all_items'          => __('All Services', 'atomic-design'),
-        ],
-        'public'             => true,
-        'has_archive'        => 'services',
-        'rewrite'            => ['slug' => 'services', 'with_front' => false],
-        'menu_icon'          => 'dashicons-hammer',
-        'menu_position'      => 5,
-        'supports'           => ['title', 'editor', 'thumbnail', 'excerpt', 'revisions'],
-        'show_in_rest'       => true,
-        'rest_base'          => 'services',
-    ]);
-
-    // ----------------------------------------------------------
-    // 2. INDUSTRY
-    //    /industries/electrical-contractors/
-    //    /industries/hvac-mechanical/  etc.
-    // ----------------------------------------------------------
-    register_post_type('industry', [
-        'labels' => [
-            'name'               => __('Industries', 'atomic-design'),
-            'singular_name'      => __('Industry', 'atomic-design'),
-            'add_new_item'       => __('Add New Industry', 'atomic-design'),
-            'edit_item'          => __('Edit Industry', 'atomic-design'),
-            'view_item'          => __('View Industry', 'atomic-design'),
-            'search_items'       => __('Search Industries', 'atomic-design'),
-            'not_found'          => __('No industries found.', 'atomic-design'),
-            'all_items'          => __('All Industries', 'atomic-design'),
-        ],
-        'public'             => true,
-        'has_archive'        => 'industries',
-        'rewrite'            => ['slug' => 'industries', 'with_front' => false],
-        'menu_icon'          => 'dashicons-industry',
-        'menu_position'      => 6,
-        'supports'           => ['title', 'editor', 'thumbnail', 'excerpt', 'revisions'],
-        'show_in_rest'       => true,
-        'rest_base'          => 'industries',
-    ]);
-
-    // ----------------------------------------------------------
-    // 3. LOCATION
-    //    /locations/houston-tx/
-    //    /locations/chicago-il/  etc.
-    // ----------------------------------------------------------
-    register_post_type('location', [
-        'labels' => [
-            'name'               => __('Locations', 'atomic-design'),
-            'singular_name'      => __('Location', 'atomic-design'),
-            'add_new_item'       => __('Add New Location', 'atomic-design'),
-            'edit_item'          => __('Edit Location', 'atomic-design'),
-            'view_item'          => __('View Location', 'atomic-design'),
-            'search_items'       => __('Search Locations', 'atomic-design'),
-            'not_found'          => __('No locations found.', 'atomic-design'),
-            'all_items'          => __('All Locations', 'atomic-design'),
-        ],
-        'public'             => true,
-        'has_archive'        => 'locations',
-        'rewrite'            => ['slug' => 'locations', 'with_front' => false],
-        'menu_icon'          => 'dashicons-location-alt',
-        'menu_position'      => 7,
-        'supports'           => ['title', 'editor', 'thumbnail', 'excerpt', 'revisions'],
-        'show_in_rest'       => true,
-        'rest_base'          => 'locations',
-    ]);
-
-    // ----------------------------------------------------------
-    // 4. LOCATION SERVICE  (programmatic SEO pages)
-    //    /locations/houston-tx/phenolic-labels/
-    //    /locations/ashburn-va/lamacoid-tags/  etc.
-    //
-    //    Slug pattern: locations/{city}/{service}
-    //    ACF fields hold: parent_location + parent_service refs
-    //    so n8n can create 100s of these via REST.
-    // ----------------------------------------------------------
-    register_post_type('location_service', [
-        'labels' => [
-            'name'               => __('Location Services', 'atomic-design'),
-            'singular_name'      => __('Location Service', 'atomic-design'),
-            'add_new_item'       => __('Add New Location Service', 'atomic-design'),
-            'edit_item'          => __('Edit Location Service', 'atomic-design'),
-            'view_item'          => __('View Location Service', 'atomic-design'),
-            'search_items'       => __('Search Location Services', 'atomic-design'),
-            'not_found'          => __('No location services found.', 'atomic-design'),
-            'all_items'          => __('All Location Services', 'atomic-design'),
-        ],
-        'public'             => true,
-        'has_archive'        => false,
-        'rewrite'            => ['slug' => 'locations', 'with_front' => false],
-        'menu_icon'          => 'dashicons-admin-site-alt3',
-        'menu_position'      => 8,
-        'supports'           => ['title', 'editor', 'thumbnail', 'excerpt', 'revisions'],
-        'show_in_rest'       => true,
-        'rest_base'          => 'location-services',
-    ]);
-}
-add_action('init', 'atomic_design_register_post_types');
-
-/**
- * Flush rewrite rules once after post types are registered.
- * Runs only when the transient flag is set (e.g. on theme activation).
- */
-function atomic_design_flush_rewrites()
-{
-    if (get_transient('atomic_design_flush_rewrites')) {
-        flush_rewrite_rules();
-        delete_transient('atomic_design_flush_rewrites');
-    }
-}
-add_action('init', 'atomic_design_flush_rewrites', 20);
-
-function atomic_design_set_flush_on_activation()
-{
-    set_transient('atomic_design_flush_rewrites', true);
-}
-add_action('after_switch_theme', 'atomic_design_set_flush_on_activation');
+// Post types are now managed in ACF UI and synced via acf-json.
