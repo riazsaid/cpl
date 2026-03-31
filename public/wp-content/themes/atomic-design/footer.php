@@ -7,10 +7,10 @@
     ?>
 
     <footer class="site-footer" role="contentinfo">
-        <div class="container">
+        <div class="container footer-wrapper">
 
             <!-- Top area: brand | nav | CTA card -->
-            <div class="site-footer__top">
+            <div class="site-footer__left">
 
                 <!-- Brand column -->
                 <div class="site-footer__brand">
@@ -49,25 +49,7 @@
                     ]);
                     ?>
                 </nav>
-
-                <!-- CTA card -->
-                <aside class="site-footer__cta">
-                    <h2 class="site-footer__cta-title">
-                        <?php esc_html_e('Get a Fast Quote', 'atomic-design'); ?>
-                    </h2>
-                    <p class="site-footer__cta-text">
-                        <?php esc_html_e("Tell us about your project and we'll respond with pricing and lead time.", 'atomic-design'); ?>
-                    </p>
-                    <a class="btn btn-primary"
-                       href="<?php echo esc_url(home_url('/request-quote/')); ?>">
-                        <?php esc_html_e('Request a Quote', 'atomic-design'); ?>
-                    </a>
-                </aside>
-
-            </div><!-- /.site-footer__top -->
-
-            <!-- Bottom bar -->
-            <div class="site-footer__bottom">
+                <div class="site-footer__copy-wrapper">
                 <p class="site-footer__copy">
                     &copy; <?php echo esc_html(date('Y')); ?>
                     <?php bloginfo('name'); ?> &mdash;
@@ -84,6 +66,26 @@
                         <?php esc_html_e('Shipping & Returns', 'atomic-design'); ?>
                     </a>
                 </nav>
+                </div>
+                <!-- CTA card -->
+            
+
+            </div><!-- /.site-footer__top -->
+
+            <!-- Bottom bar -->
+            <div class="site-footer__right">
+            <aside class="site-footer__cta">
+                    <h2 class="site-footer__cta-title">
+                        <?php esc_html_e('Get a Fast Quote', 'atomic-design'); ?>
+                    </h2>
+                    <p class="site-footer__cta-text">
+                        <?php esc_html_e("Tell us about your project and we'll respond with pricing and lead time.", 'atomic-design'); ?>
+                    </p>
+                    <a class="btn btn-primary"
+                       href="<?php echo esc_url(home_url('/request-quote/')); ?>">
+                        <?php esc_html_e('Request a Quote', 'atomic-design'); ?>
+                    </a>
+                </aside>
             </div><!-- /.site-footer__bottom -->
 
         </div><!-- /.container -->
