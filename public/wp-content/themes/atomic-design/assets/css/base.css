@@ -13,13 +13,14 @@
 
 html {
     scroll-behavior: smooth;
+    font-size: 20px;
 }
 
 body {
     font-family: var(--font-body);
-    font-size: var(--body);
-    line-height: var(--lh-body);
-    color: var(--text-soft);
+    font-size: var(--h4);
+    line-height: var(--lh-md);
+    color: var(--text);
     background: var(--bg);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
@@ -32,7 +33,7 @@ video {
 }
 
 a {
-    color: var(--accent);
+    color: var(--text);
     text-decoration: none;
     transition: color var(--dur-fast) var(--ease);
 }
@@ -47,22 +48,68 @@ a:focus-visible {
    HEADINGS
    ============================================================ */
 
-h1, h2, h3, h4, .display {
-    font-family: var(--font-display);
-    color: var(--text);
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.display {
+    font-family: var(--font-heading);
     letter-spacing: -0.02em;
-    line-height: var(--lh-tight);
+
 }
 
-h1 { font-size: var(--h1); font-weight: 600; }
-h2 { font-size: var(--h2); font-weight: 600; line-height: var(--lh-heading); }
-h3 { font-size: var(--h3); font-weight: 600; }
-h4 { font-size: var(--body-lg); font-weight: 600; }
+h1 {
+    font-size: var(--h1);
+    font-weight: 600;
+    line-height: var(--lh-xxl);
+}
+
+h2 {
+    font-size: var(--h2);
+    font-weight: 600;
+    line-height: var(--lh-xl);
+}
+
+h3 {
+    font-size: var(--h3);
+    font-weight: 600;
+    line-height: var(--lh-lg);
+}
+
+h4 {
+    font-size: var(--h4);
+    font-weight: 600;
+    line-height: var(--lh-md);
+}
+
+h5 {
+    font-size: var(--h5);
+    font-weight: 600;
+    line-height: var(--lh-sm);
+}
+
+h6 {
+    font-size: var(--h6);
+    font-weight: 600;
+    line-height: var(--lh-xs);
+}
 
 p {
+    font-size: var(--body-lg);
     color: var(--text-soft);
-    line-height: var(--lh-body);
+    line-height: var(--lh-2xs);
 }
+
+.body1 {
+    font-size: var(--body-sm);
+    font-weight: 600;
+    line-height: var(--lh-3xs);
+}
+
+
+
 
 /* ============================================================
    UTILITY TEXT STYLES
@@ -190,6 +237,7 @@ p {
    ============================================================ */
 
 @media (prefers-reduced-motion: reduce) {
+
     *,
     *::before,
     *::after {

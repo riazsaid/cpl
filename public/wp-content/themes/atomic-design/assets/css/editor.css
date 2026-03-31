@@ -1,11 +1,10 @@
 /* Basic editor styles to roughly match front-end */
 
 body.block-editor-page {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-family: var(--font-body);
 }
 
 .editor-styles-wrapper {
-    max-width: 1200px;
+    max-width: 1280px;
     margin: 0 auto;
 }
-

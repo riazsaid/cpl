@@ -5,104 +5,157 @@
 
 :root {
 
-    /* ----------------------------------------------------------
+   /* ----------------------------------------------------------
        COLORS
     ---------------------------------------------------------- */
-    --bg:            #0b0c10;
-    --bg-soft:       #11131a;
-    --panel:         rgba(255, 255, 255, 0.05);
-    --panel-strong:  rgba(255, 255, 255, 0.08);
-    --border:        rgba(255, 255, 255, 0.10);
-    --border-strong: rgba(255, 255, 255, 0.18);
-    --text:          #f8fafc;
-    --text-soft:     rgba(248, 250, 252, 0.75);
-    --text-muted:    rgba(148, 163, 184, 0.90);
-    --accent:        #2563eb;
-    --accent-hover:  #1d4ed8;
-    --accent-soft:   rgba(37, 99, 235, 0.15);
-    --shadow:        0 20px 60px rgba(0, 0, 0, 0.40);
+   --bg: #000;
+   --bg-soft: #121212;
+   --accent: #3663AF;
+   --accent-hover: #1d4ed8;
+   --text: #ffffff;
+   --text-soft: #848484;
+   --accent-soft: #2E5293;
+   --shadow: 0 20px 60px rgba(0, 0, 0, 0.40);
+   --color-brand: #2355CA;
+   --color-brand-dark: #1B46B6;
+   --color-accent: #F38330;
+   --color-text-primary: #4B4B4B;
 
-    /* ----------------------------------------------------------
+
+   /* --panel:         rgba(255, 255, 255, 0.05);
+    --panel-strong:  rgba(255, 255, 255, 0.08); */
+   /* --border:        rgba(255, 255, 255, 0.10);
+    --border-strong: rgba(255, 255, 255, 0.18); */
+   /* --text-muted:    rgba(148, 163, 184, 0.90); */
+
+
+
+   /* ----------------------------------------------------------
        TYPOGRAPHY
-       Change --font-display or --font-body here to update
-       headings / body copy across the entire site.
+       Primary pair:
+       - --font-heading for headings/display
+       - --font-body for body text/UI copy
     ---------------------------------------------------------- */
-    --font-display: "Playfair Display", Georgia, serif;
-    --font-body:    "Inter", ui-sans-serif, system-ui, -apple-system,
-                    BlinkMacSystemFont, "Segoe UI", sans-serif;
+   --font-heading: "Montserrat", "Myriad Pro", "Roboto", sans-serif;
+   --font-body: "Myriad Pro", "Roboto", sans-serif;
+   --font-display: var(--font-body);
+   --font-roboto: "Roboto", sans-serif;
+   --font-kannada: "Kannada Sangam MN", sans-serif;
 
-    /* Fluid type scale */
-    --h1:      clamp(2.5rem, 5vw, 4.25rem);
-    --h2:      clamp(1.85rem, 3.5vw, 3rem);
-    --h3:      clamp(1.25rem, 2vw, 1.75rem);
-    --body-lg: 1.125rem;
-    --body:    1rem;
-    --small:   0.875rem;
-    --tiny:    0.75rem;
+   /* Fluid type scale */
+   --h1: clamp(2.2rem, 4vw, 3rem);
+   /* 60px */
+   /* max = 3rem */
 
-    /* ----------------------------------------------------------
+   --h2: clamp(1.8rem, 3vw, 2.5rem);
+   /* 50px */
+   /* max = 2.5rem */
+
+   --h3: clamp(1.2rem, 2vw, 1.5rem);
+   /* 30px */
+   /* max = 1.5rem */
+
+   --h4: clamp(1rem, 1.6vw, 1.2rem);
+   /* 24px */
+   /* max = 1.2rem */
+
+   --h5: clamp(0.9rem, 1.4vw, 1.05rem);
+   /* 21px */
+   /* max = 1.05rem */
+
+   --h6: clamp(0.8rem, 1.2vw, 0.9rem);
+   /* 18px */
+   /* max = 0.9rem */
+
+   --body-lg: clamp(0.75rem, 1.2vw, 0.8rem);
+   /* 16px */
+   --body-sm: clamp(0.55rem, 1vw, 0.6rem);
+   /* 12px */
+
+
+   /* ----------------------------------------------------------
        LEGACY / COMPONENT FALLBACKS
        Some component CSS uses these older token names.
     ---------------------------------------------------------- */
-    --font-size-sm:        var(--small);
-    --cpl-text-muted:      var(--text-muted);
-    --color-border-subtle: var(--border);
-    --shadow-soft:         var(--shadow);
+   --font-size-sm: var(--small);
+   --cpl-text-muted: var(--text-muted);
+   --color-border-subtle: var(--border);
+   --shadow-soft: var(--shadow);
 
-    /* Line heights */
-    --lh-tight:   1.05;
-    --lh-heading: 1.15;
-    --lh-body:    1.70;
+   /* Line heights */
+   --lh-xxl: 3.6rem;
+   /* 72px */
+   --lh-xl: 3rem;
+   /* 60px */
+   --lh-lg: 1.8rem;
+   /* 36px */
+   --lh-md: 1.5rem;
+   /* 28px */
+   --lh-sm: 1.4rem;
+   /* 30px */
+   --lh-xs: 1.35rem;
+   /* 27px */
+   --lh-2xs: 0.95rem;
+   /* 19px */
+   --lh-3xs: 0.9rem;
+   /* 18px */
 
-    /* ----------------------------------------------------------
+   /* ----------------------------------------------------------
        BORDER RADIUS
     ---------------------------------------------------------- */
-    --radius-sm:   10px;
-    --radius-md:   16px;
-    --radius-lg:   24px;
-    --radius-pill: 999px;
+   --radius-sm: 10px;
+   --radius-md: 16px;
+   --radius-lg: 24px;
+   --radius-pill: 999px;
 
-    /* ----------------------------------------------------------
+   /* ----------------------------------------------------------
        LAYOUT & SPACING
     ---------------------------------------------------------- */
-    --container:     1120px;
-    --gutter:        clamp(1.25rem, 4vw, 2.25rem);
-    /* Section-to-section spacing */
-    --section-space-96: 6rem; /* 96px */
-    --section-space-48: 3rem; /* 48px */
-    /* Default section spacing (most sections) */
-    --section-space: var(--section-space-96);
-    --grid-gap:      clamp(1rem, 2.2vw, 1.75rem);
+   --container: 1280px;
+   --gutter: clamp(1.25rem, 4vw, 2.25rem);
+   /* Section-to-section spacing */
+   --section-space-210: 10.5rem;
+   /* 210px */
+   --section-space-142: 7.1rem;
+   /* 142px */
+   /* Default section spacing (most sections) */
+   --section-space: var(--section-space-210);
+   --grid-gap: clamp(1rem, 2.2vw, 4.2rem);
 
-    /* Explicit named spacing steps */
-    --space-xs: 0.5rem;
-    --space-sm: 1rem;
-    --space-md: 1.5rem;
-    --space-lg: 2.5rem;
-    --space-xl: 4rem;
+   /* Explicit named spacing steps */
+   --space-lg: 3.8rem;
+   --space-md: 2rem;
+   --space-xmd: 1.5rem;
+   --space-sm: 1.6rem;
+   --space-xsm: 1.4rem;
+   /* --space-xs: 0.5rem; */
+   /* --space-xl: 4rem; */
 
-    /* ----------------------------------------------------------
+   /* ----------------------------------------------------------
        BREAKPOINTS
        Use with: @media (min-width: var(--bp-tablet)) {}
     ---------------------------------------------------------- */
-    --bp-tablet:  48rem;   /* 768px  */
-    --bp-desktop: 64rem;   /* 1024px */
-    --bp-wide:    80rem;   /* 1280px */
+   --bp-tablet: 48rem;
+   /* 768px  */
+   --bp-desktop: 64rem;
+   /* 1024px */
+   --bp-wide: 80rem;
+   /* 1280px */
 
-    /* ----------------------------------------------------------
+   /* ----------------------------------------------------------
        BUTTONS
        Change once here — all buttons update.
     ---------------------------------------------------------- */
-    --btn-height:    2.75rem;
-    --btn-pad-x:     1.25rem;
-    --btn-radius:    0;
-    --btn-font-size: 0.9375rem;
+   /* --btn-height: 2.75rem; */
+   /* --btn-pad-x: 1.25rem; */
+   --btn-radius: 0;
+   --btn-font-size: 1rem;
 
-    /* ----------------------------------------------------------
+   /* ----------------------------------------------------------
        MOTION
     ---------------------------------------------------------- */
-    --ease:     cubic-bezier(0.22, 1, 0.36, 1);
-    --dur-fast: 0.20s;
-    --dur-med:  0.40s;
-    --dur-slow: 0.70s;
+   --ease: cubic-bezier(0.22, 1, 0.36, 1);
+   --dur-fast: 0.20s;
+   --dur-med: 0.40s;
+   --dur-slow: 0.70s;
 }

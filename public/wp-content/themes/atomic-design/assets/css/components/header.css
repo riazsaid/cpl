@@ -9,19 +9,20 @@
    ============================================================ */
 
 .site-header__topbar {
-    background: #060709;          /* slightly darker than main header */
+    font-family: var(--font-roboto);
 }
 
 .site-header__topbar-inner {
     display: flex;
     align-items: center;
-    justify-content: flex-end;    /* phone + button right-aligned */
+    justify-content: flex-end;
+    /* phone + button right-aligned */
     gap: 1.25rem;
-    padding-block: 0.4rem;
+    /* padding-block: 0.4rem; */
 }
 
 .site-header__phone {
-    font-size: var(--small);
+    font-size: var(--h5);
     font-weight: 500;
     color: var(--text-muted);
     text-decoration: none;
@@ -37,7 +38,7 @@
 .site-header__topbar-cta {
     height: 1.9rem;
     padding: 0 1rem;
-    font-size: 0.8rem;
+    font-size: 1.2rem;
     font-weight: 600;
     border-radius: 0;
 }
@@ -50,7 +51,7 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(11, 12, 16, 0.88);
+    /* background: rgba(11, 12, 16, 0.88); */
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
 }
@@ -118,7 +119,7 @@
 }
 
 .site-nav a {
-    font-size: var(--small);
+    font-size: var(--body-lg);
     font-weight: 500;
     color: var(--text-muted);
     text-decoration: none;
@@ -126,8 +127,8 @@
 }
 
 .site-nav a:hover,
-.site-nav .current-menu-item > a,
-.site-nav .current-page-ancestor > a {
+.site-nav .current-menu-item>a,
+.site-nav .current-page-ancestor>a {
     color: var(--text);
     text-decoration: none;
 }
@@ -193,8 +194,13 @@
     transition: transform var(--dur-fast) var(--ease);
 }
 
-.site-header__toggle span::before { top: -5px; }
-.site-header__toggle span::after  { top:  5px; }
+.site-header__toggle span::before {
+    top: -5px;
+}
+
+.site-header__toggle span::after {
+    top: 5px;
+}
 
 /* Animate to X when open */
 .site-header__toggle[aria-expanded="true"] span {
@@ -218,13 +224,17 @@
    RESPONSIVE — TABLET & MOBILE
    ============================================================ */
 
-@media (max-width: 47.99rem) {  /* below --bp-tablet */
+@media (max-width: 47.99rem) {
+
+    /* below --bp-tablet */
     .site-header__topbar {
-        display: none;   /* hide top bar on mobile — saves space */
+        display: none;
+        /* hide top bar on mobile — saves space */
     }
 }
 
-@media (max-width: 63.99rem) {  /* below --bp-desktop */
+@media (max-width: 63.99rem) {
+    /* below --bp-desktop */
 
     .site-header__toggle {
         display: flex;
@@ -238,7 +248,8 @@
     .site-nav {
         position: fixed;
         inset-inline: 0;
-        top: 61px;              /* matches header height */
+        top: 61px;
+        /* matches header height */
         padding: var(--space-md) var(--gutter) var(--space-lg);
         background: rgba(11, 12, 16, 0.97);
         backdrop-filter: blur(24px);

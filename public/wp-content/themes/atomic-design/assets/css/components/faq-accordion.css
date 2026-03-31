@@ -1,5 +1,5 @@
 .faq-accordion-block {
-    padding-block: var(--section-space);
+    padding-bottom: var(--section-space);
 }
 
 .faq-container {
@@ -12,7 +12,7 @@
 .faq-heading {
     margin-bottom: var(--space-md);
     text-align: center;
-    font-family: var(--font-display);
+    font-family: var(--font-heading);
     font-size: var(--h2);
     line-height: var(--lh-heading);
 }
@@ -46,8 +46,9 @@
 }
 
 .question-text {
-    font-family: "Montserrat", var(--font-display);
-    font-size: 1.5rem; /* ~24px */
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    /* ~24px */
     font-weight: 600;
     line-height: 1.25;
 }
@@ -110,6 +111,7 @@
     }
 
     .question-text {
-        font-size: 1.25rem; /* ~20px */
+        font-size: 1.25rem;
+        /* ~20px */
     }
 }
