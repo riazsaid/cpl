@@ -23,7 +23,7 @@
 }
 
 .cpt-hero__title {
-    font-family: var(--font-display);
+    font-family: var(--font-heading);
     font-size: var(--h1);
     line-height: var(--lh-heading);
     color: var(--text);
@@ -60,7 +60,7 @@
 ---------------------------------------------------------- */
 
 .cpt-intro__heading {
-    font-family: var(--font-display);
+    font-family: var(--font-heading);
     font-size: var(--h2);
     line-height: var(--lh-heading);
     color: var(--text);
@@ -76,7 +76,7 @@
 
 .cpt-intro__content h2,
 .cpt-intro__content h3 {
-    font-family: var(--font-display);
+    font-family: var(--font-heading);
     color: var(--text);
     margin-block: var(--space-md) var(--space-sm);
 }
@@ -108,7 +108,7 @@
 ---------------------------------------------------------- */
 
 .cpt-repeater__heading {
-    font-family: var(--font-display);
+    font-family: var(--font-heading);
     font-size: var(--h2);
     line-height: var(--lh-heading);
     color: var(--text);
@@ -180,7 +180,7 @@
 }
 
 .cpt-cta__heading {
-    font-family: var(--font-display);
+    font-family: var(--font-heading);
     font-size: var(--h2);
     line-height: var(--lh-heading);
     color: var(--text);

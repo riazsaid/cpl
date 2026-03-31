@@ -10,7 +10,7 @@
 }
 
 .testimonials-heading {
-    font-family: var(--font-display);
+    font-family: var(--font-heading);
     font-size: var(--h2);
     line-height: var(--lh-heading);
     color: var(--text);
@@ -64,7 +64,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: var(--font-display);
+    font-family: var(--font-heading);
     font-weight: 700;
     font-size: 1.25rem;
     color: #1A73E8;
@@ -72,7 +72,7 @@
 }
 
 .google-reviews-badge__title {
-    font-family: var(--font-display);
+    font-family: var(--font-heading);
     font-weight: 600;
     font-size: 1rem;
     line-height: 1.25;
@@ -245,7 +245,7 @@
     background: #fff;
     border: 2px solid #1A73E8;
     color: #1A73E8;
-    font-family: var(--font-display);
+    font-family: var(--font-heading);
     font-size: 1.375rem;
     font-weight: 700;
     display: flex;
