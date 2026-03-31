@@ -9,7 +9,7 @@
 }
 
 .industry-solutions-heading {
-    font-family: var(--font-display);
+    font-family: var(--font-heading);
     font-size: var(--h2);
     line-height: var(--lh-heading);
     color: var(--text);

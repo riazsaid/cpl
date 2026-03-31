@@ -1,15 +1,17 @@
 /* ============================================================
    MAIN CSS BUNDLE
    Import order matters:
-   1. tokens  → variables.css   (all CSS custom properties)
-   2. reset   → base.css        (reset, typography, buttons)
-   3. layout  → layout.css      (container, section, grids)
-   4. header  → components/header.css
-   5. footer  → components/footer.css
-   6. hero    → components/hero.css
+   1. fonts   → fonts.css       (local @font-face declarations)
+   2. tokens  → variables.css   (all CSS custom properties)
+   3. reset   → base.css        (reset, typography, buttons)
+   4. layout  → layout.css      (container, section, grids)
+   5. header  → components/header.css
+   6. footer  → components/footer.css
+   7. hero    → components/hero.css
    Add new component files below as the theme grows.
    ============================================================ */
 
+@import url("./fonts.css");
 @import url("./variables.css");
 @import url("./base.css");
 @import url("./layout.css");

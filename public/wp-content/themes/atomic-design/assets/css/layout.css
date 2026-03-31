@@ -50,15 +50,15 @@
    ============================================================ */
 
 .section {
-    padding-block: var(--section-space);
+    padding-bottom: var(--section-space-210);
 }
 
 .section--tight {
-    padding-block: var(--section-space-48);
+    padding-bottom: var(--section-space-142);
 }
 
 .section--flush {
-    padding-block: 0;
+    padding-bottom: 0;
 }
 
 /* ============================================================
@@ -67,22 +67,22 @@
    vertical spacing without inventing random values.
    ============================================================ */
 
-.wp-block-group.is-style-section-96 {
-    padding-block: var(--section-space-96);
+.wp-block-group.is-style-section-210 {
+    padding-bottom: var(--section-space-210);
 }
 
-.wp-block-group.is-style-section-48 {
-    padding-block: var(--section-space-48);
+.wp-block-group.is-style-section-142 {
+    padding-bottom: var(--section-space-142);
 }
 
 .wp-block-group.is-style-section-flush {
-    padding-block: 0;
+    padding-bottom: 0;
 }
 
 /* Make Group inner content use the same width as .container */
-.wp-block-group.is-style-section-96 > .wp-block-group__inner-container,
-.wp-block-group.is-style-section-48 > .wp-block-group__inner-container,
-.wp-block-group.is-style-section-flush > .wp-block-group__inner-container {
+.wp-block-group.is-style-section-210>.wp-block-group__inner-container,
+.wp-block-group.is-style-section-142>.wp-block-group__inner-container,
+.wp-block-group.is-style-section-flush>.wp-block-group__inner-container {
     width: min(100% - (var(--gutter) * 2), var(--container));
     margin-inline: auto;
 }
@@ -117,12 +117,26 @@
     gap: var(--grid-gap);
 }
 
-@media (min-width: 48rem) {  /* --bp-tablet */
-    .grid-2 { grid-template-columns: 1fr 1fr; }
-    .grid-3 { grid-template-columns: repeat(3, 1fr); }
-    .grid-4 { grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 48rem) {
+
+    /* --bp-tablet */
+    .grid-2 {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-@media (min-width: 64rem) {  /* --bp-desktop */
-    .grid-4 { grid-template-columns: repeat(4, 1fr); }
+@media (min-width: 64rem) {
+
+    /* --bp-desktop */
+    .grid-4 {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
