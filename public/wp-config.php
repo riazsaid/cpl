@@ -32,6 +32,9 @@ define( 'DB_PASSWORD', 'cpl2026cpl2026' );
 /** Database hostname */
 define( 'DB_HOST', 'mysql.atomicdesign.net' );
 
+define( 'WP_HOME',    'https://second2026.dreamhosters.com' );
+define( 'WP_SITEURL', 'https://second2026.dreamhosters.com' );
+
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );
 
