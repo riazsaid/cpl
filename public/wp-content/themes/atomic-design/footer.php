@@ -7,17 +7,26 @@
     ?>
 
     <footer class="site-footer" role="contentinfo">
-        <div class="container">
+        <div class="container footer-wrapper">
 
             <!-- Top area: brand | nav | CTA card -->
-            <div class="site-footer__top">
+            <div class="site-footer__left">
+            <span class="site-footer__logo">
+                <a href="<?php echo esc_url(home_url('/')); ?>">
+                    <img
+                        class="site-logo"
+                        src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/logo.png'); ?>"
+                        alt="<?php echo esc_attr(get_bloginfo('name')); ?>"
+                        width="420"
+                        height="80"
+                        loading="eager"
+                        decoding="async"
+                    />
+                </a>
+            </span>
 
                 <!-- Brand column -->
                 <div class="site-footer__brand">
-                    <span class="site-footer__logo"><?php bloginfo('name'); ?></span>
-                    <p class="site-footer__tagline">
-                        <?php esc_html_e('Custom engraved phenolic labels, tags, and nameplates — built to last.', 'atomic-design'); ?>
-                    </p>
                     <?php if ($phone) : ?>
                     <a class="site-footer__contact-item"
                        href="tel:<?php echo esc_attr($phone_tel); ?>">
@@ -39,7 +48,6 @@
 
                 <!-- Footer navigation -->
                 <nav class="site-footer__nav" aria-label="<?php esc_attr_e('Footer menu', 'atomic-design'); ?>">
-                    <p class="site-footer__nav-title"><?php esc_html_e('Quick Links', 'atomic-design'); ?></p>
                     <?php
                     wp_nav_menu([
                         'theme_location' => 'footer',
@@ -49,25 +57,7 @@
                     ]);
                     ?>
                 </nav>
-
-                <!-- CTA card -->
-                <aside class="site-footer__cta">
-                    <h2 class="site-footer__cta-title">
-                        <?php esc_html_e('Get a Fast Quote', 'atomic-design'); ?>
-                    </h2>
-                    <p class="site-footer__cta-text">
-                        <?php esc_html_e("Tell us about your project and we'll respond with pricing and lead time.", 'atomic-design'); ?>
-                    </p>
-                    <a class="btn btn-primary"
-                       href="<?php echo esc_url(home_url('/request-quote/')); ?>">
-                        <?php esc_html_e('Request a Quote', 'atomic-design'); ?>
-                    </a>
-                </aside>
-
-            </div><!-- /.site-footer__top -->
-
-            <!-- Bottom bar -->
-            <div class="site-footer__bottom">
+                <div class="site-footer__copy-wrapper">
                 <p class="site-footer__copy">
                     &copy; <?php echo esc_html(date('Y')); ?>
                     <?php bloginfo('name'); ?> &mdash;
@@ -84,6 +74,26 @@
                         <?php esc_html_e('Shipping & Returns', 'atomic-design'); ?>
                     </a>
                 </nav>
+                </div>
+                <!-- CTA card -->
+            
+
+            </div><!-- /.site-footer__top -->
+
+            <!-- Bottom bar -->
+            <div class="site-footer__right">
+            <aside class="site-footer__cta">
+                    <h2 class="site-footer__cta-title">
+                        <?php esc_html_e('Get a Fast Quote', 'atomic-design'); ?>
+                    </h2>
+                    <p class="site-footer__cta-text">
+                        <?php esc_html_e("Tell us about your project and we'll respond with pricing and lead time.", 'atomic-design'); ?>
+                    </p>
+                    <a class="btn btn-primary"
+                       href="<?php echo esc_url(home_url('/request-quote/')); ?>">
+                        <?php esc_html_e('Request a Quote', 'atomic-design'); ?>
+                    </a>
+                </aside>
             </div><!-- /.site-footer__bottom -->
 
         </div><!-- /.container -->

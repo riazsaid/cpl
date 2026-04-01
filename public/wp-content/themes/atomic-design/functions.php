@@ -593,13 +593,13 @@ function atomic_design_register_group_block_styles()
     }
 
     register_block_style('core/group', [
-        'name'  => 'section-96',
-        'label' => __('Section (96px)', 'atomic-design'),
+        'name'  => 'section-210',
+        'label' => __('Section (210px)', 'atomic-design'),
     ]);
 
     register_block_style('core/group', [
-        'name'  => 'section-48',
-        'label' => __('Section (48px)', 'atomic-design'),
+        'name'  => 'section-142',
+        'label' => __('Section (142px)', 'atomic-design'),
     ]);
 
     register_block_style('core/group', [
