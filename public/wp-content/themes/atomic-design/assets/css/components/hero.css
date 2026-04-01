@@ -1,9 +1,10 @@
 .hero {
-    padding-block: calc(var(--section-space) * 1.1);
+    /* padding-block: calc(var(--section-space) * 1.1); */
     background: radial-gradient(circle at top left, #0b0c10 0, #020617 55%, #000 100%);
     background-size: cover;
     background-position: center right;
     border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+    height: 476px;
 }
 
 .hero__inner {
@@ -14,22 +15,35 @@
 }
 
 /* Used by the ACF hero block when it has a full background image */
-.hero__inner--single {
-    max-width: 42rem;
+/* .hero__inner--single {
+    max-width: 67rem;
+    
+} */
+.hero__content{
+    width : 50%;
+    padding-top:  2.2rem;
 }
 
 .hero__kicker {
-    margin-bottom: 0.75rem;
+    font-family: var(--font-heading);
+    /* margin-bottom: 0.75rem; */
+    font-size: var(--h2);
+    line-height: var(--lh-xl);
+    letter-spacing: 0;
+    font-weight: 600;
+    padding-bottom: var(--space-lg);
 }
 
 .hero__title {
-    margin-bottom: 1rem;
-    font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: clamp(2.1rem, 4.2vw, 3.125rem); /* ~50px at desktop */
-    letter-spacing: -0.02em;
-    line-height: 1.05;
+    /* margin-bottom: 1rem; */
+    font-family: var(--font-body);
+    /* letter-spacing: -0.02em; */
 }
+ .hero__title p{
+        font-size: var(--h3);
+        line-height: var(--lh-lg);
+        font-weight: 400;
+    }
 
 .hero__subtitle {
     margin-bottom: 1.75rem;
@@ -44,6 +58,7 @@
     flex-wrap: wrap;
     gap: 0.9rem;
     align-items: center;
+    padding-top: 3.75rem;
 }
 
 .hero__meta {

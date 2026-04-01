@@ -70,8 +70,12 @@ $section_class = trim('hero ' . $align_class . ' ' . $class_name);
                 <div class="hero__subtitle body-lg"><?php echo wp_kses_post(wpautop($subtitle)); ?></div>
             <?php endif; ?>
 
-            <?php if (!empty($primary['url']) && !empty($primary['title'])) : ?>
-                <div class="hero__actions">
+          
+        </div>
+    </div>
+</section>
+<?php if (!empty($primary['url']) && !empty($primary['title'])) : ?>
+                <div class="container hero__actions">
                     <a class="btn btn-primary"
                        href="<?php echo esc_url($primary['url']); ?>"
                        target="<?php echo esc_attr($primary['target'] ?: '_self'); ?>">
@@ -79,6 +83,3 @@ $section_class = trim('hero ' . $align_class . ' ' . $class_name);
                     </a>
                 </div>
             <?php endif; ?>
-        </div>
-    </div>
-</section>
