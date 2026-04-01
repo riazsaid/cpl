@@ -82,6 +82,10 @@ define( 'WP_DEBUG', true );
 define( 'WP_DEBUG_LOG', true );
 define( 'WP_DEBUG_DISPLAY', false );
 
+define( 'WP_MEMORY_LIMIT', '256M' );
+define( 'WP_MAX_MEMORY_LIMIT', '512M' );
+define( 'WP_POST_REVISIONS', TRUE);
+
 if ( file_exists( __DIR__ . '/wp-config-ddev.php' ) ) {
 	require_once __DIR__ . '/wp-config-ddev.php';
 }
