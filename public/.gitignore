@@ -1,2 +1,2 @@
-# Maintained in git for this project so teammates receive DDEV's WordPress bootstrap file.
+/wp-config-ddev.php
 /drushrc.php
