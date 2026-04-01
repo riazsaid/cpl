@@ -161,7 +161,7 @@ p {
     height: var(--btn-height);
     padding: 0 var(--btn-pad-x);
     border-radius: var(--btn-radius);
-    font-family: var(--font-body);
+    font-family: var(--font-heading);
     font-size: var(--btn-font-size);
     font-weight: 500;
     text-decoration: none;
@@ -169,6 +169,7 @@ p {
     cursor: pointer;
     white-space: nowrap;
     transition: background var(--dur-fast) var(--ease);
+    padding:0.8rem 1.1rem;
 }
 
 .btn-primary {
