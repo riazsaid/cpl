@@ -52,14 +52,17 @@ if (is_array($google_logo) && !empty($google_logo['url'])) {
 ?>
 
 <section class="testimonials-block" <?php echo $bg_style; ?>>
-    <div class="container">
+<div class="container">
 
-        <?php if (!empty($heading)) : ?>
-            <h2 class="testimonials-heading"><?php echo esc_html($heading); ?></h2>
-        <?php endif; ?>
+    <?php if (!empty($heading)) : ?>
+        <h2 class="testimonials-heading"><?php echo esc_html($heading); ?></h2>
+    <?php endif; ?>
 
-        <div class="testimonials-content">
-            <aside class="google-reviews-badge" aria-label="Google reviews summary">
+    <div class="testimonials-content">
+
+        <aside class="google-reviews-badge" aria-label="Google reviews summary">
+
+            <div class="aside-left">
                 <div class="google-reviews-badge__brand">
                     <?php if ($google_logo_url) : ?>
                         <img
@@ -76,18 +79,23 @@ if (is_array($google_logo) && !empty($google_logo['url'])) {
                         </div>
                     <?php endif; ?>
 
-                    <div class="google-reviews-badge__title">
+                </div>
+            </div>
+
+            <div class="aside-right">
+            <div class="google-reviews-badge__title">
                         <?php echo esc_html($google_business_name_display); ?>
                     </div>
-                </div>
-
                 <div class="google-reviews-badge__rating-row" aria-label="<?php echo esc_attr($google_rating_display); ?> out of 5 stars">
+                <div class="google-reviews-badge__rating-number">
+                        <?php echo esc_html($google_rating_display); ?>
+                    </div>
                     <div class="google-reviews-badge__stars" aria-hidden="true">
                         <?php for ($i = 1; $i <= 5; $i++) : ?>
                             <span class="google-review-star <?php echo $i <= $google_filled_stars ? 'google-review-star--filled' : 'google-review-star--empty'; ?>">★</span>
                         <?php endfor; ?>
                     </div>
-                    <div class="google-reviews-badge__rating-number"><?php echo esc_html($google_rating_display); ?></div>
+
                 </div>
 
                 <div class="google-reviews-badge__review-count">
@@ -100,7 +108,9 @@ if (is_array($google_logo) && !empty($google_logo['url'])) {
                             <path d="M12 10.2V13.7H20.7C21 12.9 21.2 12 21.2 11.1C21.2 7.4 18.3 4.2 14.6 4.2C10.9 4.2 8 7.4 8 11.1C8 14.8 10.9 18 14.6 18C16.6 18 18.2 17.2 19.4 15.9L17.2 13.7C16.6 14.3 15.7 14.8 14.6 14.8C12.7 14.8 11.1 13.2 11.1 11.1C11.1 9 12.7 7.4 14.6 7.4C15.6 7.4 16.5 7.8 17.1 8.5L19.4 6.2C18.2 4.9 16.6 4.2 14.6 4.2C10.9 4.2 8 7.4 8 11.1C8 14.8 10.9 18 14.6 18C16.9 18 18.7 17.3 20 16.1C21.3 14.9 22 13.1 22 11.1C22 10.5 21.9 9.9 21.8 9.3H12V10.2Z" fill="#1A73E8"/>
                         </svg>
                     </span>
-                    <span class="google-reviews-badge__powered-text">powered by Google</span>
+                    <span class="google-reviews-badge__powered-text">
+                        powered by Google
+                    </span>
                 </div>
 
                 <?php if (!empty($read_more['url'])) : ?>
@@ -119,9 +129,12 @@ if (is_array($google_logo) && !empty($google_logo['url'])) {
                         </span>
                     </a>
                 <?php endif; ?>
-            </aside>
 
-            <div class="testimonials-slider-area">
+            </div>
+
+        </aside>
+
+        <div class="testimonials-slider-area">
                 <div class="testimonials-slider" data-testimonials-slider>
                     <div class="testimonials-slider__inner">
                         <div class="testimonials-slider__track" role="list">
@@ -202,7 +215,8 @@ if (is_array($google_logo) && !empty($google_logo['url'])) {
                     <div class="testimonials-slider__dots" role="tablist" aria-label="<?php esc_attr_e('Testimonial pages', 'atomic-design'); ?>"></div>
                 </div>
             </div>
-        </div>
 
-    </div>
+    </div> <!-- testimonials-content -->
+
+</div> <!-- container -->
 </section>

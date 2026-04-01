@@ -21,8 +21,10 @@
 .testimonials-content {
     display: grid;
     grid-template-columns: minmax(14rem, 18rem) minmax(0, 1fr);
-    gap: var(--space-md);
+    /* gap: var(--space-md); */
     align-items: start;
+    background-color: var(--bg-soft);
+    padding: 2.5rem 3rem 1rem 1.5rem;
 }
 
 @media (max-width: 900px) {
@@ -37,17 +39,9 @@
 ---------------------------------------------------------- */
 .google-reviews-badge {
     color: var(--text);
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(26, 115, 232, 0.22);
-    border-radius: var(--radius-lg);
-    padding: var(--space-md);
-}
-
-.google-reviews-badge__brand {
     display: flex;
-    align-items: center;
-    gap: var(--space-sm);
-    margin-block-end: var(--space-sm);
+    gap: var(--space-xsm);
+    margin-top: 2rem;
 }
 
 .google-reviews-badge__logo {
@@ -81,7 +75,7 @@
 .google-reviews-badge__rating-row {
     display: flex;
     align-items: center;
-    gap: var(--space-sm);
+    gap: var(--space-xsm);
     margin-block-end: 0.25rem;
 }
 
@@ -102,6 +96,7 @@
 }
 
 .google-reviews-badge__rating-number {
+    color: #f59e0b;
     font-size: 1.05rem;
     font-weight: 700;
     letter-spacing: 0.01em;
@@ -172,7 +167,6 @@
 
 .testimonials-slider {
     position: relative;
-    --slider-gap: var(--space-md);
 }
 
 .testimonials-slider__inner {
@@ -185,7 +179,7 @@
 .testimonials-slider__track {
     display: flex;
     flex-wrap: nowrap;
-    gap: var(--slider-gap);
+    gap: var(--space-xsm);
     transition: transform var(--dur-med) var(--ease);
     will-change: transform;
 }
@@ -196,14 +190,14 @@
     min-width: 0;
     position: relative;
     background: #ffffff;
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    border-radius: 1.75rem;
-    padding: 1.75rem 1.5rem;
+    /* border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 1.75rem; */
+    padding: 1.5rem 1rem;
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
     transition: border-color var(--dur-fast) var(--ease),
-                box-shadow var(--dur-fast) var(--ease);
+        box-shadow var(--dur-fast) var(--ease);
 }
 
 .testimonial-card:hover {
@@ -219,13 +213,14 @@
     display: flex;
     flex-direction: column;
     gap: var(--space-xs);
-    padding-right: 1.6rem; /* space for google icon */
+    row-gap: var(--space-xsm);
+
 }
 
 .testimonial-header {
     display: flex;
     align-items: flex-start;
-    gap: var(--space-sm);
+    gap: var(--space-xsm);
 }
 
 .reviewer-avatar {
@@ -305,23 +300,33 @@
 ---------------------------------------------------------- */
 
 .testimonial-text {
-    font-size: 0.84rem;
-    color: rgba(17, 24, 39, 0.72);
-    line-height: 1.6;
     flex: 1;
     max-height: 5.1rem;
-    overflow: hidden;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    padding-right: 5px;
+}
+
+/* Optional: smooth scrollbar (Chrome) */
+.testimonial-text::-webkit-scrollbar {
+    width: 5px;
+}
+
+.testimonial-text::-webkit-scrollbar-track {
+    background: var(--text-soft);
+}
+
+.testimonial-text::-webkit-scrollbar-thumb {
+    background: var(--color-text-primary);
+    border-radius: 10px;
 }
 
 .testimonial-text p {
-    margin-block-end: 0.65rem;
-    color: rgba(17, 24, 39, 0.72);
-
+    color: var(--bg-soft);
 }
 
-.testimonial-text p:last-child {
-    margin-block-end: 0;
-}
 
 /* ----------------------------------------------------------
    ARROWS
@@ -343,8 +348,8 @@
 }
 
 .testimonials-slider__btn {
-    width: 2.75rem;
-    height: 2.75rem;
+    width: 2rem;
+    height: 2rem;
     border-radius: var(--radius-pill);
     border: 0;
     background: #ff6a3d;
@@ -356,7 +361,7 @@
     pointer-events: auto;
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
     transition: background var(--dur-fast) var(--ease),
-                color var(--dur-fast) var(--ease);
+        color var(--dur-fast) var(--ease);
 }
 
 .testimonials-slider__btn:hover {
@@ -394,11 +399,11 @@
     height: 0.45rem;
     border-radius: var(--radius-pill);
     border: 0;
-    background: rgba(0, 0, 0, 0.22);
+    background: var(--text-soft);
     cursor: pointer;
     padding: 0;
     transition: background var(--dur-fast) var(--ease),
-                transform var(--dur-fast) var(--ease);
+        transform var(--dur-fast) var(--ease);
 }
 
 .testimonials-slider__dot:hover {
@@ -406,7 +411,7 @@
 }
 
 .testimonials-slider__dot.is-active {
-    background: #1A73E8;
+    background: var(--accent);
     transform: scale(1.2);
 }
 

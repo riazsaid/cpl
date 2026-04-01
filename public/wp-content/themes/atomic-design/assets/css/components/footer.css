@@ -30,10 +30,10 @@
 .site-footer__brand,
 .site-footer__nav {
     flex: 1 1 50%;
-    line-height: 3px;
 }
 
-.site-footer__copy-wrapper {
+.site-footer__copy-wrapper,
+.site-footer__logo {
     flex: 1 1 100%;
     display: flex;
     align-items: center;
@@ -110,7 +110,8 @@
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 3px;
+    line-height: 16px;
 }
 
 .site-footer__menu a {
@@ -130,7 +131,7 @@
    ============================================================ */
 
 .site-footer__cta {
-    padding: var(--space-xsm);
+    padding: var(--space-xs);
     border-radius: var(--radius-md);
     background-color: var(--accent);
     /* background: linear-gradient(135deg, #1e3a8a 0%, #1e293b 55%, var(--bg) 100%); */

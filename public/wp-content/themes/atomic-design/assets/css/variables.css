@@ -13,7 +13,7 @@
    --accent: #3663AF;
    --accent-hover: #1d4ed8;
    --text: #ffffff;
-   --text-soft: #848484;
+   --text-soft: #B3B3B3;
    --accent-soft: #2E5293;
    --shadow: 0 20px 60px rgba(0, 0, 0, 0.40);
    --color-brand: #2355CA;
@@ -127,8 +127,8 @@
    --space-md: 2rem;
    --space-xmd: 1.5rem;
    --space-sm: 1.6rem;
-   --space-xsm: 1.4rem;
-   /* --space-xs: 0.5rem; */
+   --space-xs: 1.4rem;
+   --space-xsm: 0.6rem;
    /* --space-xl: 4rem; */
 
    /* ----------------------------------------------------------
