@@ -1,0 +1,33 @@
+name: Deploy WordPress Site
+
+on:
+  push:
+    branches:
+      - main   # deploy when you push to main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout your repo
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Deploy files via SCP using password
+      - name: Copy files to DreamHost
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.DH_HOST }}
+          username: ${{ secrets.DH_USER }}
+          password: ${{ secrets.DH_SSH_KEY }}   # still using DH_SSH_KEY, but value is your password
+          source: "."
+          target: "second2026.dreamhosters.com"
+          rm: true   # remove files not in repo (sync)
+          strip_components: 1
+          exclude: |
+            .git*
+            .ddev
+            docs
+            Designs
+            team-sync
