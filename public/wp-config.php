@@ -21,16 +21,16 @@
 
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define( 'DB_NAME', 'db' );
+define( 'DB_NAME', 'cpl2026' );
 
 /** Database username */
-define( 'DB_USER', 'db' );
+define( 'DB_USER', 'cpl2026' );
 
 /** Database password */
-define( 'DB_PASSWORD', 'db' );
+define( 'DB_PASSWORD', 'cpl2026cpl2026' );
 
 /** Database hostname */
-define( 'DB_HOST', 'db' );
+define( 'DB_HOST', 'mysql.atomicdesign.net' );
 
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );
