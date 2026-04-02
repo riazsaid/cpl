@@ -2,7 +2,10 @@
 /**
  * Single Industry template
  *
- * Structure: Gutenberg blocks → Industry Solutions → Testimonials → FAQs.
+ * Structure:
+ * Hero → Title Description 1 → Trust Bar → Title Description 2
+ * → Industry Solutions → Why Choose 1 → Why Choose 2
+ * → Testimonials → Title Description 3 → FAQs.
  */
 get_header();
 ?>
@@ -20,10 +23,38 @@ get_header();
     ?>
 
     <?php
+    if (function_exists('get_field')) {
+        $post_id = get_queried_object_id();
+
+        get_template_part('template-parts/shared/title-description-sections', null, [
+            'post_id' => $post_id,
+            'section_index' => 1,
+        ]);
+        get_template_part('template-parts/shared/trust-bar');
+        get_template_part('template-parts/shared/title-description-sections', null, [
+            'post_id' => $post_id,
+            'section_index' => 2,
+        ]);
+    }
+
     get_template_part('template-parts/shared/industry-solutions');
+    if (function_exists('get_field')) {
+        get_template_part('template-parts/shared/why-choose-sections', null, [
+            'post_id' => $post_id,
+            'section_index' => 1,
+        ]);
+        get_template_part('template-parts/shared/why-choose-sections', null, [
+            'post_id' => $post_id,
+            'section_index' => 2,
+        ]);
+    }
     get_template_part('template-parts/shared/testimonials');
     if (function_exists('get_field')) {
-        get_template_part('template-parts/shared/faqs', null, ['post_id' => get_queried_object_id()]);
+        get_template_part('template-parts/shared/title-description-sections', null, [
+            'post_id' => $post_id,
+            'section_index' => 3,
+        ]);
+        get_template_part('template-parts/shared/faqs', null, ['post_id' => $post_id]);
     }
     ?>
 </main>

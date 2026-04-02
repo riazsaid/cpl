@@ -14,11 +14,11 @@ if (!function_exists('get_field')) {
     return;
 }
 
-$kicker   = get_field('hero_kicker') ?: '';
-$title    = get_field('hero_title') ?: '';
-$subtitle = get_field('hero_subtitle') ?: '';
-$primary  = get_field('hero_primary_link');
-$bg_image = get_field('hero_media'); // Reused field: now treated as the background image.
+$title     = get_field('hero_title') ?: '';
+$subtitle  = get_field('hero_subtitle') ?: '';
+$primary   = get_field('hero_primary_link');
+$secondary = get_field('hero_secondary_link');
+$bg_image  = get_field('hero_media'); // Reused field: now treated as the background image.
 
 if ($is_preview && empty($title) && empty($subtitle)) {
     echo '<div style="padding:2rem;border:2px dashed #ccc;text-align:center;color:#888;">';
@@ -40,10 +40,10 @@ get_template_part(
     'template-parts/shared/hero',
     null,
     [
-        'kicker'     => $kicker,
         'title'      => $title,
         'subtitle'   => $subtitle,
         'primary'    => $primary,
+        'secondary'  => $secondary,
         'bg_url'     => $bg_url,
         'align'      => !empty($block['align']) ? $block['align'] : 'full',
         'class_name' => !empty($block['className']) ? $block['className'] : '',
