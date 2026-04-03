@@ -36,6 +36,7 @@
 
 .hero__title {
     /* margin-bottom: 1rem; */
+    font-family: var(--font-body);
     /* letter-spacing: -0.02em; */
 }
  .hero__title p{
