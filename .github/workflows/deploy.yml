@@ -23,7 +23,7 @@ jobs:
           password: ${{ secrets.DH_SSH_KEY }}   # still using DH_SSH_KEY, but value is your password
           source: "."
           target: "second2026.dreamhosters.com"
-          rm: true   # remove files not in repo (sync)
+          rm: false   # remove files not in repo (sync)
           strip_components: 1
           exclude: |
             .git*

@@ -3,7 +3,6 @@ get_header();
 ?>
 
 <main id="site-content">
-    <section class="section">
         <div class="container">
             <?php
             while (have_posts()) :
@@ -12,8 +11,6 @@ get_header();
             endwhile;
             ?>
         </div>
-    </section>
-
 </main>
 
 <?php
