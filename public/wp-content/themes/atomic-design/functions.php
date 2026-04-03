@@ -593,29 +593,6 @@ function atomic_design_register_acf_blocks()
     );
 
     // ----------------------------------------------------------
-    // Why Choose Grid block
-    // Reusable heading + feature grid section for product/service pages.
-    // ----------------------------------------------------------
-    acf_register_block_type(
-        [
-            'name'            => 'why-choose-grid',
-            'title'           => __('Why Choose Grid', 'atomic-design'),
-            'description'     => __('Heading plus a two-column list of reasons, benefits, or differentiators.', 'atomic-design'),
-            'render_template' => get_template_directory() . '/blocks/why-choose-grid/why-choose-grid.php',
-            'category'        => 'atomic-blocks',
-            'icon'            => 'screenoptions',
-            'keywords'        => ['why choose', 'benefits', 'features', 'reasons'],
-            'mode'            => 'edit',
-            'supports'        => [
-                'align'           => ['wide', 'full'],
-                'mode'            => false,
-                'jsx'             => true,
-                'customClassName' => true,
-            ],
-        ]
-    );
-
-    // ----------------------------------------------------------
     // Title + Description Columns block
     // Reusable heading + rich text section with auto-split columns.
     // ----------------------------------------------------------
