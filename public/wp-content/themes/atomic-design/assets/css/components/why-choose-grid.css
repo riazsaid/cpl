@@ -1,6 +1,5 @@
 .why-choose-grid {
-    padding-block: var(--section-space);
-    background: #232323;
+    padding-bottom: var(--section-space-210);
 }
 
 .why-choose-grid__inner {
@@ -8,9 +7,9 @@
 }
 
 .why-choose-grid__heading {
-    margin: 0 0 clamp(3rem, 7vw, 5rem);
+    padding-bottom: var(--space-lg);
     font-family: var(--font-heading);
-    font-size: clamp(2.6rem, 5vw, 3.75rem);
+    font-size: var(--h1);
     font-weight: 600;
     line-height: 1.08;
     text-align: center;
@@ -21,11 +20,11 @@
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: clamp(2rem, 8vw, 7rem);
-    row-gap: clamp(2.75rem, 6vw, 4rem);
+    row-gap: clamp(2.75rem, 6vw, 2rem);
 }
 
 .why-choose-grid__item-title {
-    margin: 0 0 1.75rem;
+    padding-bottom: 2rem;
     font-family: var(--font-heading);
     font-size: clamp(1.7rem, 2.3vw, 2rem);
     font-weight: 600;
