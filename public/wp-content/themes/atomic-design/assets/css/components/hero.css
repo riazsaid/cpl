@@ -24,7 +24,7 @@
     padding-top:  2.2rem;
 }
 
-.hero__kicker {
+.hero__title {
     font-family: var(--font-heading);
     /* margin-bottom: 0.75rem; */
     font-size: var(--h2);
@@ -34,18 +34,13 @@
     padding-bottom: var(--space-lg);
 }
 
-.hero__title {
-    /* margin-bottom: 1rem; */
-    font-family: var(--font-body);
-    /* letter-spacing: -0.02em; */
-}
  .hero__title p{
         font-size: var(--h3);
         line-height: var(--lh-lg);
         font-weight: 400;
     }
 
-.hero__subtitle {
+.hero__subtitle p{
     margin-bottom: 1.75rem;
     max-width: 34rem;
     font-size: clamp(1.05rem, 2.2vw, 1.875rem); /* ~30px at desktop */
