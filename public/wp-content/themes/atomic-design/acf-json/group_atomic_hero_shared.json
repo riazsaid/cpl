@@ -3,12 +3,12 @@
     "title": "Hero",
     "fields": [
         {
-            "key": "field_atomic_shared_hero_kicker",
-            "label": "Kicker (optional)",
-            "name": "hero_kicker",
+            "key": "field_atomic_shared_hero_title",
+            "label": "Title",
+            "name": "hero_title",
             "aria-label": "",
             "type": "text",
-            "instructions": "Small label above the heading.",
+            "instructions": "Main heading for the hero.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -22,27 +22,6 @@
             "append": "",
             "allow_in_bindings": 0,
             "maxlength": ""
-        },
-        {
-            "key": "field_atomic_shared_hero_title",
-            "label": "Title",
-            "name": "hero_title",
-            "aria-label": "",
-            "type": "wysiwyg",
-            "instructions": "Main heading for the hero.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "tabs": "all",
-            "toolbar": "basic",
-            "media_upload": 0,
-            "delay": 0,
-            "allow_in_bindings": 0
         },
         {
             "key": "field_atomic_shared_hero_subtitle",
@@ -67,11 +46,28 @@
         },
         {
             "key": "field_atomic_shared_hero_primary_link",
-            "label": "Primary CTA Link",
+            "label": "Primary Link",
             "name": "hero_primary_link",
             "aria-label": "",
             "type": "link",
-            "instructions": "Primary button link.",
+            "instructions": "First hero link.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_atomic_shared_hero_secondary_link",
+            "label": "Secondary Link",
+            "name": "hero_secondary_link",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Second hero link.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -137,6 +133,13 @@
                 "operator": "==",
                 "value": "service-location"
             }
+        ],
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/hero"
+            }
         ]
     ],
     "menu_order": 0,
@@ -146,8 +149,8 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
-    "description": "Shared Hero fields for CPT templates.",
+    "description": "Shared Hero fields for CPT templates and the Hero block.",
     "show_in_rest": 1,
     "display_title": "",
-    "modified": 1775022000
+    "modified": 1775265600
 }

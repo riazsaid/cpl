@@ -4,20 +4,16 @@
  *
  * Args:
  * - post_id (int) Optional. Defaults to current post ID.
- * - kicker (string) Optional.
  * - title (string) Optional.
  * - subtitle (string) Optional.
  * - primary (array) Optional ACF link array.
+ * - secondary (array) Optional ACF link array.
  * - bg_url (string) Optional background image URL.
  * - align (string) Optional Gutenberg alignment slug, defaults to full.
  * - class_name (string) Optional extra class names.
  */
 
 $hero_post_id = isset($args['post_id']) ? (int) $args['post_id'] : get_the_ID();
-
-$kicker = isset($args['kicker'])
-    ? (string) $args['kicker']
-    : (function_exists('get_field') ? (string) get_field('hero_kicker', $hero_post_id) : '');
 
 $title = isset($args['title'])
     ? (string) $args['title']
@@ -30,6 +26,10 @@ $subtitle = isset($args['subtitle'])
 $primary = isset($args['primary']) && is_array($args['primary'])
     ? $args['primary']
     : (function_exists('get_field') ? (get_field('hero_primary_link', $hero_post_id) ?: []) : []);
+
+$secondary = isset($args['secondary']) && is_array($args['secondary'])
+    ? $args['secondary']
+    : (function_exists('get_field') ? (get_field('hero_secondary_link', $hero_post_id) ?: []) : []);
 
 $bg_url = isset($args['bg_url']) ? (string) $args['bg_url'] : '';
 if ($bg_url === '' && function_exists('get_field')) {
@@ -58,10 +58,6 @@ $section_class = trim('hero ' . $align_class . ' ' . $class_name);
 <section class="<?php echo esc_attr($section_class); ?>"<?php echo $style_attr; ?>>
     <div class="container hero__inner hero__inner--single">
         <div class="hero__content">
-            <?php if ($kicker !== '') : ?>
-                <span class="eyebrow hero__kicker"><?php echo esc_html($kicker); ?></span>
-            <?php endif; ?>
-
             <?php if ($title !== '') : ?>
                 <div class="hero__title"><?php echo wp_kses_post($title); ?></div>
             <?php endif; ?>
@@ -70,16 +66,25 @@ $section_class = trim('hero ' . $align_class . ' ' . $class_name);
                 <div class="hero__subtitle body-lg"><?php echo wp_kses_post(wpautop($subtitle)); ?></div>
             <?php endif; ?>
 
-          
+            <?php if ((!empty($primary['url']) && !empty($primary['title'])) || (!empty($secondary['url']) && !empty($secondary['title']))) : ?>
+                <div class="hero__actions">
+                    <?php if (!empty($primary['url']) && !empty($primary['title'])) : ?>
+                        <a class="hero__link hero__link--primary"
+                           href="<?php echo esc_url($primary['url']); ?>"
+                           target="<?php echo esc_attr($primary['target'] ?: '_self'); ?>">
+                            <?php echo esc_html($primary['title']); ?>
+                        </a>
+                    <?php endif; ?>
+
+                    <?php if (!empty($secondary['url']) && !empty($secondary['title'])) : ?>
+                        <a class="hero__link hero__link--secondary"
+                           href="<?php echo esc_url($secondary['url']); ?>"
+                           target="<?php echo esc_attr($secondary['target'] ?: '_self'); ?>">
+                            <?php echo esc_html($secondary['title']); ?>
+                        </a>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
 </section>
-<?php if (!empty($primary['url']) && !empty($primary['title'])) : ?>
-                <div class="container hero__actions">
-                    <a class="btn btn-primary"
-                       href="<?php echo esc_url($primary['url']); ?>"
-                       target="<?php echo esc_attr($primary['target'] ?: '_self'); ?>">
-                        <?php echo esc_html($primary['title']); ?>
-                    </a>
-                </div>
-            <?php endif; ?>

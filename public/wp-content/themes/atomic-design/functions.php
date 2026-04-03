@@ -101,6 +101,27 @@ function atomic_design_editor_assets()
 add_action('enqueue_block_editor_assets', 'atomic_design_editor_assets');
 
 /**
+ * Admin styles for ACF field editing screens.
+ */
+function atomic_design_admin_assets($hook_suffix)
+{
+    if (!is_admin() || !function_exists('acf_add_options_page')) {
+        return;
+    }
+
+    $theme_version = wp_get_theme()->get('Version');
+    $theme_uri     = get_template_directory_uri();
+
+    wp_enqueue_style(
+        'atomic-design-admin-acf',
+        $theme_uri . '/assets/css/admin-acf.css',
+        [],
+        $theme_version
+    );
+}
+add_action('admin_enqueue_scripts', 'atomic_design_admin_assets');
+
+/**
  * Ensure common layout blocks expose Gutenberg's custom class field.
  *
  * Some environments hide the "Additional CSS class(es)" control unless the
@@ -292,10 +313,10 @@ add_filter('acf/settings/load_json', 'atomic_design_acf_json_load_point');
  * Accepts payloads like:
  * {
  *   "acf": {
- *     "hero_kicker": "Custom Engraving",
  *     "hero_title": "Industrial Phenolic Labels",
  *     "hero_subtitle": "<p>Built for harsh environments.</p>",
  *     "hero_primary_link": {"title":"Request a Quote","url":"\/contact","target":"_self"},
+ *     "hero_secondary_link": {"title":"View Materials","url":"\/materials","target":"_self"},
  *     "hero_media": 123,
  *     "faqs_section_heading": "FAQs",
  *     "faq_layout": "two-column",
@@ -304,6 +325,35 @@ add_filter('acf/settings/load_json', 'atomic_design_acf_json_load_point');
  *         "faq_question": "Question",
  *         "faq_answer": "<p>Answer</p>",
  *         "default_open": 0
+ *       }
+ *     ],
+ *     "why_choose_sections": [
+ *       {
+ *         "why_choose_heading": "Why Custom Phenolic Labels",
+ *         "why_choose_items": [
+ *           {
+ *             "why_choose_item_title": "Custom Engraving,\nDone In-House",
+ *             "why_choose_item_description": "Supporting paragraph."
+ *           }
+ *         ]
+ *       }
+ *     ],
+ *     "title_description_sections": [
+ *       {
+ *         "title_description_heading": "Experience You Can Trust",
+ *         "title_description_content": "<p>Paragraph one.<\/p><p>Paragraph two.<\/p>"
+ *       }
+ *     ],
+ *     "numbered_process_sections": [
+ *       {
+ *         "numbered_process_heading": "Our Process: From Data to Delivery",
+ *         "numbered_process_description": "<p>Section intro.<\/p>",
+ *         "numbered_process_items": [
+ *           {
+ *             "numbered_process_item_title": "Data Intake & Review",
+ *             "numbered_process_item_description": "<p>Step details.<\/p>"
+ *           }
+ *         ]
  *       }
  *     ]
  *   }
@@ -318,14 +368,17 @@ function atomic_design_get_rest_post_types()
 function atomic_design_get_allowed_template_acf_fields()
 {
     return [
-        'hero_kicker',
         'hero_title',
         'hero_subtitle',
         'hero_primary_link',
+        'hero_secondary_link',
         'hero_media',
         'faqs_section_heading',
         'faq_layout',
         'faq_items',
+        'why_choose_sections',
+        'title_description_sections',
+        'numbered_process_sections',
     ];
 }
 
@@ -532,6 +585,75 @@ function atomic_design_register_acf_blocks()
             'mode'            => 'edit',
             'supports'        => [
                 'align'           => false,
+                'mode'            => false,
+                'jsx'             => true,
+                'customClassName' => true,
+            ],
+        ]
+    );
+
+    // ----------------------------------------------------------
+    // Why Choose Grid block
+    // Reusable heading + feature grid section for product/service pages.
+    // ----------------------------------------------------------
+    acf_register_block_type(
+        [
+            'name'            => 'why-choose-grid',
+            'title'           => __('Why Choose Grid', 'atomic-design'),
+            'description'     => __('Heading plus a two-column list of reasons, benefits, or differentiators.', 'atomic-design'),
+            'render_template' => get_template_directory() . '/blocks/why-choose-grid/why-choose-grid.php',
+            'category'        => 'atomic-blocks',
+            'icon'            => 'screenoptions',
+            'keywords'        => ['why choose', 'benefits', 'features', 'reasons'],
+            'mode'            => 'edit',
+            'supports'        => [
+                'align'           => ['wide', 'full'],
+                'mode'            => false,
+                'jsx'             => true,
+                'customClassName' => true,
+            ],
+        ]
+    );
+
+    // ----------------------------------------------------------
+    // Title + Description Columns block
+    // Reusable heading + rich text section with auto-split columns.
+    // ----------------------------------------------------------
+    acf_register_block_type(
+        [
+            'name'            => 'title-description-columns',
+            'title'           => __('Title + Description Columns', 'atomic-design'),
+            'description'     => __('Centered heading with rich text automatically split into two columns.', 'atomic-design'),
+            'render_template' => get_template_directory() . '/blocks/title-description-columns/title-description-columns.php',
+            'category'        => 'atomic-blocks',
+            'icon'            => 'editor-paragraph',
+            'keywords'        => ['title', 'description', 'content', 'columns', 'about'],
+            'mode'            => 'edit',
+            'supports'        => [
+                'align'           => ['wide', 'full'],
+                'mode'            => false,
+                'jsx'             => true,
+                'customClassName' => true,
+            ],
+        ]
+    );
+
+    // ----------------------------------------------------------
+    // Numbered Process Grid block
+    // Heading + intro + auto-numbered process cards.
+    // ----------------------------------------------------------
+    acf_register_block_type(
+        [
+            'name'            => 'numbered-process-grid',
+            'title'           => __('Numbered Process Grid', 'atomic-design'),
+            'description'     => __('Section with heading, intro, and automatically numbered process steps.', 'atomic-design'),
+            'render_template' => get_template_directory() . '/blocks/numbered-process-grid/numbered-process-grid.php',
+            'category'        => 'atomic-blocks',
+            'icon'            => 'list-view',
+            'keywords'        => ['process', 'steps', 'numbered', 'workflow'],
+            'mode'            => 'edit',
+            'supports'        => [
+                'align'           => ['wide', 'full'],
                 'mode'            => false,
                 'jsx'             => true,
                 'customClassName' => true,
