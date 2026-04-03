@@ -57,10 +57,10 @@ if (is_array($google_logo) && !empty($google_logo['url'])) {
     <?php if (!empty($heading)) : ?>
         <h2 class="testimonials-heading"><?php echo esc_html($heading); ?></h2>
     <?php endif; ?>
-
-    <div class="testimonials-content">
-
-        <aside class="google-reviews-badge" aria-label="Google reviews summary">
+<img src="<?php echo get_template_directory_uri(); ?>/assets/img/stars.svg"></div></div></div>
+    <div class="container testimonials-content">
+    <div class="testimonial-body">
+  <aside class="google-reviews-badge" aria-label="Google reviews summary">
 
             <div class="aside-left">
                 <div class="google-reviews-badge__brand">
@@ -117,15 +117,13 @@ if (is_array($google_logo) && !empty($google_logo['url'])) {
                     <a
                         href="<?php echo esc_url($read_more['url']); ?>"
                         target="<?php echo esc_attr($read_more['target'] ?: '_self'); ?>"
-                        class="google-reviews-badge__cta"
-                    >
+                        class="google-reviews-badge__cta">
                         <span class="google-reviews-badge__cta-label">
                             <?php echo esc_html(!empty($read_more['title']) ? $read_more['title'] : 'Review us on Google'); ?>
+                            
                         </span>
                         <span class="google-reviews-badge__cta-icon" aria-hidden="true">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 10.2V13.7H20.7C21 12.9 21.2 12 21.2 11.1C21.2 7.4 18.3 4.2 14.6 4.2C10.9 4.2 8 7.4 8 11.1C8 14.8 10.9 18 14.6 18C16.6 18 18.2 17.2 19.4 15.9L17.2 13.7C16.6 14.3 15.7 14.8 14.6 14.8C12.7 14.8 11.1 13.2 11.1 11.1C11.1 9 12.7 7.4 14.6 7.4C15.6 7.4 16.5 7.8 17.1 8.5L19.4 6.2C18.2 4.9 16.6 4.2 14.6 4.2C10.9 4.2 8 7.4 8 11.1C8 14.8 10.9 18 14.6 18C16.9 18 18.7 17.3 20 16.1C21.3 14.9 22 13.1 22 11.1C22 10.5 21.9 9.9 21.8 9.3H12V10.2Z" fill="#1A73E8"/>
-                            </svg>
+                           <img src="<?php echo get_template_directory_uri(); ?>/assets/img/goggle.svg">
                         </span>
                     </a>
                 <?php endif; ?>
@@ -149,9 +147,7 @@ if (is_array($google_logo) && !empty($google_logo['url'])) {
                                 <div class="testimonial-card" role="listitem">
 
                                     <div class="testimonial-google" aria-hidden="true">
-                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M12 10.2V13.7H20.7C21 12.9 21.2 12 21.2 11.1C21.2 7.4 18.3 4.2 14.6 4.2C10.9 4.2 8 7.4 8 11.1C8 14.8 10.9 18 14.6 18C16.6 18 18.2 17.2 19.4 15.9L17.2 13.7C16.6 14.3 15.7 14.8 14.6 14.8C12.7 14.8 11.1 13.2 11.1 11.1C11.1 9 12.7 7.4 14.6 7.4C15.6 7.4 16.5 7.8 17.1 8.5L19.4 6.2C18.2 4.9 16.6 4.2 14.6 4.2C10.9 4.2 8 7.4 8 11.1C8 14.8 10.9 18 14.6 18C16.9 18 18.7 17.3 20 16.1C21.3 14.9 22 13.1 22 11.1C22 10.5 21.9 9.9 21.8 9.3H12V10.2Z" fill="#1A73E8"/>
-                                        </svg>
+                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/goggle.svg">
                                     </div>
 
                                     <div class="testimonial-card__heading">
@@ -215,8 +211,11 @@ if (is_array($google_logo) && !empty($google_logo['url'])) {
                     <div class="testimonials-slider__dots" role="tablist" aria-label="<?php esc_attr_e('Testimonial pages', 'atomic-design'); ?>"></div>
                 </div>
             </div>
+    </div>
+     <div class="review-btn"><a href="#">Read Review</a></div>
 
     </div> <!-- testimonials-content -->
+    
 
 </div> <!-- container -->
 </section>
