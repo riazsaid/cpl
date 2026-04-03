@@ -55,7 +55,7 @@
 /* Allow wrapping on larger screens so bar doesn’t scroll */
 @media (min-width: 64rem) {
     .trust-bar-block__grid {
-        flex-wrap: wrap;
+        /* flex-wrap: wrap; */
         justify-content: center;
         min-width: 0;
     }
