@@ -12,6 +12,8 @@ Thumbs.db
 ### Composer / PHP
 /vendor/
 /composer.lock
+/.env
+/public/.env
 
 ### DDEV
 .ddev/.downloads/
