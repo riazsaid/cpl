@@ -59,8 +59,8 @@
    /* 24px */
    /* max = 1.2rem */
 
-   --h5: clamp(0.9rem, 1.4vw, 1.05rem);
-   /* 21px */
+   --h5: clamp(0.9rem, 1.4vw, 1.1rem);
+   /* 22px */
    /* max = 1.05rem */
 
    --h6: clamp(0.8rem, 1.2vw, 0.9rem);
@@ -124,11 +124,17 @@
 
    /* Explicit named spacing steps */
    --space-lg: 3.8rem;
+   /* 76px */
    --space-md: 2rem;
+   /* 40px */
    --space-xmd: 1.5rem;
+   /* 30px */
    --space-sm: 1.6rem;
+   /* 32px */
    --space-xs: 1.4rem;
+   /* 28px */
    --space-xsm: 0.6rem;
+   /* 12px */
    /* --space-xl: 4rem; */
 
    /* ----------------------------------------------------------
