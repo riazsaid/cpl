@@ -31,8 +31,12 @@ public/wp/*
 public/wp-content/uploads/
 public/wp-content/cache/
 public/wp-content/upgrade/
+wp-content/uploads/
 
 ### Log files
 *.log
 *.sql
 *.sql.gz
+
+### Local scripts
+*.sh
