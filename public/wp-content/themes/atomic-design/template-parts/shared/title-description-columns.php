@@ -5,6 +5,7 @@
  * Args:
  * - section_heading (string) Required.
  * - description (string) Required HTML from WYSIWYG.
+ * - cta (array) Optional ACF link array.
  */
 
 if (!defined('ABSPATH')) {
@@ -13,6 +14,7 @@ if (!defined('ABSPATH')) {
 
 $section_heading = isset($args['section_heading']) ? trim((string) $args['section_heading']) : '';
 $description     = isset($args['description']) ? trim((string) $args['description']) : '';
+$cta             = isset($args['cta']) && is_array($args['cta']) ? $args['cta'] : [];
 
 if ($section_heading === '' || $description === '') {
     return;
@@ -36,6 +38,16 @@ $description = wpautop($description);
                     <div class="title-description-columns__column" data-title-description-right></div>
                 </div>
             </div>
+
+            <?php if (!empty($cta['url']) && !empty($cta['title'])) : ?>
+                <div class="title-description-columns__actions">
+                    <a class="title-description-columns__cta"
+                       href="<?php echo esc_url($cta['url']); ?>"
+                       target="<?php echo esc_attr($cta['target'] ?: '_self'); ?>">
+                        <?php echo esc_html($cta['title']); ?>
+                    </a>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
 </section>

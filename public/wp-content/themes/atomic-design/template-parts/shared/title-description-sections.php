@@ -30,6 +30,9 @@ if ($section_index > 0) {
 foreach ($sections as $section) {
     $section_heading = isset($section['title_description_heading']) ? (string) $section['title_description_heading'] : '';
     $description     = isset($section['title_description_content']) ? (string) $section['title_description_content'] : '';
+    $cta             = isset($section['title_description_cta']) && is_array($section['title_description_cta'])
+        ? $section['title_description_cta']
+        : [];
 
     if (trim($section_heading) === '' || trim(wp_strip_all_tags($description)) === '') {
         continue;
@@ -41,6 +44,7 @@ foreach ($sections as $section) {
         [
             'section_heading' => $section_heading,
             'description'     => $description,
+            'cta'             => $cta,
         ]
     );
 }
