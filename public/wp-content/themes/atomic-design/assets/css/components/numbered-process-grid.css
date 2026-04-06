@@ -1,5 +1,5 @@
 .numbered-process-grid {
-    padding-block: var(--section-space);
+    padding-bottom: var(--section-space-210);
 }
 
 .numbered-process-grid__heading {

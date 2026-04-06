@@ -83,7 +83,7 @@ $section_class = trim('hero ' . $align_class . ' ' . $class_name);
                     <?php endif; ?>
 
                     <?php if (!empty($secondary['url']) && !empty($secondary['title'])) : ?>
-                        <a class="hero__link hero__link--secondary"
+                        <a class="hero__link hero__link--secondary container"
                            href="<?php echo esc_url($secondary['url']); ?>"
                            target="<?php echo esc_attr($secondary['target'] ?: '_self'); ?>">
                             <span><?php echo esc_html($secondary['title']); ?></span>
