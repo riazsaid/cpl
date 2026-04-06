@@ -5,7 +5,7 @@
    ============================================================ */
 
 .trust-bar-block {
-    padding-block: var(--space-md);
+    padding-bottom: var(--section-space-210);
 }
 
 .trust-bar-block__inner {
@@ -21,7 +21,6 @@
     align-items: stretch;
     gap: var(--space-lg);
     min-width: min-content;
-    padding-block: var(--space-xs);
 }
 
 .trust-bar-block__item {
@@ -56,7 +55,7 @@
 /* Allow wrapping on larger screens so bar doesn’t scroll */
 @media (min-width: 64rem) {
     .trust-bar-block__grid {
-        flex-wrap: wrap;
+        /* flex-wrap: wrap; */
         justify-content: center;
         min-width: 0;
     }

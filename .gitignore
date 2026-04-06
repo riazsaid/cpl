@@ -12,6 +12,8 @@ Thumbs.db
 ### Composer / PHP
 /vendor/
 /composer.lock
+/.env
+/public/.env
 
 ### DDEV
 .ddev/.downloads/
@@ -28,6 +30,7 @@ Thumbs.db
 ### WordPress core & uploads
 public/wp/*
 !public/wp-content/
+public/wp-config-ddev.php
 public/wp-content/uploads/
 public/wp-content/cache/
 public/wp-content/upgrade/
