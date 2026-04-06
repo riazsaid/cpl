@@ -50,7 +50,7 @@
 
 .hero__actions {
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     gap: 1.5rem;
     align-items: center;
     /* margin-top: 1.5rem; */
@@ -74,6 +74,7 @@
     font-weight: 600;
     line-height: 1;
     transition: background var(--dur-fast) var(--ease);
+    white-space: nowrap;
 }
 
 .hero__link--primary:hover {
