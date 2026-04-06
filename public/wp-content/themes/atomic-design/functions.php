@@ -593,6 +593,30 @@ function atomic_design_register_acf_blocks()
     );
 
     // ----------------------------------------------------------
+    // Why Choose Grid block
+    // Manual Gutenberg section for normal pages/posts.
+    // CPT templates use the separate why_choose_sections repeater flow.
+    // ----------------------------------------------------------
+    acf_register_block_type(
+        [
+            'name'            => 'why-choose-grid',
+            'title'           => __('Why Choose Grid', 'atomic-design'),
+            'description'     => __('Heading plus a two-column list of reasons, benefits, or differentiators.', 'atomic-design'),
+            'render_template' => get_template_directory() . '/blocks/why-choose-grid/why-choose-grid.php',
+            'category'        => 'atomic-blocks',
+            'icon'            => 'screenoptions',
+            'keywords'        => ['why choose', 'benefits', 'features', 'reasons'],
+            'mode'            => 'edit',
+            'supports'        => [
+                'align'           => ['wide', 'full'],
+                'mode'            => false,
+                'jsx'             => true,
+                'customClassName' => true,
+            ],
+        ]
+    );
+
+    // ----------------------------------------------------------
     // Title + Description Columns block
     // Reusable heading + rich text section with auto-split columns.
     // ----------------------------------------------------------
@@ -657,6 +681,39 @@ function atomic_design_block_categories($categories)
     );
 }
 add_filter('block_categories_all', 'atomic_design_block_categories', 10, 2);
+
+/**
+ * Restrict certain custom ACF blocks to intended editor contexts.
+ *
+ * Example: Why Choose Grid is for normal static content pages/posts,
+ * not the CPT template-driven flows that already use dedicated repeaters.
+ */
+function atomic_design_limit_custom_blocks($allowed_blocks, $block_editor_context)
+{
+    if (
+        !is_array($allowed_blocks)
+        || !isset($block_editor_context->post)
+        || !is_object($block_editor_context->post)
+    ) {
+        return $allowed_blocks;
+    }
+
+    $post_type = $block_editor_context->post->post_type ?? '';
+
+    if ($post_type !== 'post' && $post_type !== 'page') {
+        $allowed_blocks = array_values(
+            array_filter(
+                $allowed_blocks,
+                static function ($block_name) {
+                    return $block_name !== 'acf/why-choose-grid';
+                }
+            )
+        );
+    }
+
+    return $allowed_blocks;
+}
+add_filter('allowed_block_types_all', 'atomic_design_limit_custom_blocks', 10, 2);
 
 /**
  * Add extra body classes for static pages: page-slug-{slug}.

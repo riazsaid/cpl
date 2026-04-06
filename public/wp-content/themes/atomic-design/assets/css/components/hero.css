@@ -51,9 +51,53 @@
 .hero__actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.9rem;
+    gap: 1.5rem;
     align-items: center;
+    margin-top: 1.5rem;
     padding-block: var(--space-lg) var(--section-space-210);
+}
+
+.hero__link {
+    text-decoration: none;
+}
+
+.hero__link--primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3.5rem;
+    padding: 0.9rem 1.45rem;
+    background: var(--accent);
+    color: #fff;
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1;
+    transition: background var(--dur-fast) var(--ease);
+}
+
+.hero__link--primary:hover {
+    background: var(--accent-hover);
+}
+
+.hero__link--secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    color: #fff;
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.1;
+}
+
+.hero__link--secondary:hover {
+    color: #fff;
+}
+
+.hero__link-arrow {
+    font-size: 1.05rem;
+    line-height: 1;
 }
 
 .hero__meta {
