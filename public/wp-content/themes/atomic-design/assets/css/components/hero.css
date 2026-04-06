@@ -53,7 +53,7 @@
     flex-wrap: wrap;
     gap: 1.5rem;
     align-items: center;
-    margin-top: 1.5rem;
+    /* margin-top: 1.5rem; */
     padding-block: var(--space-lg) var(--section-space-210);
 }
 

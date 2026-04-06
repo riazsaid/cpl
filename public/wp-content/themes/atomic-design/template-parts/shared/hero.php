@@ -67,7 +67,13 @@ $section_class = trim('hero ' . $align_class . ' ' . $class_name);
             <?php endif; ?>
 
             <?php if ((!empty($primary['url']) && !empty($primary['title'])) || (!empty($secondary['url']) && !empty($secondary['title']))) : ?>
-                <div class="hero__actions">
+            
+            <?php endif; ?>
+        </div>
+    </div>
+     
+</section>
+   <div class="hero__actions">
                     <?php if (!empty($primary['url']) && !empty($primary['title'])) : ?>
                         <a class="hero__link hero__link--primary"
                            href="<?php echo esc_url($primary['url']); ?>"
@@ -85,7 +91,3 @@ $section_class = trim('hero ' . $align_class . ' ' . $class_name);
                         </a>
                     <?php endif; ?>
                 </div>
-            <?php endif; ?>
-        </div>
-    </div>
-</section>
