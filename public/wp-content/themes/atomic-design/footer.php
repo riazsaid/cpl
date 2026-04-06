@@ -83,17 +83,8 @@
             <!-- Bottom bar -->
             <div class="site-footer__right">
             <aside class="site-footer__cta">
-                    <h2 class="site-footer__cta-title">
-                        <?php esc_html_e('Get a Fast Quote', 'atomic-design'); ?>
-                    </h2>
-                    <p class="site-footer__cta-text">
-                        <?php esc_html_e("Tell us about your project and we'll respond with pricing and lead time.", 'atomic-design'); ?>
-                    </p>
-                    <a class="btn btn-primary"
-                       href="<?php echo esc_url(home_url('/request-quote/')); ?>">
-                        <?php esc_html_e('Request a Quote', 'atomic-design'); ?>
-                    </a>
-                </aside>
+                <?php echo do_shortcode('[wpforms id="257"]'); ?>
+            </aside>
             </div><!-- /.site-footer__bottom -->
 
         </div><!-- /.container -->
