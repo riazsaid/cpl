@@ -5,6 +5,8 @@
  * Args:
  * - post_id (int) Optional. Defaults to current post ID.
  * - section_heading (string) Optional.
+ * - section_description (string) Optional.
+ * - layout (string) Optional. two-column or three-column.
  * - items (array) Optional.
  * - align (string) Optional Gutenberg alignment slug, defaults to full.
  * - class_name (string) Optional extra class names.
@@ -19,6 +21,14 @@ $why_choose_post_id = isset($args['post_id']) ? (int) $args['post_id'] : get_the
 $section_heading = isset($args['section_heading'])
     ? (string) $args['section_heading']
     : (function_exists('get_field') ? (string) get_field('why_choose_heading', $why_choose_post_id) : '');
+
+$section_description = isset($args['section_description'])
+    ? (string) $args['section_description']
+    : (function_exists('get_field') ? (string) get_field('why_choose_description', $why_choose_post_id) : '');
+
+$layout = isset($args['layout'])
+    ? (string) $args['layout']
+    : (function_exists('get_field') ? ((string) get_field('why_choose_layout', $why_choose_post_id) ?: 'two-column') : 'two-column');
 
 $items = isset($args['items']) && is_array($args['items'])
     ? $args['items']
@@ -47,13 +57,20 @@ if (empty($items)) {
     return;
 }
 
-$section_class = trim('why-choose-grid align' . $align . ' ' . $class_name);
+$layout = in_array($layout, ['two-column', 'three-column'], true) ? $layout : 'two-column';
+$section_class = trim('why-choose-grid layout-' . $layout . ' align' . $align . ' ' . $class_name);
 ?>
 
 <section class="<?php echo esc_attr($section_class); ?>">
     <div class="container">
         <div class="why-choose-grid__inner">
             <h2 class="why-choose-grid__heading"><?php echo esc_html($section_heading); ?></h2>
+
+            <?php if (trim(wp_strip_all_tags($section_description)) !== '') : ?>
+                <div class="why-choose-grid__description">
+                    <?php echo wp_kses_post($section_description); ?>
+                </div>
+            <?php endif; ?>
 
             <div class="why-choose-grid__items">
                 <?php foreach ($items as $item) :
