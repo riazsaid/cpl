@@ -73,7 +73,7 @@ $section_class = trim('hero ' . $align_class . ' ' . $class_name);
     </div>
      
 </section>
-   <div class="hero__actions">
+   <div class="hero__actions container">
                     <?php if (!empty($primary['url']) && !empty($primary['title'])) : ?>
                         <a class="hero__link hero__link--primary"
                            href="<?php echo esc_url($primary['url']); ?>"
