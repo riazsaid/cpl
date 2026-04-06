@@ -28,8 +28,10 @@ if ($section_index > 0) {
 }
 
 foreach ($sections as $section) {
-    $section_heading = isset($section['why_choose_heading']) ? (string) $section['why_choose_heading'] : '';
-    $items           = isset($section['why_choose_items']) && is_array($section['why_choose_items'])
+    $section_heading     = isset($section['why_choose_heading']) ? (string) $section['why_choose_heading'] : '';
+    $section_description = isset($section['why_choose_description']) ? (string) $section['why_choose_description'] : '';
+    $layout              = isset($section['why_choose_layout']) ? (string) $section['why_choose_layout'] : 'two-column';
+    $items               = isset($section['why_choose_items']) && is_array($section['why_choose_items'])
         ? $section['why_choose_items']
         : [];
 
@@ -41,8 +43,10 @@ foreach ($sections as $section) {
         'template-parts/shared/why-choose-grid',
         null,
         [
-            'section_heading' => $section_heading,
-            'items'           => $items,
+            'section_heading'     => $section_heading,
+            'section_description' => $section_description,
+            'layout'              => $layout,
+            'items'               => $items,
         ]
     );
 }
