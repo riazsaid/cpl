@@ -14,6 +14,7 @@ if (!function_exists('get_field')) {
 
 $section_heading = get_field('title_description_heading') ?: '';
 $description     = get_field('title_description_content') ?: '';
+$cta             = get_field('title_description_cta');
 
 if ($is_preview && (empty($section_heading) || trim(wp_strip_all_tags((string) $description)) === '')) {
     echo '<div style="padding:2rem;border:2px dashed #ccc;text-align:center;color:#888;">';
@@ -32,5 +33,6 @@ get_template_part(
     [
         'section_heading' => $section_heading,
         'description'     => $description,
+        'cta'             => $cta,
     ]
 );
