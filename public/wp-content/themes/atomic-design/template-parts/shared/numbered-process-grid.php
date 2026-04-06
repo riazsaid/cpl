@@ -37,7 +37,7 @@ $items = isset($args['items']) && is_array($args['items'])
 $align      = !empty($args['align']) ? (string) $args['align'] : 'full';
 $class_name = isset($args['class_name']) ? (string) $args['class_name'] : '';
 
-if ($section_heading === '' || trim(wp_strip_all_tags($section_description)) === '' || empty($items) || !is_array($items)) {
+if ($section_heading === '' || empty($items) || !is_array($items)) {
     return;
 }
 
@@ -66,9 +66,11 @@ $section_class = trim('numbered-process-grid layout-' . $layout . ' align' . $al
         <div class="numbered-process-grid__inner">
             <h2 class="numbered-process-grid__heading"><?php echo esc_html($section_heading); ?></h2>
 
-            <div class="numbered-process-grid__description">
-                <?php echo wp_kses_post($section_description); ?>
-            </div>
+            <?php if (trim(wp_strip_all_tags($section_description)) !== '') : ?>
+                <div class="numbered-process-grid__description">
+                    <?php echo wp_kses_post($section_description); ?>
+                </div>
+            <?php endif; ?>
 
             <div class="numbered-process-grid__items">
                 <?php foreach ($items as $index => $item) :
