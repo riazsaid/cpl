@@ -35,7 +35,7 @@ foreach ($sections as $section) {
         ? $section['numbered_process_items']
         : [];
 
-    if ($section_heading === '' || trim(wp_strip_all_tags($section_description)) === '' || empty($items)) {
+    if ($section_heading === '' || empty($items)) {
         continue;
     }
 
