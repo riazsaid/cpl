@@ -4,7 +4,7 @@
  *
  * Structure:
  * Hero → Title Description 1 → Trust Bar → Title Description 2
- * → Why Choose 1 → Title Description 3 → Title Description 4
+ * → Service Links 1 → Why Choose 1 → Title Description 3 → Title Description 4
  * → Testimonials → FAQs
  */
 get_header();
@@ -34,6 +34,10 @@ get_header();
         get_template_part('template-parts/shared/title-description-sections', null, [
             'post_id' => $post_id,
             'section_index' => 2,
+        ]);
+        get_template_part('template-parts/shared/service-links-sections', null, [
+            'post_id' => $post_id,
+            'section_index' => 1,
         ]);
         get_template_part('template-parts/shared/why-choose-sections', null, [
             'post_id' => $post_id,
