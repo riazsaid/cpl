@@ -11,7 +11,7 @@
     font-family: var(--font-heading);
     font-size: var(--h1);
     font-weight: 600;
-    line-height: 1.08;
+    line-height:var(--lh-xxl);
     text-align: center;
     color: var(--text);
 }
@@ -48,7 +48,7 @@
 
 .why-choose-grid__items {
     display: grid;
-    column-gap: clamp(2rem, 8vw, 7rem);
+    column-gap: 8.95rem;
     row-gap: clamp(2.75rem, 6vw, 2rem);
 }
 
@@ -61,11 +61,11 @@
 }
 
 .why-choose-grid__item-title {
-    padding-bottom: 2rem;
+    padding-bottom: var(--space-md);
     font-family: var(--font-heading);
-    font-size: var(--h5);
+    font-size: var(--h4);
     font-weight: 600;
-    line-height: 1.2;
+    line-height:var(--lh-sm);
     color: var(--text);
 }
 
@@ -79,6 +79,9 @@
 
 .why-choose-grid__item-description p {
     margin: 0 0 0.9rem;
+    font-size: var(--h5);
+    line-height: var(--lh-md);
+    font-weight: 400;
 }
 
 .why-choose-grid__item-description p:last-child {

@@ -70,7 +70,7 @@
     font-family: var(--font-body);
     font-size: var(--h5);
     font-weight: 600;
-    line-height: var(--lh-heading);
+    line-height: 1.2rem;
     color: var(--text);
     margin: 0;
 }
