@@ -161,3 +161,10 @@
         gap: 0.75rem;
     }
 }
+
+
+
+.image-with-text {
+    padding-bottom: var(--section-space-210);
+
+}
