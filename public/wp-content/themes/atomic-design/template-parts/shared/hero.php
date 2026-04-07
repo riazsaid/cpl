@@ -59,7 +59,7 @@ $section_class = trim('hero ' . $align_class . ' ' . $class_name);
     <div class="container hero__inner hero__inner--single">
         <div class="hero__content">
             <?php if ($title !== '') : ?>
-                <div class="hero__title"><?php echo wp_kses_post($title); ?></div>
+                <h1 class="hero__title"><?php echo wp_kses_post($title); ?></h1>
             <?php endif; ?>
 
             <?php if ($subtitle !== '') : ?>

@@ -355,7 +355,41 @@ add_filter('acf/settings/load_json', 'atomic_design_acf_json_load_point');
  *           }
  *         ]
  *       }
- *     ]
+ *     ],
+ *     "service_links_sections": [
+ *       {
+ *         "service_overview_heading": "Service Overview",
+ *         "service_overview_content": "<p>Overview copy.<\/p>",
+ *         "service_links_heading": "Engraved Products for Ashburn",
+ *         "service_links_layout": "three-column",
+ *         "service_links_items": [
+ *           {
+ *             "service_link_image": 123,
+ *             "service_link_title": "Phenolic Labels",
+ *             "service_link_body": "<p>Card body.<\/p>",
+ *             "service_link_text": "Ashburn VA Phenolic Labels",
+ *             "service_link_url": "\/services\/phenolic-labels\/"
+ *           }
+ *         ]
+ *       }
+ *     ],
+ *     "area_coverage_sections": [
+ *       {
+ *         "area_coverage_heading": "Shipping to Ashburn and Northern Virginia Data Centers",
+ *         "area_coverage_description": "<p>Intro copy.<\/p>",
+ *         "area_coverage_items": [
+ *           {
+ *             "area_coverage_label": "Ashburn\n(Data Center Alley)"
+ *           }
+ *         ],
+ *         "area_coverage_cta": {
+ *           "title": "Get a Fast Quote",
+ *           "url": "\/contact\/",
+ *           "target": "_self"
+ *         }
+ *       }
+ *     ],
+ *     "industry_static_image": 123
  *   }
  * }
  */
@@ -379,6 +413,9 @@ function atomic_design_get_allowed_template_acf_fields()
         'why_choose_sections',
         'title_description_sections',
         'numbered_process_sections',
+        'service_links_sections',
+        'area_coverage_sections',
+        'industry_static_image',
     ];
 }
 
@@ -652,6 +689,52 @@ function atomic_design_register_acf_blocks()
             'category'        => 'atomic-blocks',
             'icon'            => 'list-view',
             'keywords'        => ['process', 'steps', 'numbered', 'workflow'],
+            'mode'            => 'edit',
+            'supports'        => [
+                'align'           => ['wide', 'full'],
+                'mode'            => false,
+                'jsx'             => true,
+                'customClassName' => true,
+            ],
+        ]
+    );
+
+    // ----------------------------------------------------------
+    // Service Links Grid block
+    // Overview copy + linked service cards with optional images.
+    // ----------------------------------------------------------
+    acf_register_block_type(
+        [
+            'name'            => 'service-links-grid',
+            'title'           => __('Service Links Grid', 'atomic-design'),
+            'description'     => __('Overview copy plus a grid of linked service cards.', 'atomic-design'),
+            'render_template' => get_template_directory() . '/blocks/service-links-grid/service-links-grid.php',
+            'category'        => 'atomic-blocks',
+            'icon'            => 'images-alt2',
+            'keywords'        => ['services', 'links', 'cards', 'grid', 'products'],
+            'mode'            => 'edit',
+            'supports'        => [
+                'align'           => ['wide', 'full'],
+                'mode'            => false,
+                'jsx'             => true,
+                'customClassName' => true,
+            ],
+        ]
+    );
+
+    // ----------------------------------------------------------
+    // Area Coverage Grid block
+    // Heading, intro text, list of served areas, and optional CTA.
+    // ----------------------------------------------------------
+    acf_register_block_type(
+        [
+            'name'            => 'area-coverage-grid',
+            'title'           => __('Area Coverage Grid', 'atomic-design'),
+            'description'     => __('Location coverage section with area labels and an optional CTA.', 'atomic-design'),
+            'render_template' => get_template_directory() . '/blocks/area-coverage-grid/area-coverage-grid.php',
+            'category'        => 'atomic-blocks',
+            'icon'            => 'location-alt',
+            'keywords'        => ['areas', 'coverage', 'location', 'shipping'],
             'mode'            => 'edit',
             'supports'        => [
                 'align'           => ['wide', 'full'],

@@ -44,3 +44,26 @@
     padding-block: var(--space-xl);
 }
 */
+
+.single-industry .industry-static-image {
+    padding: 0 0 4rem;
+    background: #000;
+}
+
+.single-industry .industry-static-image__media {
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+.single-industry .industry-static-image__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 2px solid #1993ff;
+}
+
+@media (max-width: 767px) {
+    .single-industry .industry-static-image {
+        padding-bottom: 3rem;
+    }
+}
