@@ -203,6 +203,10 @@
 /* footer webform */
 #wpforms-303 {}
 
+.iti__selected-country-primary .iti__arrow{
+filter: brightness(0) invert(1)!important;
+}
+
 #wpforms-303-field_1.wpforms-field-medium {
     max-width: 100%;
 }

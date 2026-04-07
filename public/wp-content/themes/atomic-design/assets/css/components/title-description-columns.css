@@ -10,6 +10,7 @@
     line-height:var(--lh-xxl);
     text-align: center;
     color: var(--text);
+    padding-inline: 9rem;
 }
 
 .title-description-columns__content {
@@ -27,11 +28,12 @@
 .title-description-columns__split {
     display: none;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: clamp(1.5rem, 5vw, 5rem);
+    gap: 3.25rem;
 }
 .title-description-columns__split p{
-    font-size: var(--h5);
-    line-height: var(--lh-sm);
+    font-size: var(--h6);
+    line-height:1.05rem;
+    color: var(--text);
 }
 .title-description-columns__content.is-split .title-description-columns__source {
     display: none;

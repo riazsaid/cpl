@@ -6,7 +6,7 @@
 
 .service-links-grid__inner {
     display: grid;
-    gap: 2.5rem;
+    gap:var(--space-lg);
 }
 
 .service-links-grid__header {
@@ -21,10 +21,10 @@
 .service-links-grid__heading,
 .service-links-grid__subheading {
     margin: 0;
-    font-family: var(--font-display);
-    font-size: clamp(2rem, 4.2vw, 3.5rem);
-    line-height: 1.05;
-    letter-spacing: -0.03em;
+    font-family: var(--font-heading);
+    font-size: var(--h1);
+    line-height: var(--lh-xxl);
+    /* letter-spacing: -0.03em; */
     color: #fff;
 }
 
@@ -50,7 +50,7 @@
 
 .service-links-grid__items {
     display: grid;
-    gap: 2.75rem 2.5rem;
+    gap: 4.2rem;
 }
 
 .service-links-grid.layout-three-column .service-links-grid__items {
@@ -65,7 +65,7 @@
 
 .service-links-grid__item {
     display: grid;
-    gap: 1.25rem;
+    gap: var(--space-lg);
     align-content: start;
 }
 
@@ -85,22 +85,27 @@
 
 .service-links-grid__content {
     display: grid;
-    gap: 0.9rem;
+    gap: var(--space-md);
 }
 
 .service-links-grid__item-title {
     margin: 0;
     font-family: var(--font-body);
-    font-size: 1.5rem;
-    line-height: 1.25;
-    font-weight: 600;
+    font-size: var(--h4);
+    line-height: var(--lh-md);
+    font-weight: 700;
     color: #fff;
+    text-align: center;
 }
 
 .service-links-grid__item-body {
     color: rgba(255, 255, 255, 0.82);
     font-size: 0.98rem;
     line-height: 1.85;
+}
+.service-links-grid__item-body p{
+    font-size: var(--h5);
+    line-height: var(--lh-md);
 }
 
 .service-links-grid__item-body > *:first-child {
