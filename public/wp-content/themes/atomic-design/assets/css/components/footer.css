@@ -131,8 +131,8 @@
    ============================================================ */
 
 .site-footer__cta {
-    padding: var(--space-xs);
-    border-radius: var(--radius-md);
+    padding-block: 2.2rem 1.7rem;
+    padding-inline: 1.4rem;
     background-color: var(--accent);
     /* background: linear-gradient(135deg, #1e3a8a 0%, #1e293b 55%, var(--bg) 100%); */
     border: 1px solid rgba(99, 149, 255, 0.22);
@@ -201,7 +201,10 @@
 
 
 /* footer webform */
-#wpforms-303 {}
+
+#wpforms-303 {
+    margin: 0 !important;
+}
 
 #wpforms-303-field_1.wpforms-field-medium {
     max-width: 100%;
@@ -223,6 +226,10 @@
 .wpforms-container textarea::placeholder {
     color: var(--text) !important;
     opacity: 1 !important;
+}
+
+#wpforms-303-field_1-container {
+    padding: 0 !important;
 }
 
 .wpforms-container input,
