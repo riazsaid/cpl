@@ -133,7 +133,7 @@
             }
         ]
     ],
-    "menu_order": 37,
+    "menu_order": 26,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -142,5 +142,5 @@
     "active": true,
     "description": "Repeatable service links sections for service, industry, and location pages.",
     "show_in_rest": 1,
-    "modified": 1775692800
+    "modified": 1775788800
 }
