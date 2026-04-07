@@ -4,7 +4,8 @@
  *
  * Structure:
  * Hero → Title Description 1 → Trust Bar → Title Description 2
- * → Service Links 1 → Industry Solutions → Numbered Process 1 → Why Choose 1 → Why Choose 2
+ * → Industry Solutions → Service Links 1 → Numbered Process 1 → Mid-Page Image
+ * → Why Choose 1 → Why Choose 2
  * → Testimonials → Title Description 3 → FAQs.
  */
 get_header();
@@ -45,6 +46,13 @@ get_header();
             'post_id' => $post_id,
             'section_index' => 1,
         ]);
+
+
+
+        get_template_part('template-parts/shared/numbered-process-sections', null, [
+            'post_id' => $post_id,
+            'section_index' => 1,
+        ]);
         ?>
         <section class="industry-static-image">
             <div class="container">
@@ -77,10 +85,6 @@ get_header();
             </div>
         </section>
         <?php
-        get_template_part('template-parts/shared/numbered-process-sections', null, [
-            'post_id' => $post_id,
-            'section_index' => 1,
-        ]);
         get_template_part('template-parts/shared/why-choose-sections', null, [
             'post_id' => $post_id,
             'section_index' => 1,
