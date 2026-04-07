@@ -1,5 +1,5 @@
 .service-links-grid {
-    padding: 5.5rem 0;
+    padding-bottom: var(--section-space-210);
     background: #000;
     color: #fff;
 }
@@ -40,11 +40,11 @@
     line-height: 1.8;
 }
 
-.service-links-grid__overview > *:first-child {
+.service-links-grid__overview>*:first-child {
     margin-top: 0;
 }
 
-.service-links-grid__overview > *:last-child {
+.service-links-grid__overview>*:last-child {
     margin-bottom: 0;
 }
 
@@ -108,11 +108,11 @@
     line-height: var(--lh-md);
 }
 
-.service-links-grid__item-body > *:first-child {
+.service-links-grid__item-body>*:first-child {
     margin-top: 0;
 }
 
-.service-links-grid__item-body > *:last-child {
+.service-links-grid__item-body>*:last-child {
     margin-bottom: 0;
 }
 

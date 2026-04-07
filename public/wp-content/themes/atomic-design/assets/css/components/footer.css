@@ -131,10 +131,9 @@
    ============================================================ */
 
 .site-footer__cta {
-    padding: var(--space-xs);
-    border-radius: var(--radius-md);
+    padding-block: 2.2rem 1.7rem;
+    padding-inline: 1.4rem;
     background-color: var(--accent);
-    /* background: linear-gradient(135deg, #1e3a8a 0%, #1e293b 55%, var(--bg) 100%); */
     border: 1px solid rgba(99, 149, 255, 0.22);
     box-shadow: var(--shadow);
 }
@@ -201,7 +200,10 @@
 
 
 /* footer webform */
-#wpforms-303 {}
+
+#wpforms-303 {
+    margin: 0 !important;
+}
 
 .iti__selected-country-primary .iti__arrow{
 filter: brightness(0) invert(1)!important;
@@ -229,9 +231,15 @@ filter: brightness(0) invert(1)!important;
     opacity: 1 !important;
 }
 
+#wpforms-303-field_1-container {
+    padding: 0 !important;
+}
+
 .wpforms-container input,
 .wpforms-container textarea {
     background-color: var(--accent-soft) !important;
+    color: var(--text) !important;
+    border: 0 !important;
 }
 
 .wpforms-layout-row {
@@ -259,5 +267,3 @@ filter: brightness(0) invert(1)!important;
     color: var(--text);
     font-weight: 400;
 }
-
-#wpforms-submit-303 {}
