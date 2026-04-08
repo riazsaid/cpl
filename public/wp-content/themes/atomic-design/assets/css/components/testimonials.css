@@ -54,8 +54,8 @@
 
 @media (max-width: 900px) {
     .testimonial-body {
-        grid-template-columns: 1fr;
-        gap: var(--space-md);
+        display: flex !important;
+        flex-direction: column;
     }
 }
 

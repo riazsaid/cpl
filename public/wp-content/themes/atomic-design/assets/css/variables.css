@@ -139,7 +139,7 @@
 
    /* ----------------------------------------------------------
        BREAKPOINTS
-       Use with: @media (min-width: var(--bp-tablet)) {}
+       Use with: @media (min-width: 48rem) {}
     ---------------------------------------------------------- */
    --bp-tablet: 48rem;
    /* 768px  */
