@@ -1,11 +1,9 @@
-.numbered-process-grid {
-    padding-bottom: var(--section-space-210);
-}
+.numbered-process-grid {}
 
 .numbered-process-grid__heading {
     margin-block-end: var(--space-lg);
     font-family: var(--font-heading);
-    font-size:  var(--h1);
+    font-size: var(--h1);
     font-weight: 600;
     line-height: 1.1;
     text-align: center;
