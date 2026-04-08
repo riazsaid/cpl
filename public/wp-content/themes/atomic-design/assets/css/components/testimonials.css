@@ -48,7 +48,6 @@
     gap: var(--space-lg);
     align-items: start;
     background-color: var(--bg-soft);
-
     padding: var(--space-sm) 2.4rem;
 }
 
@@ -56,6 +55,10 @@
     .testimonial-body {
         display: flex !important;
         flex-direction: column;
+    }
+
+    .testimonials-content {
+        padding-bottom: var(--space-lg);
     }
 }
 
