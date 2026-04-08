@@ -52,7 +52,7 @@ if (is_array($google_logo) && !empty($google_logo['url'])) {
 ?>
 
 <section class="testimonials-block" <?php echo $bg_style; ?>>
-<div class="container">
+
 
     <?php if (!empty($heading)) : ?>
         <h2 class="testimonials-heading"><?php echo esc_html($heading); ?></h2>
@@ -217,5 +217,5 @@ if (is_array($google_logo) && !empty($google_logo['url'])) {
     </div> <!-- testimonials-content -->
     
 
-</div> <!-- container -->
+ <!-- container -->
 </section>

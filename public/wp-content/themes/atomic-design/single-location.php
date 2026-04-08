@@ -8,7 +8,7 @@
  */
 get_header();
 ?>
-
+<div class="container">
 <main id="site-content">
     <?php
     if (function_exists('get_field')) {
@@ -58,6 +58,6 @@ get_header();
     }
     ?>
 </main>
-
+</div>
 <?php
 get_footer();

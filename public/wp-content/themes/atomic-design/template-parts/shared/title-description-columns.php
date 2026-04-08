@@ -24,7 +24,7 @@ $description = wpautop($description);
 ?>
 
 <section class="title-description-columns">
-    <div class="container">
+    
         <div class="title-description-columns__inner">
             <h2 class="title-description-columns__heading"><?php echo esc_html($section_heading); ?></h2>
 
@@ -49,5 +49,5 @@ $description = wpautop($description);
                 </div>
             <?php endif; ?>
         </div>
-    </div>
+   
 </section>
