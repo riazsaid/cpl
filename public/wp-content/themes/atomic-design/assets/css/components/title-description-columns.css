@@ -31,10 +31,12 @@
     gap: 3.25rem;
 }
 .title-description-columns__split p{
-    font-size: var(--h6);
-    line-height:1.05rem;
+    font-size: var(--h5);
+    line-height:var(--lh-md);
     color: var(--text);
 }
+
+
 .title-description-columns__content.is-split .title-description-columns__source {
     display: none;
 }
