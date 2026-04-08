@@ -17,7 +17,7 @@ if (empty($items) || !is_array($items)) {
 }
 ?>
 <section class="trust-bar-block" aria-label="<?php esc_attr_e('Key facts', 'atomic-design'); ?>">
-    <div class="trust-bar-block__inner">
+    <div class="container trust-bar-block__inner">
         <div class="trust-bar-block__grid">
             <?php foreach ($items as $item) :
                 $icon = $item['item_icon'] ?? null;

@@ -25,6 +25,7 @@ if (empty($items) || !is_array($items)) {
 ?>
 
 <section class="industry-solutions-block">
+    <div class="container">
 
         <?php if (!empty($heading)) : ?>
             <h2 class="industry-solutions-heading"><?php echo esc_html($heading); ?></h2>
@@ -75,5 +76,5 @@ if (empty($items) || !is_array($items)) {
             <?php endforeach; ?>
         </div>
 
-    
+    </div>
 </section>

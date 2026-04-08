@@ -86,6 +86,7 @@
 .service-links-grid__content {
     display: grid;
     gap: var(--space-md);
+    min-height: 15rem;
 }
 
 .service-links-grid__item-title {
