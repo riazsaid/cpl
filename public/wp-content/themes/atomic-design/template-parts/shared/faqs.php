@@ -34,10 +34,10 @@ if (empty($faq_items) || !is_array($faq_items)) {
 }
 ?>
 
-<section class="faq-accordion-block layout-<?php echo esc_attr($faq_layout); ?>" id="<?php echo esc_attr($section_id); ?>">
+<section class="faq-accordion-block layout-<?php echo esc_attr($faq_layout); ?>" id="<?php echo esc_attr($section_id); ?>" data-aos="fade-up">
     <div class="container faq-container">
         <?php if (!empty($section_heading)) : ?>
-            <h2 class="faq-heading"><?php echo esc_html($section_heading); ?></h2>
+            <h2 class="faq-heading" data-aos="fade-up" data-aos-delay="80"><?php echo esc_html($section_heading); ?></h2>
         <?php endif; ?>
 
         <div class="faq-grid">
@@ -56,7 +56,7 @@ if (empty($faq_items) || !is_array($faq_items)) {
                     $column_class = ($index < $half) ? 'column-left' : 'column-right';
                 }
                 ?>
-                <div class="faq-item <?php echo esc_attr($column_class); ?> <?php echo $default_open ? 'active' : ''; ?>" data-faq-item>
+                <div class="faq-item <?php echo esc_attr($column_class); ?> <?php echo $default_open ? 'active' : ''; ?>" data-faq-item data-aos="fade-up" data-aos-delay="<?php echo esc_attr((string) (120 + ($index * 60))); ?>">
                     <button class="faq-question"
                         aria-expanded="<?php echo $default_open ? 'true' : 'false'; ?>"
                         aria-controls="<?php echo esc_attr($faq_id); ?>">

@@ -44,11 +44,11 @@ $layout          = in_array($layout, ['two-column', 'three-column'], true) ? $la
 $section_class   = trim('service-links-grid layout-' . $layout . ' align' . $align . ' ' . $class_name);
 ?>
 
-<section class="<?php echo esc_attr($section_class); ?>">
+<section class="<?php echo esc_attr($section_class); ?>" data-aos="fade-up">
     <div class="container">
         <div class="service-links-grid__inner">
             <?php if ($section_heading !== '') : ?>
-                <div class="service-links-grid__header">
+                <div class="service-links-grid__header" data-aos="fade-up" data-aos-delay="80">
                     <h2 class="service-links-grid__heading"><?php echo esc_html($section_heading); ?></h2>
 
                     <?php if (trim(wp_strip_all_tags($overview_content)) !== '') : ?>
@@ -60,18 +60,19 @@ $section_class   = trim('service-links-grid layout-' . $layout . ' align' . $ali
             <?php endif; ?>
 
             <?php if ($links_heading !== '' && $links_heading !== $section_heading) : ?>
-                <h3 class="service-links-grid__subheading"><?php echo esc_html($links_heading); ?></h3>
+                <h3 class="service-links-grid__subheading" data-aos="fade-up" data-aos-delay="120"><?php echo esc_html($links_heading); ?></h3>
             <?php endif; ?>
 
             <div class="service-links-grid__items">
-                <?php foreach ($items as $item) :
+                <?php foreach ($items as $index => $item) :
                     $image_id  = isset($item['service_link_image']) ? (int) $item['service_link_image'] : 0;
                     $title     = isset($item['service_link_title']) ? (string) $item['service_link_title'] : '';
                     $body      = isset($item['service_link_body']) ? (string) $item['service_link_body'] : '';
                     $link_text = isset($item['service_link_text']) ? trim((string) $item['service_link_text']) : '';
                     $link_url  = isset($item['service_link_url']) ? trim((string) $item['service_link_url']) : '';
+                    $delay     = 140 + ($index * 80);
                     ?>
-                    <article class="service-links-grid__item">
+                    <article class="service-links-grid__item" data-aos="fade-up" data-aos-delay="<?php echo esc_attr((string) $delay); ?>">
                         <?php if ($image_id > 0) : ?>
                             <div class="service-links-grid__media">
                                 <?php echo wp_get_attachment_image($image_id, 'large', false, ['class' => 'service-links-grid__image']); ?>
