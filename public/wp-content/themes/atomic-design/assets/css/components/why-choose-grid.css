@@ -2,6 +2,7 @@
 
 .why-choose-grid__inner {
     color: var(--text);
+    margin-inline: var(--space-lg);
 }
 
 .why-choose-grid__heading {
@@ -46,8 +47,9 @@
 
 .why-choose-grid__items {
     display: grid;
-    column-gap: 8.95rem;
+    column-gap: 4.2rem;
     row-gap: clamp(2.75rem, 6vw, 2rem);
+    text-align: center;
 }
 
 .why-choose-grid.layout-two-column .why-choose-grid__items {
@@ -59,11 +61,11 @@
 }
 
 .why-choose-grid__item-title {
-    padding-bottom: var(--space-md);
+    padding-bottom: var(--space-sm);
     font-family: var(--font-heading);
     font-size: var(--h4);
     font-weight: 600;
-    line-height: var(--lh-sm);
+    line-height: var(--lh-md);
     color: var(--text);
 }
 
