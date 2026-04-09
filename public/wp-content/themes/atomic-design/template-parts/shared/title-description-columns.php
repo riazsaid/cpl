@@ -23,12 +23,12 @@ if ($section_heading === '' || $description === '') {
 $description = wpautop($description);
 ?>
 
-<section class="title-description-columns">
+<section class="title-description-columns" data-aos="fade-up">
     <div class="container">
         <div class="title-description-columns__inner">
-            <h2 class="title-description-columns__heading"><?php echo esc_html($section_heading); ?></h2>
+            <h2 class="title-description-columns__heading" data-aos="fade-up" data-aos-delay="80"><?php echo esc_html($section_heading); ?></h2>
 
-            <div class="title-description-columns__content" data-title-description-columns>
+            <div class="title-description-columns__content" data-title-description-columns data-aos="fade-up" data-aos-delay="140">
                 <div class="title-description-columns__source" data-title-description-source>
                     <?php echo wp_kses_post($description); ?>
                 </div>
@@ -40,7 +40,7 @@ $description = wpautop($description);
             </div>
 
             <?php if (!empty($cta['url']) && !empty($cta['title'])) : ?>
-                <div class="title-description-columns__actions">
+                <div class="title-description-columns__actions" data-aos="fade-up" data-aos-delay="200">
                     <a class="title-description-columns__cta"
                        href="<?php echo esc_url($cta['url']); ?>"
                        target="<?php echo esc_attr($cta['target'] ?: '_self'); ?>">

@@ -55,15 +55,15 @@ $align_class   = 'align' . $align;
 $section_class = trim('hero ' . $align_class . ' ' . $class_name);
 ?>
 
-<section class="<?php echo esc_attr($section_class); ?>"<?php echo $style_attr; ?>>
+<section class="<?php echo esc_attr($section_class); ?>"<?php echo $style_attr; ?> data-aos="fade-in">
     <div class="container hero__inner hero__inner--single">
-        <div class="hero__content">
+        <div class="hero__content" data-aos="fade-up" data-aos-delay="100">
             <?php if ($title !== '') : ?>
-                <h1 class="hero__title"><?php echo wp_kses_post($title); ?></h1>
+                <h1 class="hero__title" data-aos="fade-up" data-aos-delay="150"><?php echo wp_kses_post($title); ?></h1>
             <?php endif; ?>
 
             <?php if ($subtitle !== '') : ?>
-                <div class="hero__subtitle body-lg"><?php echo wp_kses_post(wpautop($subtitle)); ?></div>
+                <div class="hero__subtitle body-lg" data-aos="fade-up" data-aos-delay="220"><?php echo wp_kses_post(wpautop($subtitle)); ?></div>
             <?php endif; ?>
 
             <?php if ((!empty($primary['url']) && !empty($primary['title'])) || (!empty($secondary['url']) && !empty($secondary['title']))) : ?>
@@ -73,7 +73,7 @@ $section_class = trim('hero ' . $align_class . ' ' . $class_name);
     </div>
      
 </section>
-   <div class="hero__actions container">
+   <div class="hero__actions container" data-aos="fade-up" data-aos-delay="280">
                     <?php if (!empty($primary['url']) && !empty($primary['title'])) : ?>
                         <a class="hero__link hero__link--primary"
                            href="<?php echo esc_url($primary['url']); ?>"

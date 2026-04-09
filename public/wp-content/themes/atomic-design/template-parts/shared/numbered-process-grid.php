@@ -61,13 +61,13 @@ $layout = in_array($layout, ['two-column', 'three-column'], true) ? $layout : 't
 $section_class = trim('numbered-process-grid layout-' . $layout . ' align' . $align . ' ' . $class_name);
 ?>
 
-<section class="<?php echo esc_attr($section_class); ?>">
+<section class="<?php echo esc_attr($section_class); ?>" data-aos="fade-up">
     <div class="container">
         <div class="numbered-process-grid__inner">
-            <h2 class="numbered-process-grid__heading"><?php echo esc_html($section_heading); ?></h2>
+            <h2 class="numbered-process-grid__heading" data-aos="fade-up" data-aos-delay="80"><?php echo esc_html($section_heading); ?></h2>
 
             <?php if (trim(wp_strip_all_tags($section_description)) !== '') : ?>
-                <div class="numbered-process-grid__description">
+                <div class="numbered-process-grid__description" data-aos="fade-up" data-aos-delay="140">
                     <?php echo wp_kses_post($section_description); ?>
                 </div>
             <?php endif; ?>
@@ -77,7 +77,7 @@ $section_class = trim('numbered-process-grid layout-' . $layout . ' align' . $al
                     $title       = (string) $item['numbered_process_item_title'];
                     $description = (string) $item['numbered_process_item_description'];
                     ?>
-                    <article class="numbered-process-grid__item">
+                    <article class="numbered-process-grid__item" data-aos="fade-up" data-aos-delay="<?php echo esc_attr((string) (120 + ($index * 80))); ?>">
                         <div class="numbered-process-grid__number" aria-hidden="true">
                             <?php echo esc_html((string) ($index + 1)); ?>
                         </div>
