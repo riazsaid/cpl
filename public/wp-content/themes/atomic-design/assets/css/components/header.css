@@ -126,7 +126,7 @@
 .site-nav ul li::after {
     content: " | ";
     font-size: 18px;
-
+    background-color: unset !important;
 }
 
 .site-nav ul li:last-child::after {
@@ -250,6 +250,10 @@
 
 @media (max-width: 63.99rem) {
     /* below --bp-desktop */
+
+    .site-nav ul li::after {
+        content: "";
+    }
 
     .site-header__toggle {
         display: flex;

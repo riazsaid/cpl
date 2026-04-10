@@ -40,7 +40,7 @@ a {
 
 a:hover,
 a:focus-visible {
-    color: var(--accent-hover);
+    color: var(--text);
     text-decoration: underline;
 }
 
@@ -168,9 +168,13 @@ p {
     border: 1px solid transparent;
     cursor: pointer;
     white-space: nowrap;
+    color: var(--text);
     transition: background var(--dur-fast) var(--ease);
     padding: 0.8rem 1.1rem;
+
 }
+
+
 
 @media (max-width: 767px) {
     .btn {
@@ -180,7 +184,7 @@ p {
 
 .btn-primary {
     background: var(--accent);
-    color: #fff;
+    color: var(--text);
     border-color: var(--accent);
 }
 
@@ -189,7 +193,7 @@ p {
     background: var(--accent-hover);
     border-color: var(--accent-hover);
     text-decoration: none;
-    color: #fff;
+    color: var(--text);
 }
 
 .btn-ghost {
