@@ -502,15 +502,17 @@
    RESPONSIVE (card min-width so JS can size correctly)
 ---------------------------------------------------------- */
 
-@media (max-width: 639px) {
+@media (max-width: 767px) {
     .testimonials-slider__nav {
         padding-inline: 0.75rem;
         top: 50%;
+        left: -2.2rem;
+        right: -2.2rem;
     }
 
     .testimonials-slider__btn {
-        width: 2.25rem;
-        height: 2.25rem;
+        width: 2rem;
+        height: 2rem;
     }
 
     .testimonial-card {
@@ -518,11 +520,6 @@
     }
 }
 
-@media (min-width: 640px) and (max-width: 1023px) {
-    .testimonial-card {
-        min-width: 0;
-    }
-}
 
 @media (min-width: 1024px) {
     .testimonial-card {
