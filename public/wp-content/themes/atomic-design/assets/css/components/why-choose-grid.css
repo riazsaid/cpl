@@ -49,7 +49,7 @@
     display: grid;
     column-gap: 4.2rem;
     row-gap: clamp(2.75rem, 6vw, 2rem);
-    text-align: center;
+    
 }
 
 .why-choose-grid.layout-two-column .why-choose-grid__items {
