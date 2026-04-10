@@ -39,27 +39,6 @@
     align-items: center;
 }
 
-@media (max-width: 767px) {
-    .footer-wrapper {
-        flex-direction: column-reverse;
-        gap: 2rem;
-    }
-
-    .site-footer__left {
-        gap: 1.2rem;
-    }
-
-    .site-footer__brand,
-    .site-footer__nav {
-        flex: 1 1 100%;
-    }
-
-    .site-footer__copy-wrapper {
-        flex-direction: column-reverse;
-        align-items: flex-start;
-    }
-
-}
 
 /* ============================================================
    BRAND COLUMN
@@ -201,14 +180,6 @@
     text-decoration: none;
 }
 
-@media (max-width: 47.99rem) {
-
-    /* below --bp-tablet */
-    .site-footer__right {}
-}
-
-
-
 /* footer webform */
 
 #wpforms-303 {
@@ -246,7 +217,8 @@
 }
 
 .wpforms-container input,
-.wpforms-container textarea {
+.wpforms-container textarea,
+.wpforms-uploader {
     background-color: var(--accent-soft) !important;
     color: var(--text) !important;
     border: 0 !important;
@@ -270,10 +242,89 @@
 #wpforms-303-field_7-container {
     display: flex;
     align-items: center;
+    margin-top: -3.6rem;
+    justify-content: space-between;
+
 }
+
+.wpforms-uploader {
+    padding: 0.6rem 0.7rem !important;
+    color: var(--text) !important;
+}
+
+.wpforms-uploader svg {
+    margin: 0 !important;
+    opacity: 1 !important;
+    filter: invert(1);
+}
+
+.modern-title {
+    display: none;
+}
+
+.dz-details {
+    margin: 0;
+}
+
+.dz-preview {
+    padding: 0 !important;
+}
+
+.dz-progress {
+    display: none !important;
+}
+
+.dz-remove {
+    opacity: 1 !important;
+}
+
+.dz-remove::before,
+::after {
+    background-color: var(--text) !important;
+}
+
+.dz-size,
+.dz-filename {
+    color: var(--text) !important;
+}
+
+
 
 #wpforms-303-field_7-container label {
     font-size: var(--h4);
     color: var(--text);
     font-weight: 400;
+    margin: 0;
+
+}
+
+@media (max-width: 767px) {
+    .footer-wrapper {
+        flex-direction: column-reverse;
+        gap: 2rem;
+    }
+
+    .site-footer__left {
+        gap: 1.2rem;
+    }
+
+    .site-footer__brand,
+    .site-footer__nav {
+        flex: 1 1 100%;
+    }
+
+    .site-footer__copy-wrapper {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+    }
+
+    .wpforms-layout-row {
+        gap: 1rem;
+        padding-top: 1rem !important;
+
+    }
+
+    #wpforms-303-field_7-container {
+        margin-top: 0;
+    }
 }
