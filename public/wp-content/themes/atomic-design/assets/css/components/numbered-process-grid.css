@@ -1,21 +1,23 @@
 .numbered-process-grid {}
 
 .numbered-process-grid__heading {
-    margin-block-end: var(--space-lg);
+    margin-block-end: var(--space-md);
     font-family: var(--font-heading);
     font-size: var(--h1);
     font-weight: 600;
     line-height: 1.1;
     text-align: center;
     color: var(--text);
+    width: 55%;
+    justify-self: center;
 }
 
 .numbered-process-grid__description {
-    max-width: 56rem;
+    max-width: 799px;
     margin: 0 auto clamp(2.5rem, 5vw, 4rem);
     font-family: var(--font-body);
-    font-size: clamp(1rem, 1.45vw, 1.25rem);
-    line-height: 1.65;
+    font-size: var(--h5);
+    line-height: var(--lh-md);
     color: var(--text);
     text-align: center;
 }
@@ -42,7 +44,7 @@
 
 .numbered-process-grid__items {
     display: grid;
-    gap: clamp(2rem, 4vw, 3.25rem);
+    gap: var(--space-sm);
 }
 
 .numbered-process-grid.layout-three-column .numbered-process-grid__items {
@@ -56,7 +58,7 @@
 .numbered-process-grid__item {
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: 1rem;
+    gap: var(--space-xmd);
     align-items: start;
 }
 
@@ -69,18 +71,18 @@
 }
 
 .numbered-process-grid__item-title {
-    margin: 0 0 0.75rem;
+    margin: 0 0 var(--space-sm);
     font-family: var(--font-heading);
     font-size: var(--h5);
     font-weight: 600;
-    line-height: 1.25;
+    line-height: 1.2rem;
     color: var(--text);
 }
 
 .numbered-process-grid__item-description {
     font-family: var(--font-body);
     font-size: clamp(0.98rem, 1.2vw, 1.08rem);
-    line-height: 1.7;
+    line-height: var(--lh-xs);
     color: var(--text);
 }
 

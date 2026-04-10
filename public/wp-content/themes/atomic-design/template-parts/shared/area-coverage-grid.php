@@ -40,10 +40,10 @@ if ($section_heading === '' || empty($areas)) {
 $section_class = trim('area-coverage-grid align' . $align . ' ' . $class_name);
 ?>
 
-<section class="<?php echo esc_attr($section_class); ?>">
+<section class="<?php echo esc_attr($section_class); ?>" data-aos="fade-up">
     <div class="container">
         <div class="area-coverage-grid__inner">
-            <div class="area-coverage-grid__header">
+            <div class="area-coverage-grid__header" data-aos="fade-up" data-aos-delay="80">
                 <h2 class="area-coverage-grid__heading"><?php echo esc_html($section_heading); ?></h2>
 
                 <?php if (trim(wp_strip_all_tags($section_description)) !== '') : ?>
@@ -54,17 +54,18 @@ $section_class = trim('area-coverage-grid align' . $align . ' ' . $class_name);
             </div>
 
             <div class="area-coverage-grid__areas">
-                <?php foreach ($areas as $item) :
+                <?php foreach ($areas as $index => $item) :
                     $label = isset($item['area_coverage_label']) ? (string) $item['area_coverage_label'] : '';
+                    $delay = 120 + ($index * 50);
                     ?>
-                    <div class="area-coverage-grid__area">
+                    <div class="area-coverage-grid__area" data-aos="fade-up" data-aos-delay="<?php echo esc_attr((string) $delay); ?>">
                         <?php echo nl2br(esc_html($label)); ?>
                     </div>
                 <?php endforeach; ?>
             </div>
 
             <?php if (!empty($cta['url']) && !empty($cta['title'])) : ?>
-                <div class="area-coverage-grid__actions">
+                <div class="area-coverage-grid__actions" data-aos="fade-up" data-aos-delay="180">
                     <a
                         class="btn btn-primary area-coverage-grid__cta"
                         href="<?php echo esc_url($cta['url']); ?>"

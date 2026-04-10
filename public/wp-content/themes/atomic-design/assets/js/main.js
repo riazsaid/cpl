@@ -6,6 +6,14 @@
 (function () {
     'use strict';
 
+    if (typeof AOS !== 'undefined') {
+        AOS.init({
+            duration: 700,
+            once: true,
+            offset: 80,
+        });
+    }
+
     // Mobile nav toggle
     const toggle = document.querySelector('.site-header__toggle');
     const nav    = document.querySelector('.site-nav');
