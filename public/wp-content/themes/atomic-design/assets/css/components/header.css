@@ -251,6 +251,10 @@
 @media (max-width: 63.99rem) {
     /* below --bp-desktop */
 
+    .site-nav ul li::after {
+        content: "";
+    }
+
     .site-header__toggle {
         display: flex;
     }
