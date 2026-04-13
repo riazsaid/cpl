@@ -1,3 +1,7 @@
+.static-page {
+    padding-bottom: var(--section-space-210);
+}
+
 .static-page h1,
 .static-page h2 {
     padding-block: var(--space-md);
