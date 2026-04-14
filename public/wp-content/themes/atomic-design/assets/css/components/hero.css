@@ -166,7 +166,6 @@
         font-size: var(--h3);
         padding-bottom: 1.5rem;
         line-height: var(--lh-lg);
-
     }
 
     .hero__subtitle {
@@ -177,7 +176,10 @@
     .hero__actions {
         flex-direction: column;
         padding-bottom: var(--space-lg);
+    }
 
+    .hero__link--primary {
+        white-space: unset;
     }
 }
 

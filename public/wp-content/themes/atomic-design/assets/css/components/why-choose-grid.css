@@ -2,7 +2,6 @@
 
 .why-choose-grid__inner {
     color: var(--text);
-    margin-inline: var(--space-lg);
 }
 
 .why-choose-grid__heading {
@@ -13,6 +12,8 @@
     line-height: var(--lh-xxl);
     text-align: center;
     color: var(--text);
+    width: 72%;
+    justify-self: center;
 }
 
 .why-choose-grid__description {
@@ -49,7 +50,7 @@
     display: grid;
     column-gap: 4.2rem;
     row-gap: clamp(2.75rem, 6vw, 2rem);
-    text-align: center;
+
 }
 
 .why-choose-grid.layout-two-column .why-choose-grid__items {
@@ -101,16 +102,17 @@
         font-size: clamp(2rem, 9vw, 3rem);
         text-align: left;
         padding-bottom: var(--space-xs);
+        width: 100%;
+    }
+
+    .why-choose-grid__items {
+        grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+        row-gap: 2.5rem !important;
     }
 
     .why-choose-grid__description {
         margin-inline: 0;
         text-align: left;
-    }
-
-    .why-choose-grid__items {
-        grid-template-columns: 1fr;
-        row-gap: 2.5rem;
     }
 
 

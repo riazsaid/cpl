@@ -1,0 +1,31 @@
+.static-page {
+    padding-bottom: var(--section-space-210);
+}
+
+.static-page h1,
+.static-page h2 {
+    padding-block: var(--space-md);
+}
+
+.static-page h3 {
+    padding-bottom: var(--space-xmd);
+}
+
+.static-page p {
+    padding-bottom: var(--space-xsm);
+}
+
+.static-page hr {
+    margin-block: var(--space-xsm);
+}
+
+.static-page ul {
+    padding-left: 0.8rem;
+    font-size: var(--h6);
+}
+
+@media (max-width: 767px) {
+    .static-page {
+        padding-bottom: var(--space-lg);
+    }
+}
