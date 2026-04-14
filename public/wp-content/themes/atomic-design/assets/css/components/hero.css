@@ -4,7 +4,42 @@
     background-position: center right;
     border-bottom: 1px solid rgba(148, 163, 184, 0.16);
     height: 476px;
+    position: relative;
+    overflow: hidden;
 }
+
+/* ── Background image zoom-out layer ──────────────────────────────── */
+@keyframes hero-bg-zoom {
+    from { transform: scale(1.12); }
+    to   { transform: scale(1); }
+}
+
+.hero__bg-image {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center right;
+    transform-origin: center center;
+    animation: hero-bg-zoom 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    will-change: transform;
+    /* Gradient overlay lives here so it scales with the image */
+}
+
+.hero__bg-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(2, 6, 23, 0.92) 0%,
+        rgba(2, 6, 23, 0.78) 40%,
+        rgba(2, 6, 23, 0.35) 70%,
+        rgba(2, 6, 23, 0.05) 100%
+    );
+}
+/* ─────────────────────────────────────────────────────────────────── */
+
+
 
 .hero__inner {
     display: grid;
@@ -147,6 +182,56 @@
 }
 
 
+
+/* ─── Hero reveal animations ─────────────────────────────────────── */
+
+@keyframes hero-word-reveal {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+        filter: blur(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+@keyframes hero-fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Each word in the title animates in with a staggered delay driven by --i */
+.hero__title--animate .hero__word {
+    display: inline-block;
+    opacity: 0;
+    animation: hero-word-reveal 0.75s ease forwards;
+    /* base delay of 0.1s + 0.12s per word */
+    animation-delay: calc(0.1s + var(--i, 0) * 0.12s);
+}
+
+.hero__subtitle--animate {
+    opacity: 0;
+    animation: hero-fade-up 0.9s ease forwards;
+    /* fires after last word: adjust if title is very long */
+    animation-delay: calc(0.1s + 5 * 0.12s + 0.2s);
+}
+
+.hero__actions--animate {
+    opacity: 0;
+    animation: hero-fade-up 0.9s ease forwards;
+    animation-delay: calc(0.1s + 5 * 0.12s + 0.55s);
+}
+
+/* ─────────────────────────────────────────────────────────────────── */
 
 .image-with-text {
     padding-bottom: var(--section-space-210);
