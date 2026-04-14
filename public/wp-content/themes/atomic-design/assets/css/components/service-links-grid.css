@@ -72,6 +72,13 @@
     display: grid;
     gap: 3rem;
     align-content: start;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform-origin: center;
+}
+
+.service-links-grid__item:hover {
+    transform: scale(1.05) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 .service-links-grid__media {
