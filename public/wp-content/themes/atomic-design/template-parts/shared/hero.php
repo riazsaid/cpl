@@ -46,15 +46,16 @@ if ($title === '' && $subtitle === '') {
     return;
 }
 
+$style_attr = '';
+if ($bg_url !== '') {
+    $style_attr = ' style="background-image: linear-gradient(90deg, rgba(2, 6, 23, 0.92) 0%, rgba(2, 6, 23, 0.78) 40%, rgba(2, 6, 23, 0.35) 70%, rgba(2, 6, 23, 0.05) 100%), url(' . esc_url($bg_url) . ');"';
+}
+
 $align_class   = 'align' . $align;
-$has_bg        = $bg_url !== '';
-$section_class = trim('hero ' . $align_class . ($has_bg ? ' hero--has-bg' : '') . ' ' . $class_name);
+$section_class = trim('hero ' . $align_class . ' ' . $class_name);
 ?>
 
-<section class="<?php echo esc_attr($section_class); ?>">
-    <?php if ($has_bg) : ?>
-        <div class="hero__bg-image" style="background-image:url('<?php echo esc_url($bg_url); ?>')"></div>
-    <?php endif; ?>
+<section class="<?php echo esc_attr($section_class); ?>"<?php echo $style_attr; ?>>
     <div class="container hero__inner hero__inner--single">
         <div class="hero__content">
             <?php if ($title !== '') : ?>
