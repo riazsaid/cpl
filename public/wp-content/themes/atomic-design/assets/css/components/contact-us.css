@@ -1,0 +1,29 @@
+.contact-us {
+    padding-top: 2rem;
+}
+
+.contact-us .wp-block-columns {
+    padding-bottom: var(--section-space-210);
+}
+
+.contact-us .wp-block-column .wpforms-container {
+    padding-block: 2.2rem 1.7rem;
+    padding-inline: 1.4rem;
+    background-color: var(--accent);
+    border: 1px solid rgba(99, 149, 255, 0.22);
+    box-shadow: var(--shadow);
+}
+
+.wp-block-column h1 {
+    padding-bottom: var(--space-md) !important;
+}
+
+.wp-block-column .phone,
+.wp-block-column .address {
+    padding-bottom: var(--space-xs);
+    font-size: var(--h5);
+}
+
+.wp-block-column>p {
+    color: var(--text-soft);
+}
