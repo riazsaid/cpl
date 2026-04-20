@@ -23,9 +23,12 @@
     padding-left: 0.8rem;
     font-size: var(--h6);
 }
+.people-behind{
+padding-bottom: var(--section-space-210);
 
 @media (max-width: 767px) {
     .static-page {
         padding-bottom: var(--space-lg);
     }
+}
 }
