@@ -72,22 +72,41 @@
     display: grid;
     gap: 3rem;
     align-content: start;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform-origin: center;
 }
+
+
 
 .service-links-grid__media {
     position: relative;
     overflow: hidden;
     background: #111;
     aspect-ratio: 1 / 1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform-origin: center;
 
 }
+
+.service-links-grid__media:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
 
 .service-links-grid__image {
     width: 100%;
     height: 100%;
     display: block;
     object-fit: cover;
+    transition: transform 0.3s ease;
 }
+
+/* Hover effect */
+.service-links-grid__media:hover .service-links-grid__image {
+    transform: scale(1.1);
+}
+
+
 
 .service-links-grid__content {
     display: grid;
