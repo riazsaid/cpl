@@ -419,6 +419,37 @@ function atomic_design_get_allowed_template_acf_fields()
     ];
 }
 
+/**
+ * Expose Rank Math SEO meta fields in REST for template-driven CPTs.
+ *
+ * This lets imports update the same SEO fields directly through the REST API.
+ */
+function atomic_design_register_rank_math_rest_meta()
+{
+    $post_types = atomic_design_get_rest_post_types();
+    $meta_keys  = ['rank_math_title', 'rank_math_description'];
+
+    $auth_callback = static function () {
+        return current_user_can('edit_posts');
+    };
+
+    foreach ($post_types as $post_type) {
+        foreach ($meta_keys as $meta_key) {
+            register_post_meta(
+                $post_type,
+                $meta_key,
+                [
+                    'show_in_rest'  => true,
+                    'single'        => true,
+                    'type'          => 'string',
+                    'auth_callback' => $auth_callback,
+                ]
+            );
+        }
+    }
+}
+add_action('init', 'atomic_design_register_rank_math_rest_meta');
+
 function atomic_design_get_template_acf_for_rest($object)
 {
     if (!function_exists('get_field')) {
@@ -764,6 +795,59 @@ function atomic_design_block_categories($categories)
     );
 }
 add_filter('block_categories_all', 'atomic_design_block_categories', 10, 2);
+
+/**
+ * Show editor-only guidance for global-content ACF blocks.
+ *
+ * Testimonials uses a shared field group on both the options page and block,
+ * so hide the duplicate block inputs and point editors to the global source.
+ */
+function atomic_design_global_block_editor_notices()
+{
+    global $pagenow;
+
+    if ($pagenow !== 'post.php' && $pagenow !== 'post-new.php') {
+        return;
+    }
+    ?>
+    <script>
+    (function() {
+        var notices = [
+            {
+                field: 'testimonials_list',
+                url: <?php echo wp_json_encode(admin_url('admin.php?page=atomic-design-testimonials')); ?>,
+                label: 'Testimonials'
+            }
+        ];
+
+        function injectNotices() {
+            notices.forEach(function(item) {
+                document.querySelectorAll('[data-name="' + item.field + '"]').forEach(function(field) {
+                    var fieldsGroup = field.closest('.acf-fields');
+                    if (!fieldsGroup || fieldsGroup.parentNode.querySelector('.atomic-acf-notice')) {
+                        return;
+                    }
+
+                    fieldsGroup.style.display = 'none';
+
+                    var notice = document.createElement('div');
+                    notice.className = 'atomic-acf-notice';
+                    notice.style.cssText = 'background:#fff8e5;border-left:4px solid #f0ad4e;padding:10px 14px;margin:8px 0;font-size:12px;color:#6b4f00;border-radius:0 4px 4px 0;line-height:1.6;';
+                    notice.innerHTML = 'This content is managed globally. Changes here will not affect the frontend. <a href="' + item.url + '" target="_blank" style="color:#8a5a00;font-weight:600;text-decoration:underline;">Update ' + item.label + ' →</a>';
+
+                    fieldsGroup.parentNode.insertBefore(notice, fieldsGroup);
+                });
+            });
+        }
+
+        var interval = setInterval(injectNotices, 1000);
+        setTimeout(function() { clearInterval(interval); }, 30000);
+        injectNotices();
+    })();
+    </script>
+    <?php
+}
+add_action('admin_footer', 'atomic_design_global_block_editor_notices');
 
 /**
  * Restrict certain custom ACF blocks to intended editor contexts.
