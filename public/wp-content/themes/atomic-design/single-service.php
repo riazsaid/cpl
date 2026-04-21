@@ -47,6 +47,10 @@ get_header();
             'post_id' => $post_id,
             'section_index' => 1,
         ]);
+        get_template_part('template-parts/shared/why-choose-sections', null, [
+            'post_id' => $post_id,
+            'section_index' => 2,
+        ]);
         get_template_part('template-parts/shared/title-description-sections', null, [
             'post_id' => $post_id,
             'section_index' => 3,
