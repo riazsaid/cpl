@@ -49,17 +49,16 @@
    SECTIONS
    ============================================================ */
 
-.section {
+section {
     padding-bottom: var(--section-space-210);
 }
 
-.section--tight {
-    padding-bottom: var(--section-space-142);
+@media (max-width: 767px) {
+    section {
+        padding-bottom: var(--space-lg);
+    }
 }
 
-.section--flush {
-    padding-bottom: 0;
-}
 
 /* ============================================================
    GUTENBERG GROUP SPACING PRESETS (core/group)

@@ -39,17 +39,6 @@
     align-items: center;
 }
 
-@media (min-width: 48rem) {
-
-    /* --bp-tablet */
-    .site-footer__left {}
-}
-
-@media (min-width: 64rem) {
-
-    /* --bp-desktop */
-    .site-footer__left {}
-}
 
 /* ============================================================
    BRAND COLUMN
@@ -131,10 +120,9 @@
    ============================================================ */
 
 .site-footer__cta {
-    padding: var(--space-xs);
-    border-radius: var(--radius-md);
+    padding-block: 2.2rem 1.7rem;
+    padding-inline: 1.4rem;
     background-color: var(--accent);
-    /* background: linear-gradient(135deg, #1e3a8a 0%, #1e293b 55%, var(--bg) 100%); */
     border: 1px solid rgba(99, 149, 255, 0.22);
     box-shadow: var(--shadow);
 }
@@ -165,8 +153,7 @@
    BOTTOM BAR — copyright + legal links
    ============================================================ */
 
-.site-footer__rigth {
-    padding-block: var(--space-md);
+.site-footer__right {
     flex: 1;
 }
 
@@ -193,8 +180,151 @@
     text-decoration: none;
 }
 
-@media (max-width: 47.99rem) {
+/* footer webform */
 
-    /* below --bp-tablet */
-    .site-footer__right {}
+#wpforms-303 {
+    margin: 0 !important;
+}
+
+.iti__selected-country-primary .iti__arrow {
+    filter: brightness(0) invert(1) !important;
+}
+
+#wpforms-303-field_1.wpforms-field-medium {
+    max-width: 100%;
+}
+
+#wpforms-303-field_1 h2 {
+    font-size: var(--h1);
+    color: var(--text);
+    margin: 0 !important;
+}
+
+#wpforms-303-field_1 p {
+    font-size: var(--body-lg);
+    color: var(--text);
+    margin-block: 1.5rem !important;
+}
+
+.wpforms-container input::placeholder,
+.wpforms-container textarea::placeholder {
+    color: var(--text) !important;
+    opacity: 1 !important;
+}
+
+#wpforms-303-field_1-container {
+    padding: 0 !important;
+}
+
+.wpforms-container input,
+.wpforms-container textarea,
+.wpforms-uploader {
+    background-color: var(--accent-soft) !important;
+    color: var(--text) !important;
+    border: 0 !important;
+}
+
+.wpforms-layout-row {
+    margin: 0 !important;
+    gap: 1.1rem;
+    padding-top: 0.5rem !important;
+}
+
+.wpforms-layout-row .wpforms-layout-column-50 {
+    padding: 0 !important;
+
+}
+
+.wpforms-layout-row .wpforms-layout-column-50 .wpforms-field {
+    padding: 0 !important;
+}
+
+#wpforms-303-field_7-container {
+    display: flex;
+    align-items: center;
+    margin-top: -3.6rem;
+    justify-content: space-between;
+
+}
+
+.wpforms-uploader {
+    padding: 0.6rem 0.7rem !important;
+    color: var(--text) !important;
+}
+
+.wpforms-uploader svg {
+    margin: 0 !important;
+    opacity: 1 !important;
+    filter: invert(1);
+}
+
+.modern-title {
+    display: none;
+}
+
+.dz-details {
+    margin: 0;
+}
+
+.dz-preview {
+    padding: 0 !important;
+}
+
+.dz-progress {
+    display: none !important;
+}
+
+.dz-remove {
+    opacity: 1 !important;
+}
+
+.dz-remove::before,
+::after {
+    background-color: var(--text) !important;
+}
+
+.dz-size,
+.dz-filename {
+    color: var(--text) !important;
+}
+
+
+
+#wpforms-303-field_7-container label {
+    font-size: var(--h4);
+    color: var(--text);
+    font-weight: 400;
+    margin: 0;
+
+}
+
+@media (max-width: 767px) {
+    .footer-wrapper {
+        flex-direction: column-reverse;
+        gap: 2rem;
+    }
+
+    .site-footer__left {
+        gap: 1.2rem;
+    }
+
+    .site-footer__brand,
+    .site-footer__nav {
+        flex: 1 1 100%;
+    }
+
+    .site-footer__copy-wrapper {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+    }
+
+    .wpforms-layout-row {
+        gap: 1rem;
+        padding-top: 1rem !important;
+
+    }
+
+    #wpforms-303-field_7-container {
+        margin-top: 0;
+    }
 }

@@ -59,35 +59,46 @@ $section_class = trim('hero ' . $align_class . ' ' . $class_name);
     <div class="container hero__inner hero__inner--single">
         <div class="hero__content">
             <?php if ($title !== '') : ?>
-                <h1 class="hero__title"><?php echo wp_kses_post($title); ?></h1>
+                <h1 class="hero__title hero__title--animate"><?php echo wp_kses_post($title); ?></h1>
             <?php endif; ?>
 
             <?php if ($subtitle !== '') : ?>
-                <div class="hero__subtitle body-lg"><?php echo wp_kses_post(wpautop($subtitle)); ?></div>
-            <?php endif; ?>
-
-            <?php if ((!empty($primary['url']) && !empty($primary['title'])) || (!empty($secondary['url']) && !empty($secondary['title']))) : ?>
-            
+                <div class="hero__subtitle hero__subtitle--animate body-lg"><?php echo wp_kses_post(wpautop($subtitle)); ?></div>
             <?php endif; ?>
         </div>
     </div>
-     
 </section>
-   <div class="hero__actions container">
-                    <?php if (!empty($primary['url']) && !empty($primary['title'])) : ?>
-                        <a class="hero__link hero__link--primary"
-                           href="<?php echo esc_url($primary['url']); ?>"
-                           target="<?php echo esc_attr($primary['target'] ?: '_self'); ?>">
-                            <?php echo esc_html($primary['title']); ?>
-                        </a>
-                    <?php endif; ?>
+<div class="hero__actions hero__actions--animate container">
+    <?php if (!empty($primary['url']) && !empty($primary['title'])) : ?>
+        <a class="hero__link hero__link--primary"
+           href="<?php echo esc_url($primary['url']); ?>"
+           target="<?php echo esc_attr($primary['target'] ?: '_self'); ?>">
+            <?php echo esc_html($primary['title']); ?>
+        </a>
+    <?php endif; ?>
 
-                    <?php if (!empty($secondary['url']) && !empty($secondary['title'])) : ?>
-                        <a class="hero__link hero__link--secondary"
-                           href="<?php echo esc_url($secondary['url']); ?>"
-                           target="<?php echo esc_attr($secondary['target'] ?: '_self'); ?>">
-                            <span><?php echo esc_html($secondary['title']); ?></span>
-                            <span class="hero__link-arrow" aria-hidden="true">→</span>
-                        </a>
-                    <?php endif; ?>
-                </div>
+    <?php if (!empty($secondary['url']) && !empty($secondary['title'])) : ?>
+        <a class="hero__link hero__link--secondary"
+           href="<?php echo esc_url($secondary['url']); ?>"
+           target="<?php echo esc_attr($secondary['target'] ?: '_self'); ?>">
+            <span><?php echo esc_html($secondary['title']); ?></span>
+            <span class="hero__link-arrow" aria-hidden="true">→</span>
+        </a>
+    <?php endif; ?>
+</div>
+
+<script>
+(function () {
+    var title = document.querySelector('.hero__title--animate');
+    if (!title) return;
+    // Split text nodes into word spans (preserves inline HTML like <strong>)
+    var html = title.innerHTML;
+    // Wrap each word with a span
+    title.innerHTML = html.replace(/(\S+)/g, '<span class="hero__word">$1</span>');
+    // Set CSS custom property for delay index
+    var words = title.querySelectorAll('.hero__word');
+    words.forEach(function (w, i) {
+        w.style.setProperty('--i', i);
+    });
+})();
+</script>

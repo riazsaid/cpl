@@ -61,23 +61,24 @@ $layout = in_array($layout, ['two-column', 'three-column'], true) ? $layout : 't
 $section_class = trim('why-choose-grid layout-' . $layout . ' align' . $align . ' ' . $class_name);
 ?>
 
-<section class="<?php echo esc_attr($section_class); ?>">
+<section class="<?php echo esc_attr($section_class); ?>" data-aos="fade-up">
     <div class="container">
         <div class="why-choose-grid__inner">
-            <h2 class="why-choose-grid__heading"><?php echo esc_html($section_heading); ?></h2>
+            <h2 class="why-choose-grid__heading" data-aos="fade-up" data-aos-delay="80"><?php echo esc_html($section_heading); ?></h2>
 
             <?php if (trim(wp_strip_all_tags($section_description)) !== '') : ?>
-                <div class="why-choose-grid__description">
+                <div class="why-choose-grid__description" data-aos="fade-up" data-aos-delay="140">
                     <?php echo wp_kses_post($section_description); ?>
                 </div>
             <?php endif; ?>
 
             <div class="why-choose-grid__items">
-                <?php foreach ($items as $item) :
+                <?php foreach ($items as $index => $item) :
                     $title       = (string) $item['why_choose_item_title'];
                     $description = (string) $item['why_choose_item_description'];
+                    $delay       = 120 + ($index * 80);
                     ?>
-                    <article class="why-choose-grid__item">
+                    <article class="why-choose-grid__item" data-aos="fade-up" data-aos-delay="<?php echo esc_attr((string) $delay); ?>">
                         <h3 class="why-choose-grid__item-title"><?php echo nl2br(esc_html($title)); ?></h3>
                         <div class="why-choose-grid__item-description">
                             <?php echo wp_kses_post($description); ?>

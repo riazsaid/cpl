@@ -4,16 +4,14 @@
    Icon + title row, description, learn-more link.
    ============================================================ */
 
-.industry-solutions-block {
-    padding-bottom: var(--section-space-210);
-}
+.industry-solutions-block {}
 
 .industry-solutions-heading {
     font-family: var(--font-heading);
     font-size: var(--h1);
     line-height: var(--lh-xxl);
     text-align: center;
-    margin-block-end: var(--space-lg);
+    padding-bottom: var(--space-lg);
 }
 
 /* ----------------------------------------------------------
@@ -26,13 +24,18 @@
     gap: var(--space-md);
 }
 
-@media (max-width: 1023px) {
+/* @media (max-width: 1023px) {
     .industry-solutions-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-}
+} */
 
-@media (max-width: 639px) {
+@media (max-width: 767px) {
+    .industry-solutions-heading {
+        padding-bottom: var(--space-xs);
+
+    }
+
     .industry-solutions-grid {
         grid-template-columns: 1fr;
     }
@@ -70,7 +73,7 @@
     font-family: var(--font-body);
     font-size: var(--h5);
     font-weight: 600;
-    line-height: var(--lh-heading);
+    line-height: 1.2rem;
     color: var(--text);
     margin: 0;
 }

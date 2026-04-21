@@ -40,8 +40,8 @@ a {
 
 a:hover,
 a:focus-visible {
-    color: var(--accent-hover);
-    text-decoration: underline;
+    color: var(--text);
+    text-decoration: none;
 }
 
 /* ============================================================
@@ -168,13 +168,23 @@ p {
     border: 1px solid transparent;
     cursor: pointer;
     white-space: nowrap;
+    color: var(--text);
     transition: background var(--dur-fast) var(--ease);
-    padding:0.8rem 1.1rem;
+    padding: 0.8rem 1.1rem;
+
+}
+
+
+
+@media (max-width: 767px) {
+    .btn {
+        white-space: unset;
+    }
 }
 
 .btn-primary {
     background: var(--accent);
-    color: #fff;
+    color: var(--text);
     border-color: var(--accent);
 }
 
@@ -183,7 +193,7 @@ p {
     background: var(--accent-hover);
     border-color: var(--accent-hover);
     text-decoration: none;
-    color: #fff;
+    color: var(--text);
 }
 
 .btn-ghost {
@@ -246,4 +256,17 @@ p {
         transition-duration: 0.001ms !important;
         scroll-behavior: auto !important;
     }
+}
+
+.wp-block-column-is-layout-flow p {
+    color: var(--text);
+    font-family: var(--font-display);
+    font-size: var(--h5);
+    font-weight: 400;
+    line-height: var(--lh-md);
+}
+.mid-image{
+    max-width: 860px;
+    margin: 0 auto;
+    padding-bottom: var(--section-space-210);
 }

@@ -15,12 +15,24 @@
     justify-self: center;
     padding: 0.8rem 1.8rem;
     margin-top: var(--space-md);
+    transition: background-color 0.3s ease;
 
     a {
         font-family: var(--font-heading);
         font-weight: 700;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    &:hover {
+        background-color: var(--accent-hover);
+
+        a {
+            color: var(--text);
+        }
     }
 }
+
 
 .testimonials-heading {
     font-family: var(--font-heading);
@@ -48,14 +60,17 @@
     gap: var(--space-lg);
     align-items: start;
     background-color: var(--bg-soft);
-
     padding: var(--space-sm) 2.4rem;
 }
 
 @media (max-width: 900px) {
     .testimonial-body {
-        grid-template-columns: 1fr;
-        gap: var(--space-md);
+        display: flex !important;
+        flex-direction: column;
+    }
+
+    .testimonials-content {
+        padding-bottom: var(--space-lg);
     }
 }
 
@@ -487,15 +502,17 @@
    RESPONSIVE (card min-width so JS can size correctly)
 ---------------------------------------------------------- */
 
-@media (max-width: 639px) {
+@media (max-width: 767px) {
     .testimonials-slider__nav {
         padding-inline: 0.75rem;
         top: 50%;
+        left: -2.2rem;
+        right: -2.2rem;
     }
 
     .testimonials-slider__btn {
-        width: 2.25rem;
-        height: 2.25rem;
+        width: 2rem;
+        height: 2rem;
     }
 
     .testimonial-card {
@@ -503,11 +520,6 @@
     }
 }
 
-@media (min-width: 640px) and (max-width: 1023px) {
-    .testimonial-card {
-        min-width: 0;
-    }
-}
 
 @media (min-width: 1024px) {
     .testimonial-card {

@@ -47,16 +47,31 @@ function atomic_design_assets()
     );
 
     wp_enqueue_style(
+        'atomic-design-aos',
+        'https://unpkg.com/aos@2.3.4/dist/aos.css',
+        [],
+        '2.3.4'
+    );
+
+    wp_enqueue_style(
         'atomic-design-main',
         $theme_uri . '/assets/css/main.css',
-        ['atomic-design-fonts'],
+        ['atomic-design-fonts', 'atomic-design-aos'],
         $theme_version
+    );
+
+    wp_enqueue_script(
+        'atomic-design-aos',
+        'https://unpkg.com/aos@2.3.4/dist/aos.js',
+        [],
+        '2.3.4',
+        true
     );
 
     wp_enqueue_script(
         'atomic-design-main',
         $theme_uri . '/assets/js/main.js',
-        [],
+        ['atomic-design-aos'],
         $theme_version,
         true
     );
