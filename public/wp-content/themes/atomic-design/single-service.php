@@ -56,15 +56,14 @@ get_header();
             'section_index' => 3,
         ]);
         get_template_part('template-parts/shared/testimonials');
-        if (function_exists('get_field')) {
-            get_template_part('template-parts/shared/faqs', null, ['post_id' => $post_id]);
-        }
         get_template_part('template-parts/shared/title-description-sections', null, [
             'post_id' => $post_id,
             'section_index' => 4,
         ]);
     }
-
+    if (function_exists('get_field')) {
+        get_template_part('template-parts/shared/faqs', null, ['post_id' => $post_id]);
+    }
     ?>
 </main>
 
