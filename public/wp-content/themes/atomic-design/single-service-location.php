@@ -44,10 +44,44 @@ get_header();
 
     get_template_part('template-parts/shared/industry-solutions');
     if (function_exists('get_field')) {
+        $industry_static_image_id = (int) get_field('industry_static_image', $post_id);
+
         get_template_part('template-parts/shared/numbered-process-sections', null, [
             'post_id' => $post_id,
             'section_index' => 1,
         ]);
+        ?>
+        <section class="industry-static-image">
+            <div class="container">
+                <div class="industry-static-image__media">
+                    <?php
+                    if ($industry_static_image_id > 0) {
+                        echo wp_get_attachment_image(
+                            $industry_static_image_id,
+                            'large',
+                            false,
+                            [
+                                'class'    => 'industry-static-image__image',
+                                'loading'  => 'lazy',
+                                'decoding' => 'async',
+                            ]
+                        );
+                    } else {
+                        ?>
+                        <img
+                            class="industry-static-image__image"
+                            src="<?php echo esc_url(content_url('/uploads/2026/04/electrical-contractor-labels.jpg')); ?>"
+                            alt="<?php echo esc_attr__('Electrical contractor labels', 'atomic-design'); ?>"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                        <?php
+                    }
+                    ?>
+                </div>
+            </div>
+        </section>
+        <?php
         get_template_part('template-parts/shared/why-choose-sections', null, [
             'post_id' => $post_id,
             'section_index' => 2,
