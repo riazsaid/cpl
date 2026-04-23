@@ -45,6 +45,7 @@ get_header();
     get_template_part('template-parts/shared/industry-solutions');
     if (function_exists('get_field')) {
         $industry_static_image_id = (int) get_field('industry_static_image', $post_id);
+        ?>
         <section class="industry-static-image">
             <div class="container">
                 <div class="industry-static-image__media">
@@ -75,12 +76,11 @@ get_header();
                 </div>
             </div>
         </section>
+        <?php
         get_template_part('template-parts/shared/numbered-process-sections', null, [
             'post_id' => $post_id,
             'section_index' => 1,
         ]);
-        ?>
-        <?php
         get_template_part('template-parts/shared/why-choose-sections', null, [
             'post_id' => $post_id,
             'section_index' => 2,
