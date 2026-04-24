@@ -466,6 +466,47 @@ function atomic_design_register_rank_math_rest_meta()
 }
 add_action('init', 'atomic_design_register_rank_math_rest_meta');
 
+function atomic_design_get_template_acf_value($field_name, $post_id)
+{
+    if ($field_name === '_permalink_uri') {
+        return get_post_meta($post_id, '_permalink_uri', true);
+    }
+
+    return get_field($field_name, $post_id);
+}
+
+function atomic_design_update_template_acf_value($field_name, $field_value, $post_id)
+{
+    if ($field_name === '_permalink_uri') {
+        return update_field('field_atomic_service_location_permalink_uri', $field_value, $post_id);
+    }
+
+    return update_field($field_name, $field_value, $post_id);
+}
+
+function atomic_design_sync_service_location_permalink($post_id, $custom_uri)
+{
+    $custom_uri = is_string($custom_uri) ? trim($custom_uri) : '';
+    if ($custom_uri === '') {
+        return;
+    }
+
+    if (
+        !class_exists('Permalink_Manager_URI_Functions') ||
+        !class_exists('Permalink_Manager_Helper_Functions')
+    ) {
+        return;
+    }
+
+    $sanitized_uri = Permalink_Manager_Helper_Functions::sanitize_title(trim($custom_uri, '/'), true);
+    if ($sanitized_uri === '') {
+        return;
+    }
+
+    Permalink_Manager_URI_Functions::save_single_uri($post_id, $sanitized_uri, false, false);
+    Permalink_Manager_URI_Functions::save_all_uris();
+}
+
 function atomic_design_get_template_acf_for_rest($object)
 {
     if (!function_exists('get_field')) {
@@ -476,7 +517,7 @@ function atomic_design_get_template_acf_for_rest($object)
     $response = [];
 
     foreach (atomic_design_get_allowed_template_acf_fields() as $field_name) {
-        $response[$field_name] = get_field($field_name, $post_id);
+        $response[$field_name] = atomic_design_get_template_acf_value($field_name, $post_id);
     }
 
     return $response;
@@ -528,7 +569,14 @@ function atomic_design_capture_template_acf_rest_payload($prepared_post, $reques
         "rest_after_insert_{$post_type}",
         function ($post) use ($template_payload) {
             foreach ($template_payload as $field_name => $field_value) {
-                update_field($field_name, $field_value, $post->ID);
+                atomic_design_update_template_acf_value($field_name, $field_value, $post->ID);
+            }
+
+            if (
+                $post->post_type === 'service-location' &&
+                array_key_exists('_permalink_uri', $template_payload)
+            ) {
+                atomic_design_sync_service_location_permalink($post->ID, $template_payload['_permalink_uri']);
             }
         },
         10,
