@@ -417,6 +417,7 @@ function atomic_design_get_rest_post_types()
 function atomic_design_get_allowed_template_acf_fields()
 {
     return [
+        '_permalink_uri',
         'hero_title',
         'hero_subtitle',
         'hero_primary_link',
