@@ -45,17 +45,20 @@
 }
 */
 
-.single-industry .industry-static-image {
+.single-industry .industry-static-image,
+.single-service-location .industry-static-image {
     padding: 0 0 4rem;
     background: #000;
 }
 
-.single-industry .industry-static-image__media {
+.single-industry .industry-static-image__media,
+.single-service-location .industry-static-image__media {
     max-width: 860px;
     margin: 0 auto;
 }
 
-.single-industry .industry-static-image__image {
+.single-industry .industry-static-image__image,
+.single-service-location .industry-static-image__image {
     display: block;
     width: 100%;
     height: auto;
@@ -63,7 +66,8 @@
 }
 
 @media (max-width: 767px) {
-    .single-industry .industry-static-image {
+    .single-industry .industry-static-image,
+    .single-service-location .industry-static-image {
         padding-bottom: 3rem;
     }
 }

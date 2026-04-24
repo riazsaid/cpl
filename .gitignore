@@ -32,6 +32,7 @@ public/wp/*
 !public/wp-content/
 public/wp-config-ddev.php
 public/wp-content/uploads/
+public/wp-content/wflogs/
 public/wp-content/cache/
 public/wp-content/upgrade/
 wp-content/uploads/

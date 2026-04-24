@@ -32,6 +32,10 @@ if ($faq_items === null) {
 if (empty($faq_items) || !is_array($faq_items)) {
     return;
 }
+
+if (trim((string) $section_heading) === '') {
+    $section_heading = __('Frequently Asked Questions', 'atomic-design');
+}
 ?>
 
 <section class="faq-accordion-block layout-<?php echo esc_attr($faq_layout); ?>" id="<?php echo esc_attr($section_id); ?>" data-aos="fade-up">

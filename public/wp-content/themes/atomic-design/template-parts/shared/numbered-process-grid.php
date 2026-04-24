@@ -41,6 +41,15 @@ if ($section_heading === '' || empty($items) || !is_array($items)) {
     return;
 }
 
+$fallback_titles = [
+    'Data Intake & Review',
+    'Material & Color Selection',
+    'Layout & Proofing',
+    'Precision Engraving',
+    'Finishing & Quality Control',
+    'Packing & Shipping',
+];
+
 $items = array_values(
     array_filter(
         $items,
@@ -48,7 +57,7 @@ $items = array_values(
             $title       = isset($item['numbered_process_item_title']) ? trim((string) $item['numbered_process_item_title']) : '';
             $description = isset($item['numbered_process_item_description']) ? trim(wp_strip_all_tags((string) $item['numbered_process_item_description'])) : '';
 
-            return $title !== '' && $description !== '';
+            return $title !== '' || $description !== '';
         }
     )
 );
@@ -74,8 +83,14 @@ $section_class = trim('numbered-process-grid layout-' . $layout . ' align' . $al
 
             <div class="numbered-process-grid__items">
                 <?php foreach ($items as $index => $item) :
-                    $title       = (string) $item['numbered_process_item_title'];
-                    $description = (string) $item['numbered_process_item_description'];
+                    $title       = isset($item['numbered_process_item_title']) ? trim((string) $item['numbered_process_item_title']) : '';
+                    $description = isset($item['numbered_process_item_description']) ? (string) $item['numbered_process_item_description'] : '';
+                    $has_description = trim(wp_strip_all_tags($description)) !== '';
+                    $fallback_title = isset($fallback_titles[$index]) ? $fallback_titles[$index] : sprintf(__('Step %d', 'atomic-design'), $index + 1);
+
+                    if ($title === '') {
+                        $title = $fallback_title;
+                    }
                     ?>
                     <article class="numbered-process-grid__item" data-aos="fade-up" data-aos-delay="<?php echo esc_attr((string) (120 + ($index * 80))); ?>">
                         <div class="numbered-process-grid__number" aria-hidden="true">
@@ -84,9 +99,11 @@ $section_class = trim('numbered-process-grid layout-' . $layout . ' align' . $al
 
                         <div class="numbered-process-grid__content">
                             <h3 class="numbered-process-grid__item-title"><?php echo esc_html($title); ?></h3>
-                            <div class="numbered-process-grid__item-description">
-                                <?php echo wp_kses_post($description); ?>
-                            </div>
+                            <?php if ($has_description) : ?>
+                                <div class="numbered-process-grid__item-description">
+                                    <?php echo wp_kses_post($description); ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </article>
                 <?php endforeach; ?>
