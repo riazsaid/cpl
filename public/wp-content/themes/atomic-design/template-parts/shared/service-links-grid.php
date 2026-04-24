@@ -91,7 +91,6 @@ $section_class   = trim('service-links-grid layout-' . $layout . ' align' . $ali
                             <?php if ($link_text !== '' && $link_url !== '') : ?>
                                 <a class="service-links-grid__link" href="<?php echo esc_url($link_url); ?>">
                                     <span><?php echo esc_html($link_text); ?></span>
-                                    <span aria-hidden="true">&rarr;</span>
                                 </a>
                             <?php endif; ?>
                         </div>
