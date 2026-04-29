@@ -1,34 +1,61 @@
-.static-page {
+/* Apply to all policy pages */
+.page-slug-privacy-policy #site-content,
+.page-slug-shipping-returns-policy #site-content,
+.page-slug-terms-of-service #site-content {
     padding-bottom: var(--section-space-210);
 }
 
-.static-page h1,
-.static-page h2 {
+/* Headings */
+.page-slug-privacy-policy #site-content h1,
+.page-slug-privacy-policy #site-content h2,
+.page-slug-shipping-returns-policy #site-content h1,
+.page-slug-shipping-returns-policy #site-content h2,
+.page-slug-terms-of-service #site-content h1,
+.page-slug-terms-of-service #site-content h2 {
     padding-block: var(--space-md);
 }
 
-.static-page h3 {
+/* h3 */
+.page-slug-privacy-policy #site-content h3,
+.page-slug-shipping-returns-policy #site-content h3,
+.page-slug-terms-of-service #site-content h3 {
     padding-bottom: var(--space-xmd);
 }
 
-.static-page p {
+/* Paragraph */
+.page-slug-privacy-policy #site-content p,
+.page-slug-shipping-returns-policy #site-content p,
+.page-slug-terms-of-service #site-content p {
     padding-bottom: var(--space-xsm);
 }
 
-.static-page hr {
+/* hr */
+.page-slug-privacy-policy #site-content hr,
+.page-slug-shipping-returns-policy #site-content hr,
+.page-slug-terms-of-service #site-content hr {
     margin-block: var(--space-xsm);
 }
 
-.static-page ul {
+/* ul */
+.page-slug-privacy-policy #site-content ul,
+.page-slug-shipping-returns-policy #site-content ul,
+.page-slug-terms-of-service #site-content ul {
     padding-left: 0.8rem;
     font-size: var(--h6);
 }
-.people-behind{
-padding-bottom: var(--section-space-210);
 
+/* People section */
+.people-behind {
+    padding-bottom: var(--section-space-210);
+}
+
+/* Mobile fix */
 @media (max-width: 767px) {
-    .static-page {
+
+    .page-slug-privacy-policy #site-content,
+    .page-slug-shipping-returns-policy #site-content,
+    .page-slug-terms-of-service #site-content {
         padding-bottom: var(--space-lg);
     }
-}
+
 }
