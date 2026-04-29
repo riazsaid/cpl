@@ -1,12 +1,23 @@
-.page-slug-contact-us {
+.page-template-default.logged-in #site-content {
     padding-top: 2rem;
 }
 
-.page-slug-contact-us .wp-block-columns {
+.page-template-default.logged-in #site-content h1,
+.page-template-default.logged-in #site-content h2,
+.page-template-default.logged-in #site-content p {
+    padding-block: 0 !important;
+
+}
+
+.page-template-default.logged-in #site-content {
+    padding-bottom: var(--space-lg) !important;
+}
+
+.page-template-default #site-content .wp-block-columns {
     padding-bottom: var(--section-space-210);
 }
 
-.page-slug-contact-us .wp-block-column .wpforms-container {
+.page-template-default #site-content .wp-block-column .wpforms-container {
     padding-block: 2.2rem 1.7rem;
     padding-inline: 1.4rem;
     background-color: var(--accent);
