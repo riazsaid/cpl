@@ -44,6 +44,6 @@
 
 }
 
-.page-template-default .site-content>section:last-child {
+.page-template-default #site-content>section:last-child {
     padding-bottom: 0 !important;
 }
