@@ -61,14 +61,14 @@
                 <p class="site-footer__copy">
                     &copy; <?php echo esc_html(date('Y')); ?>
                     <?php bloginfo('name'); ?> &mdash;
-                    <?php esc_html_e('All rights reserved.', 'atomic-design'); ?>
+                    <?php esc_html_e('All rights reserved. ', 'atomic-design'); ?>
                 </p>
                 <nav class="site-footer__legal" aria-label="<?php esc_attr_e('Legal links', 'atomic-design'); ?>">
-                    <a href="<?php echo esc_url(home_url('/privacy-policy/')); ?>">
-                        <?php esc_html_e('Privacy Policy', 'atomic-design'); ?>
-                    </a>
                     <a href="<?php echo esc_url(home_url('/terms-of-service/')); ?>">
-                        <?php esc_html_e('Terms of Service', 'atomic-design'); ?>
+                        <?php esc_html_e('Terms of Service. ', 'atomic-design'); ?>
+                    </a>
+                    <a href="<?php echo esc_url(home_url('/privacy-policy/')); ?>">
+                        <?php esc_html_e('Privacy Policy. ', 'atomic-design'); ?>
                     </a>
                     <a href="<?php echo esc_url(home_url('/shipping-returns/')); ?>">
                         <?php esc_html_e('Shipping & Returns', 'atomic-design'); ?>
