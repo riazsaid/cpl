@@ -1,34 +1,49 @@
-.static-page {
+/* Apply to all policy pages */
+.page-template-default #site-content {
     padding-bottom: var(--section-space-210);
 }
 
-.static-page h1,
-.static-page h2 {
+/* Headings */
+.page-template-default #site-content h1,
+.page-template-default #site-content h2 {
     padding-block: var(--space-md);
 }
 
-.static-page h3 {
+/* h3 */
+.page-template-default #site-content h3 {
     padding-bottom: var(--space-xmd);
 }
 
-.static-page p {
+/* Paragraph */
+.page-template-default #site-content p {
     padding-bottom: var(--space-xsm);
 }
 
-.static-page hr {
+/* hr */
+.page-template-default #site-content hr {
     margin-block: var(--space-xsm);
 }
 
-.static-page ul {
+/* ul */
+.page-template-default #site-content ul {
     padding-left: 0.8rem;
     font-size: var(--h6);
 }
-.people-behind{
-padding-bottom: var(--section-space-210);
 
+/* People section */
+.people-behind {
+    padding-bottom: var(--section-space-210);
+}
+
+/* Mobile fix */
 @media (max-width: 767px) {
-    .static-page {
+
+    .page-template-default #site-content {
         padding-bottom: var(--space-lg);
     }
+
 }
+
+.page-template-default #site-content>section:last-child {
+    padding-bottom: 0 !important;
 }

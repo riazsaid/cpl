@@ -26,7 +26,7 @@ The reference hero includes:
 
 ---
 
-## **2\) Recommended design tokens**
+## **2\) Recommended design token**
 
 These are **matched-by-eye** tokens for dev use.
 

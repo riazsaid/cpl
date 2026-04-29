@@ -417,6 +417,7 @@ function atomic_design_get_rest_post_types()
 function atomic_design_get_allowed_template_acf_fields()
 {
     return [
+        '_permalink_uri',
         'hero_title',
         'hero_subtitle',
         'hero_primary_link',
@@ -434,6 +435,78 @@ function atomic_design_get_allowed_template_acf_fields()
     ];
 }
 
+/**
+ * Expose Rank Math SEO meta fields in REST for template-driven CPTs.
+ *
+ * This lets imports update the same SEO fields directly through the REST API.
+ */
+function atomic_design_register_rank_math_rest_meta()
+{
+    $post_types = atomic_design_get_rest_post_types();
+    $meta_keys  = ['rank_math_title', 'rank_math_description'];
+
+    $auth_callback = static function () {
+        return current_user_can('edit_posts');
+    };
+
+    foreach ($post_types as $post_type) {
+        foreach ($meta_keys as $meta_key) {
+            register_post_meta(
+                $post_type,
+                $meta_key,
+                [
+                    'show_in_rest'  => true,
+                    'single'        => true,
+                    'type'          => 'string',
+                    'auth_callback' => $auth_callback,
+                ]
+            );
+        }
+    }
+}
+add_action('init', 'atomic_design_register_rank_math_rest_meta');
+
+function atomic_design_get_template_acf_value($field_name, $post_id)
+{
+    if ($field_name === '_permalink_uri') {
+        return get_post_meta($post_id, '_permalink_uri', true);
+    }
+
+    return get_field($field_name, $post_id);
+}
+
+function atomic_design_update_template_acf_value($field_name, $field_value, $post_id)
+{
+    if ($field_name === '_permalink_uri') {
+        return update_field('field_atomic_service_location_permalink_uri', $field_value, $post_id);
+    }
+
+    return update_field($field_name, $field_value, $post_id);
+}
+
+function atomic_design_sync_service_location_permalink($post_id, $custom_uri)
+{
+    $custom_uri = is_string($custom_uri) ? trim($custom_uri) : '';
+    if ($custom_uri === '') {
+        return;
+    }
+
+    if (
+        !class_exists('Permalink_Manager_URI_Functions') ||
+        !class_exists('Permalink_Manager_Helper_Functions')
+    ) {
+        return;
+    }
+
+    $sanitized_uri = Permalink_Manager_Helper_Functions::sanitize_title(trim($custom_uri, '/'), true);
+    if ($sanitized_uri === '') {
+        return;
+    }
+
+    Permalink_Manager_URI_Functions::save_single_uri($post_id, $sanitized_uri, false, false);
+    Permalink_Manager_URI_Functions::save_all_uris();
+}
+
 function atomic_design_get_template_acf_for_rest($object)
 {
     if (!function_exists('get_field')) {
@@ -444,7 +517,7 @@ function atomic_design_get_template_acf_for_rest($object)
     $response = [];
 
     foreach (atomic_design_get_allowed_template_acf_fields() as $field_name) {
-        $response[$field_name] = get_field($field_name, $post_id);
+        $response[$field_name] = atomic_design_get_template_acf_value($field_name, $post_id);
     }
 
     return $response;
@@ -496,7 +569,14 @@ function atomic_design_capture_template_acf_rest_payload($prepared_post, $reques
         "rest_after_insert_{$post_type}",
         function ($post) use ($template_payload) {
             foreach ($template_payload as $field_name => $field_value) {
-                update_field($field_name, $field_value, $post->ID);
+                atomic_design_update_template_acf_value($field_name, $field_value, $post->ID);
+            }
+
+            if (
+                $post->post_type === 'service-location' &&
+                array_key_exists('_permalink_uri', $template_payload)
+            ) {
+                atomic_design_sync_service_location_permalink($post->ID, $template_payload['_permalink_uri']);
             }
         },
         10,
@@ -779,6 +859,59 @@ function atomic_design_block_categories($categories)
     );
 }
 add_filter('block_categories_all', 'atomic_design_block_categories', 10, 2);
+
+/**
+ * Show editor-only guidance for global-content ACF blocks.
+ *
+ * Testimonials uses a shared field group on both the options page and block,
+ * so hide the duplicate block inputs and point editors to the global source.
+ */
+function atomic_design_global_block_editor_notices()
+{
+    global $pagenow;
+
+    if ($pagenow !== 'post.php' && $pagenow !== 'post-new.php') {
+        return;
+    }
+    ?>
+    <script>
+    (function() {
+        var notices = [
+            {
+                field: 'testimonials_list',
+                url: <?php echo wp_json_encode(admin_url('admin.php?page=atomic-design-testimonials')); ?>,
+                label: 'Testimonials'
+            }
+        ];
+
+        function injectNotices() {
+            notices.forEach(function(item) {
+                document.querySelectorAll('[data-name="' + item.field + '"]').forEach(function(field) {
+                    var fieldsGroup = field.closest('.acf-fields');
+                    if (!fieldsGroup || fieldsGroup.parentNode.querySelector('.atomic-acf-notice')) {
+                        return;
+                    }
+
+                    fieldsGroup.style.display = 'none';
+
+                    var notice = document.createElement('div');
+                    notice.className = 'atomic-acf-notice';
+                    notice.style.cssText = 'background:#fff8e5;border-left:4px solid #f0ad4e;padding:10px 14px;margin:8px 0;font-size:12px;color:#6b4f00;border-radius:0 4px 4px 0;line-height:1.6;';
+                    notice.innerHTML = 'This content is managed globally. Changes here will not affect the frontend. <a href="' + item.url + '" target="_blank" style="color:#8a5a00;font-weight:600;text-decoration:underline;">Update ' + item.label + ' →</a>';
+
+                    fieldsGroup.parentNode.insertBefore(notice, fieldsGroup);
+                });
+            });
+        }
+
+        var interval = setInterval(injectNotices, 1000);
+        setTimeout(function() { clearInterval(interval); }, 30000);
+        injectNotices();
+    })();
+    </script>
+    <?php
+}
+add_action('admin_footer', 'atomic_design_global_block_editor_notices');
 
 /**
  * Restrict certain custom ACF blocks to intended editor contexts.

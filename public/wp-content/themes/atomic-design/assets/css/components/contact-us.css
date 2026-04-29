@@ -1,12 +1,12 @@
-.contact-us {
+.page-slug-contact-us {
     padding-top: 2rem;
 }
 
-.contact-us .wp-block-columns {
+.page-slug-contact-us .wp-block-columns {
     padding-bottom: var(--section-space-210);
 }
 
-.contact-us .wp-block-column .wpforms-container {
+.page-slug-contact-us .wp-block-column .wpforms-container {
     padding-block: 2.2rem 1.7rem;
     padding-inline: 1.4rem;
     background-color: var(--accent);

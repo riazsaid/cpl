@@ -43,17 +43,24 @@ get_header();
             'post_id' => $post_id,
             'section_index' => 1,
         ]);
+        get_template_part('template-parts/shared/numbered-process-sections', null, [
+            'post_id' => $post_id,
+            'section_index' => 1,
+        ]);
+        get_template_part('template-parts/shared/why-choose-sections', null, [
+            'post_id' => $post_id,
+            'section_index' => 2,
+        ]);
         get_template_part('template-parts/shared/title-description-sections', null, [
             'post_id' => $post_id,
             'section_index' => 3,
         ]);
+        get_template_part('template-parts/shared/testimonials');
         get_template_part('template-parts/shared/title-description-sections', null, [
             'post_id' => $post_id,
             'section_index' => 4,
         ]);
     }
-
-    get_template_part('template-parts/shared/testimonials');
     if (function_exists('get_field')) {
         get_template_part('template-parts/shared/faqs', null, ['post_id' => $post_id]);
     }

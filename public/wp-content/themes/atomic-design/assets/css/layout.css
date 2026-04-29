@@ -139,3 +139,12 @@ section {
         grid-template-columns: repeat(4, 1fr);
     }
 }
+
+
+
+
+.page-template-default #site-content,
+.page-slug-contact-us #site-content {
+    width: min(100% - (var(--gutter) * 2), var(--container));
+    margin-inline: auto;
+}
