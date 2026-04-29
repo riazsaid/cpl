@@ -143,9 +143,7 @@ section {
 
 
 
-.page-slug-privacy-policy #site-content,
-.page-slug-shipping-returns-policy #site-content,
-.page-slug-terms-of-service #site-content,
+.page-template-default #site-content,
 .page-slug-contact-us #site-content {
     width: min(100% - (var(--gutter) * 2), var(--container));
     margin-inline: auto;
