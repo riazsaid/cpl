@@ -266,7 +266,7 @@ p {
     line-height: var(--lh-md);
 }
 .mid-image{
-    max-width: 860px;
-    margin: 0 auto;
-    padding-bottom: var(--section-space-210);
+    max-width: 860px !important;
+    margin: 0 auto !important;
+    padding-bottom: var(--section-space-210) !important;
 }
