@@ -44,6 +44,16 @@
 
 }
 
+
+
+
+/* specific css */
+
 .page-template-default #site-content>section:last-child {
     padding-bottom: 0 !important;
+}
+
+.page-template-default #site-content .faq-accordion-block {
+    padding-block: 8.5rem;
+
 }
