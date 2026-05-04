@@ -88,6 +88,14 @@
             </div><!-- /.site-footer__bottom -->
 
         </div><!-- /.container -->
+        
+        <div class="container">
+            <div class="site-footer__credit">
+                <a href="https://atomicdesign.net/" target="_blank" rel="noopener noreferrer" class="site-footer__credit-link">
+                    Website Design &amp; SEO by Atomic Design
+                </a>
+            </div>
+        </div>
     </footer><!-- /.site-footer -->
 
 </div><!-- /.site-shell -->
