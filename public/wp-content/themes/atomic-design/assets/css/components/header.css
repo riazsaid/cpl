@@ -48,7 +48,7 @@
    ============================================================ */
 
 .site-header {
-    position: sticky;
+    position:sticky;
     top: 0;
     z-index: 100;
     /* background: rgba(11, 12, 16, 0.88); */
