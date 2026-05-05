@@ -146,7 +146,6 @@
 
 .site-footer__cta a {
     font-size: var(--h4);
-    background-color: var(--bg);
 }
 
 /* ============================================================
@@ -186,7 +185,8 @@
 }
 
 .site-footer__credit-link {
-    font-size: 0.75rem; /* tiny/small text */
+    font-size: 0.75rem;
+    /* tiny/small text */
     color: var(--text-muted);
     text-decoration: none;
     transition: color var(--dur-fast) var(--ease);
