@@ -282,3 +282,6 @@ p {
         color: white !important;
     }
 }
+.has-text-align-center{
+    padding-bottom: 10px;
+}
