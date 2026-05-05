@@ -282,15 +282,3 @@ p {
         color: white !important;
     }
 }
-
-
-.dz-upload {
-
-    background: linear-gradient(90deg, #1a73e8 0%, #42a5f5 40%, #38bdf8 70%, #22d3ee 100%) !important;
-
-}
-
-
-div.wpforms-container div.wpforms-uploader .dz-preview.dz-processing .dz-progress {
-    bottom: -5px !important;
-}
