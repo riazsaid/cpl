@@ -1,52 +1,75 @@
-/* Apply to all page-template-default pages except home */
-body.page-template-default:not(.home) #site-content {
+/* Apply only to selected pages */
+body.page-template-default.page-slug-privacy-policy #site-content,
+body.page-template-default.page-slug-shipping-returns #site-content,
+body.page-template-default.page-slug-terms-of-service #site-content {
     padding-bottom: var(--section-space-210);
 }
 
 /* Headings */
-body.page-template-default:not(.home) #site-content h1,
-body.page-template-default:not(.home) #site-content h2 {
+body.page-template-default.page-slug-privacy-policy #site-content h1,
+body.page-template-default.page-slug-privacy-policy #site-content h2,
+body.page-template-default.page-slug-shipping-returns #site-content h1,
+body.page-template-default.page-slug-shipping-returns #site-content h2,
+body.page-template-default.page-slug-terms-of-service #site-content h1,
+body.page-template-default.page-slug-terms-of-service #site-content h2 {
     padding-block: var(--space-md);
 }
 
 /* h3 */
-body.page-template-default:not(.home) #site-content h3 {
+body.page-template-default.page-slug-privacy-policy #site-content h3,
+body.page-template-default.page-slug-shipping-returns #site-content h3,
+body.page-template-default.page-slug-terms-of-service #site-content h3 {
     padding-bottom: var(--space-xmd);
 }
 
 /* Paragraph */
-body.page-template-default:not(.home) #site-content p {
+body.page-template-default.page-slug-privacy-policy #site-content p,
+body.page-template-default.page-slug-shipping-returns #site-content p,
+body.page-template-default.page-slug-terms-of-service #site-content p {
     padding-bottom: var(--space-xsm);
 }
 
 /* hr */
-body.page-template-default:not(.home) #site-content hr {
+body.page-template-default.page-slug-privacy-policy #site-content hr,
+body.page-template-default.page-slug-shipping-returns #site-content hr,
+body.page-template-default.page-slug-terms-of-service #site-content hr {
     margin-block: var(--space-xsm);
 }
 
 /* ul */
-body.page-template-default:not(.home) #site-content ul {
+body.page-template-default.page-slug-privacy-policy #site-content ul,
+body.page-template-default.page-slug-shipping-returns #site-content ul,
+body.page-template-default.page-slug-terms-of-service #site-content ul {
     padding-left: 0.8rem;
     font-size: var(--h6);
 }
 
 /* People section */
-body.page-template-default:not(.home) .people-behind {
+body.page-template-default.page-slug-privacy-policy .people-behind,
+body.page-template-default.page-slug-shipping-returns .people-behind,
+body.page-template-default.page-slug-terms-of-service .people-behind {
     padding-bottom: var(--section-space-210);
+}
+
+/* specific css */
+body.page-template-default.page-slug-privacy-policy #site-content>section:last-child,
+body.page-template-default.page-slug-shipping-returns #site-content>section:last-child,
+body.page-template-default.page-slug-terms-of-service #site-content>section:last-child {
+    padding-bottom: 0 !important;
+}
+
+body.page-template-default.page-slug-privacy-policy #site-content .faq-accordion-block,
+body.page-template-default.page-slug-shipping-returns #site-content .faq-accordion-block,
+body.page-template-default.page-slug-terms-of-service #site-content .faq-accordion-block {
+    padding-block: 8.5rem;
 }
 
 /* Mobile fix */
 @media (max-width: 767px) {
-    body.page-template-default:not(.home) #site-content {
+
+    body.page-template-default.page-slug-privacy-policy #site-content,
+    body.page-template-default.page-slug-shipping-returns #site-content,
+    body.page-template-default.page-slug-terms-of-service #site-content {
         padding-bottom: var(--space-lg);
     }
-}
-
-/* specific css */
-body.page-template-default:not(.home) #site-content>section:last-child {
-    padding-bottom: 0 !important;
-}
-
-body.page-template-default:not(.home) #site-content .faq-accordion-block {
-    padding-block: 8.5rem;
 }
