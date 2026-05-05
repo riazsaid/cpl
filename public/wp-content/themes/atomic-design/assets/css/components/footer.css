@@ -288,8 +288,16 @@
 }
 
 .dz-progress {
-    display: none !important;
+    bottom: -5px !important;
+    background-color: #ffffff !important;
 }
+
+.wpforms-uploader .dz-preview .dz-progress .dz-upload {
+    display: block;
+    height: 5px;
+    background: linear-gradient(90deg, #1a73e8 0%, #42a5f5 40%, #38bdf8 70%, #22d3ee 100%) !important;
+}
+
 
 .dz-remove {
     opacity: 1 !important;
