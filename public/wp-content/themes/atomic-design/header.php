@@ -10,10 +10,7 @@
 <body <?php body_class(); ?>>
 
 <?php wp_body_open(); ?>
-
-
-
-    <header class="site-header" role="banner">
+<header class="site-header" role="banner">
 
         <?php
         // Phone number — set once in WP Admin → Site Settings → Phone Number.
@@ -87,3 +84,6 @@
 
         </div><!-- /.container.site-header__inner -->
     </header><!-- /.site-header -->
+<div class="site-shell">
+    
+
