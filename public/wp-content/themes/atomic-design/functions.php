@@ -282,6 +282,97 @@ function atomic_design_register_acf_fields()
                 'required'          => 0,
                 'rows'              => 3,
             ],
+            [
+                'key'               => 'field_business_hours',
+                'label'             => 'Business Hours',
+                'name'              => 'business_hours',
+                'type'              => 'text',
+                'instructions'      => 'Used by the [BUSINESS HOURS NEEDED] token.',
+                'required'          => 0,
+            ],
+            [
+                'key'               => 'field_payment_methods',
+                'label'             => 'Payment Methods',
+                'name'              => 'payment_methods',
+                'type'              => 'textarea',
+                'instructions'      => 'Used by the [PAYMENT METHODS NEEDED] token.',
+                'required'          => 0,
+                'rows'              => 3,
+            ],
+            [
+                'key'               => 'field_payment_terms',
+                'label'             => 'Payment Terms',
+                'name'              => 'payment_terms',
+                'type'              => 'textarea',
+                'instructions'      => 'Used by the [PAYMENT TERMS NEEDED] token.',
+                'required'          => 0,
+                'rows'              => 3,
+            ],
+            [
+                'key'               => 'field_standard_turnaround_time',
+                'label'             => 'Standard Turnaround Time',
+                'name'              => 'standard_turnaround_time',
+                'type'              => 'text',
+                'instructions'      => 'Used by the [STANDARD TURNAROUND TIME NEEDED] token.',
+                'required'          => 0,
+            ],
+            [
+                'key'               => 'field_minimum_order_policy',
+                'label'             => 'Minimum Order Policy',
+                'name'              => 'minimum_order_policy',
+                'type'              => 'textarea',
+                'instructions'      => 'Used by the [MINIMUM ORDER POLICY NEEDED] token.',
+                'required'          => 0,
+                'rows'              => 3,
+            ],
+            [
+                'key'               => 'field_digitizing_fee',
+                'label'             => 'Digitizing Fee',
+                'name'              => 'digitizing_fee',
+                'type'              => 'text',
+                'instructions'      => 'Used by the [DIGITIZING FEE NEEDED] token.',
+                'required'          => 0,
+            ],
+            [
+                'key'               => 'field_number_of_days',
+                'label'             => 'Number of Days',
+                'name'              => 'number_of_days',
+                'type'              => 'text',
+                'instructions'      => 'Used by the [NUMBER OF DAYS] token.',
+                'required'          => 0,
+            ],
+            [
+                'key'               => 'field_damage_report_window',
+                'label'             => 'Damage Report Window',
+                'name'              => 'damage_report_window',
+                'type'              => 'text',
+                'instructions'      => 'Used by the [DAMAGE REPORT WINDOW] token.',
+                'required'          => 0,
+            ],
+            [
+                'key'               => 'field_restocking_fee',
+                'label'             => 'Restocking Fee',
+                'name'              => 'restocking_fee',
+                'type'              => 'text',
+                'instructions'      => 'Used by the [RESTOCKING FEE] token.',
+                'required'          => 0,
+            ],
+            [
+                'key'               => 'field_stock_return_window',
+                'label'             => 'Stock Return Window',
+                'name'              => 'stock_return_window',
+                'type'              => 'text',
+                'instructions'      => 'Used by the [STOCK RETURN WINDOW] token.',
+                'required'          => 0,
+            ],
+            [
+                'key'               => 'field_restocking_fee_percentage',
+                'label'             => 'Restocking Fee Percentage',
+                'name'              => 'restocking_fee_percentage',
+                'type'              => 'text',
+                'instructions'      => 'Used by the [RESTOCKING FEE PERCENTAGE] token.',
+                'required'          => 0,
+            ],
         ],
         'location' => [
             [
@@ -384,6 +475,39 @@ function atomic_design_contact_address_shortcode()
     return nl2br(esc_html(atomic_design_get_contact_detail('business_address')));
 }
 add_shortcode('address', 'atomic_design_contact_address_shortcode');
+
+function atomic_design_format_contact_token_value($field_name)
+{
+    return nl2br(esc_html(atomic_design_get_contact_detail($field_name)));
+}
+
+function atomic_design_get_contact_token_replacements()
+{
+    return [
+        '[phone]'                           => atomic_design_contact_phone_shortcode(),
+        '[email]'                           => atomic_design_contact_email_shortcode(),
+        '[address]'                         => atomic_design_contact_address_shortcode(),
+        '[PHONE NUMBER NEEDED]'             => atomic_design_contact_phone_shortcode(),
+        '[EMAIL ADDRESS NEEDED]'            => atomic_design_contact_email_shortcode(),
+        '[PAYMENT METHODS NEEDED]'          => atomic_design_format_contact_token_value('payment_methods'),
+        '[PAYMENT TERMS NEEDED]'            => atomic_design_format_contact_token_value('payment_terms'),
+        '[STANDARD TURNAROUND TIME NEEDED]' => atomic_design_format_contact_token_value('standard_turnaround_time'),
+        '[MINIMUM ORDER POLICY NEEDED]'     => atomic_design_format_contact_token_value('minimum_order_policy'),
+        '[DIGITIZING FEE NEEDED]'           => atomic_design_format_contact_token_value('digitizing_fee'),
+        '[BUSINESS HOURS NEEDED]'           => atomic_design_format_contact_token_value('business_hours'),
+        '[NUMBER OF DAYS]'                  => atomic_design_format_contact_token_value('number_of_days'),
+        '[DAMAGE REPORT WINDOW]'            => atomic_design_format_contact_token_value('damage_report_window'),
+        '[RESTOCKING FEE]'                  => atomic_design_format_contact_token_value('restocking_fee'),
+        '[STOCK RETURN WINDOW]'             => atomic_design_format_contact_token_value('stock_return_window'),
+        '[RESTOCKING FEE PERCENTAGE]'       => atomic_design_format_contact_token_value('restocking_fee_percentage'),
+    ];
+}
+
+function atomic_design_replace_contact_tokens($content)
+{
+    return strtr($content, atomic_design_get_contact_token_replacements());
+}
+add_filter('the_content', 'atomic_design_replace_contact_tokens', 12);
 
 /**
  * REST API support for shared CPT ACF fields.
