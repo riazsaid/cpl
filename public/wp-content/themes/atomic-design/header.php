@@ -11,7 +11,7 @@
 
 <?php wp_body_open(); ?>
 
-<div class="site-shell">
+
 
     <header class="site-header" role="banner">
 
