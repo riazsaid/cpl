@@ -265,8 +265,20 @@ p {
     font-weight: 400;
     line-height: var(--lh-md);
 }
-.mid-image{
+
+.mid-image {
     max-width: 860px !important;
     margin: 0 auto !important;
     padding-bottom: var(--section-space-210) !important;
+}
+
+
+
+.wpforms-confirmation-container-full {
+    background: transparent !important;
+    border: 1px solid black !important;
+
+    p {
+        color: white !important;
+    }
 }
