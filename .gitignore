@@ -33,6 +33,7 @@ public/wp/*
 public/wp-config-ddev.php
 public/wp-content/uploads/
 public/wp-content/wflogs/
+public/wp-content/updraft/
 public/wp-content/cache/
 public/wp-content/upgrade/
 wp-content/uploads/
@@ -44,5 +45,3 @@ wp-content/uploads/
 
 ### Local scripts
 *.sh
-
-public/wp-content/wflogs/
