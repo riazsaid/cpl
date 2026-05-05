@@ -2,7 +2,8 @@
 body.page-template-default.page-slug-privacy-policy #site-content,
 body.page-template-default.page-slug-shipping-returns #site-content,
 body.page-template-default.page-slug-terms-of-service #site-content,
-body.page-template-default.page-slug-bulk-ordering #site-content {
+body.page-template-default.page-slug-bulk-ordering #site-content,
+body.single-resources #site-content {
     padding-bottom: var(--section-space-210);
 }
 
@@ -14,7 +15,9 @@ body.page-template-default.page-slug-shipping-returns #site-content h2,
 body.page-template-default.page-slug-terms-of-service #site-content h1,
 body.page-template-default.page-slug-terms-of-service #site-content h2,
 body.page-template-default.page-slug-bulk-ordering #site-content h1,
-body.page-template-default.page-slug-bulk-ordering #site-content h2 {
+body.page-template-default.page-slug-bulk-ordering #site-content h2,
+body.single-resources #site-content h1,
+body.single-resources #site-content h2 {
     padding-block: var(--space-md);
 }
 
@@ -22,7 +25,8 @@ body.page-template-default.page-slug-bulk-ordering #site-content h2 {
 body.page-template-default.page-slug-privacy-policy #site-content h3,
 body.page-template-default.page-slug-shipping-returns #site-content h3,
 body.page-template-default.page-slug-terms-of-service #site-content h3,
-body.page-template-default.page-slug-bulk-ordering #site-content h3 {
+body.page-template-default.page-slug-bulk-ordering #site-content h3,
+body.single-resources #site-content h3 {
     padding-bottom: var(--space-xmd);
 }
 
@@ -30,7 +34,8 @@ body.page-template-default.page-slug-bulk-ordering #site-content h3 {
 body.page-template-default.page-slug-privacy-policy #site-content p,
 body.page-template-default.page-slug-shipping-returns #site-content p,
 body.page-template-default.page-slug-terms-of-service #site-content p,
-body.page-template-default.page-slug-bulk-ordering #site-content p {
+body.page-template-default.page-slug-bulk-ordering #site-content p,
+body.single-resources #site-content p {
     padding-bottom: var(--space-xsm);
 }
 
@@ -38,7 +43,8 @@ body.page-template-default.page-slug-bulk-ordering #site-content p {
 body.page-template-default.page-slug-privacy-policy #site-content hr,
 body.page-template-default.page-slug-shipping-returns #site-content hr,
 body.page-template-default.page-slug-terms-of-service #site-content hr,
-body.page-template-default.page-slug-bulk-ordering #site-content hr {
+body.page-template-default.page-slug-bulk-ordering #site-content hr,
+body.single-resources #site-content hr {
     margin-block: var(--space-xsm);
 }
 
@@ -46,7 +52,8 @@ body.page-template-default.page-slug-bulk-ordering #site-content hr {
 body.page-template-default.page-slug-privacy-policy #site-content ul,
 body.page-template-default.page-slug-shipping-returns #site-content ul,
 body.page-template-default.page-slug-terms-of-service #site-content ul,
-body.page-template-default.page-slug-bulk-ordering #site-content ul {
+body.page-template-default.page-slug-bulk-ordering #site-content ul,
+body.single-resources #site-content ul {
     padding-left: 0.8rem;
     font-size: var(--h6);
 }
@@ -63,14 +70,16 @@ body.page-template-default.page-slug-bulk-ordering .people-behind {
 body.page-template-default.page-slug-privacy-policy #site-content>section:last-child,
 body.page-template-default.page-slug-shipping-returns #site-content>section:last-child,
 body.page-template-default.page-slug-terms-of-service #site-content>section:last-child,
-body.page-template-default.page-slug-bulk-ordering #site-content>section:last-child {
+body.page-template-default.page-slug-bulk-ordering #site-content>section:last-child,
+body.single-resources #site-content>section:last-child {
     padding-bottom: 0 !important;
 }
 
 body.page-template-default.page-slug-privacy-policy #site-content .faq-accordion-block,
 body.page-template-default.page-slug-shipping-returns #site-content .faq-accordion-block,
 body.page-template-default.page-slug-terms-of-service #site-content .faq-accordion-block,
-body.page-template-default.page-slug-bulk-ordering #site-content .faq-accordion-block {
+body.page-template-default.page-slug-bulk-ordering #site-content .faq-accordion-block,
+body.single-resources #site-content .faq-accordion-block {
     padding-block: 8.5rem;
 }
 
@@ -80,7 +89,8 @@ body.page-template-default.page-slug-bulk-ordering #site-content .faq-accordion-
     body.page-template-default.page-slug-privacy-policy #site-content,
     body.page-template-default.page-slug-shipping-returns #site-content,
     body.page-template-default.page-slug-terms-of-service #site-content,
-    body.page-template-default.page-slug-bulk-ordering #site-content {
+    body.page-template-default.page-slug-bulk-ordering #site-content,
+    body.single-resources #site-content {
         padding-bottom: var(--space-lg);
     }
 }

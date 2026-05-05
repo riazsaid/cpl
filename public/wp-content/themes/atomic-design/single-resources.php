@@ -12,6 +12,11 @@ get_header();
     <?php
     while (have_posts()) :
         the_post();
+        ?>
+        <header class="resource-single-header">
+            <h1><?php the_title(); ?></h1>
+        </header>
+        <?php
         the_content();
     endwhile;
     ?>

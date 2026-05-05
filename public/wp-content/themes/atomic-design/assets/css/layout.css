@@ -145,7 +145,8 @@ section {
 
 
 
-.page-template-default #site-content {
+.page-template-default #site-content,
+.single-resources #site-content {
     width: min(100% - (var(--gutter) * 2), var(--container));
     margin-inline: auto;
 }
