@@ -323,6 +323,47 @@ function atomic_design_acf_json_load_point($paths)
 add_filter('acf/settings/load_json', 'atomic_design_acf_json_load_point');
 
 /**
+ * Contact detail tokens for static Gutenberg content.
+ *
+ * Editors can type [phone], [email], or [address] in a Paragraph block and the
+ * values will render from Synced Components > Contact Details.
+ */
+function atomic_design_get_contact_detail($field_name)
+{
+    if (function_exists('get_field')) {
+        $value = get_field($field_name, 'option');
+
+        if (!empty($value)) {
+            return (string) $value;
+        }
+    }
+
+    if ('phone_number' === $field_name) {
+        return (string) get_option('atomic_phone_number', '');
+    }
+
+    return '';
+}
+
+function atomic_design_contact_phone_shortcode()
+{
+    return esc_html(atomic_design_get_contact_detail('phone_number'));
+}
+add_shortcode('phone', 'atomic_design_contact_phone_shortcode');
+
+function atomic_design_contact_email_shortcode()
+{
+    return esc_html(atomic_design_get_contact_detail('email_address'));
+}
+add_shortcode('email', 'atomic_design_contact_email_shortcode');
+
+function atomic_design_contact_address_shortcode()
+{
+    return nl2br(esc_html(atomic_design_get_contact_detail('business_address')));
+}
+add_shortcode('address', 'atomic_design_contact_address_shortcode');
+
+/**
  * REST API support for shared CPT ACF fields.
  *
  * Accepts payloads like:
