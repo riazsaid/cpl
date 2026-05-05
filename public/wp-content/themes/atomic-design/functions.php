@@ -347,13 +347,35 @@ function atomic_design_get_contact_detail($field_name)
 
 function atomic_design_contact_phone_shortcode()
 {
-    return esc_html(atomic_design_get_contact_detail('phone_number'));
+    $phone = atomic_design_get_contact_detail('phone_number');
+
+    if ('' === $phone) {
+        return '';
+    }
+
+    $phone_tel = preg_replace('/[^+\d]/', '', $phone);
+
+    return sprintf(
+        '<a href="tel:%s">%s</a>',
+        esc_attr($phone_tel),
+        esc_html($phone)
+    );
 }
 add_shortcode('phone', 'atomic_design_contact_phone_shortcode');
 
 function atomic_design_contact_email_shortcode()
 {
-    return esc_html(atomic_design_get_contact_detail('email_address'));
+    $email = atomic_design_get_contact_detail('email_address');
+
+    if ('' === $email) {
+        return '';
+    }
+
+    return sprintf(
+        '<a href="mailto:%s">%s</a>',
+        esc_attr($email),
+        esc_html($email)
+    );
 }
 add_shortcode('email', 'atomic_design_contact_email_shortcode');
 
