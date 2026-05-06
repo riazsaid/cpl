@@ -100,8 +100,12 @@ body.single-resources #site-content .faq-accordion-block {
 
 }
 
-.page-template-default.page-slug-faq .title-description-columns {
+.page-template-default.page-slug-faq .title-description-columns .title-description-columns__split {
     display: block !important;
+}
+
+.faq-item:has(.question-text:empty) {
+    display: none;
 }
 
 /* Mobile fix */
