@@ -157,7 +157,7 @@
 
 .service-links-grid__link:hover,
 .service-links-grid__link:focus-visible {
-    color: var(--color-accent);
+    color: var(--accent-hover);
 }
 
 /* @media (max-width: 1024px) {
