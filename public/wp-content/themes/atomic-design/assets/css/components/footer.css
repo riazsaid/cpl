@@ -119,15 +119,6 @@
    CTA CARD
    ============================================================ */
 
-.site-footer__cta,
-#forminator-module-1114 {
-    padding-block: 2.2rem 1.7rem !important;
-    padding-inline: 1.4rem !important;
-    background-color: var(--accent);
-    border: 1px solid rgba(99, 149, 255, 0.22);
-    box-shadow: var(--shadow) !important;
-}
-
 .site-footer__cta-title {
     font-size: var(--h1);
     font-weight: 600;
