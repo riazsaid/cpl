@@ -1,7 +1,13 @@
 /* ===============================
    WRAPPER (better proportions)
 ================================ */
-
+.forminator-custom-form {
+    padding-block: 2.2rem 1.7rem !important;
+    padding-inline: 1.4rem !important;
+    background-color: var(--accent);
+    border: 1px solid rgba(99, 149, 255, 0.22);
+    box-shadow: var(--shadow) !important;
+}
 
 /* ===============================
    HEADER (fix spacing + scale)
