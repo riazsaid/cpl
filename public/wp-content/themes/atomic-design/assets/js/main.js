@@ -80,6 +80,25 @@
         onScroll();
     }
 
+    const articleHeadings = document.querySelectorAll('.article-content h2[id]');
+    const tocItems = document.querySelectorAll('.article-toc__item');
+
+    if (articleHeadings.length && tocItems.length && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                }
+
+                tocItems.forEach(item => {
+                    item.classList.toggle('is-active', item.dataset.target === entry.target.id);
+                });
+            });
+        }, { rootMargin: '-20% 0px -70% 0px' });
+
+        articleHeadings.forEach(heading => observer.observe(heading));
+    }
+
     function getWordTokens(text) {
         const normalized = text.replace(/\s+/g, ' ').trim();
         return normalized ? normalized.match(/\S+\s*/g) || [] : [];
