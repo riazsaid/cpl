@@ -295,15 +295,21 @@
         
         // Check URL for quote-related paths
         const urlPatterns = [
-            '/request-quote',
-            '/contact',
-            'quote'
+           
+        ];
+        
+        // Exclude pages that have dedicated content
+        const excludeUrls = [
+            '/how-to-order/',
+            '/contact/',
+            '/request-quote'
         ];
         
         const hasQuoteText = textPatterns.some(pattern => text.includes(pattern));
         const hasQuoteUrl = urlPatterns.some(pattern => href.includes(pattern));
+        const isExcluded = excludeUrls.some(pattern => href.includes(pattern));
         
-        return hasQuoteText || hasQuoteUrl;
+        return (hasQuoteText || hasQuoteUrl) && !isExcluded;
     }
 
     // Function to open popup
