@@ -173,7 +173,7 @@
 
 .site-footer__credit {
     text-align: right;
-    padding-bottom: 1rem;
+    padding-bottom: var(--space-xs);
 }
 
 .site-footer__credit-link {
@@ -314,11 +314,11 @@
 @media (max-width: 767px) {
     .footer-wrapper {
         flex-direction: column-reverse;
-        gap: 2rem;
+        gap: var(--space-md);
     }
 
     .site-footer__left {
-        gap: 1.2rem;
+        gap: var(--space-sm);
     }
 
     .site-footer__brand,
@@ -332,8 +332,8 @@
     }
 
     .wpforms-layout-row {
-        gap: 1rem;
-        padding-top: 1rem !important;
+        gap: var(--space-sm);
+        padding-top: var(--space-xs) !important;
 
     }
 
