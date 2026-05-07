@@ -8,6 +8,10 @@ body.single-resources #site-content {
     padding-bottom: var(--section-space-210);
 }
 
+body.single-resources.postid-1151 #site-content {
+    padding-bottom: 0 !important;
+}
+
 /* Headings H1*/
 body.page-slug-privacy-policy #site-content h1,
 body.page-slug-shipping-returns #site-content h1,
