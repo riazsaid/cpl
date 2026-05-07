@@ -111,12 +111,14 @@
 /* arrow icon */
 
 #forminator-module-1114 .forminator-button-upload::after {
-    content: url(../../img/upload-icon.svg);
+    content: "";
     display: inline-block;
-    color: var(--text);
-    text-align: center;
-    font-size: 30px;
-    margin-top: 5px;
+    width: 40px;
+    height: 40px;
+    background-image: url('../../img/upload-icon.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 /* ===============================

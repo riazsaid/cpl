@@ -103,7 +103,7 @@ body.single-resources #site-content .faq-accordion-block {
     padding-block: 8.5rem;
 }
 
-.page-template-default.page-slug-about-us .title-description-columns,
+.page-template-default.page-slug-about-us>.title-description-columns,
 .page-template-default.page-slug-locations .service-links-grid {
     padding-top: 2rem;
 
