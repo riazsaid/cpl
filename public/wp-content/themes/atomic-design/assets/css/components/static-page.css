@@ -8,6 +8,10 @@ body.single-resources #site-content {
     padding-bottom: var(--section-space-210);
 }
 
+body.single-resources.postid-1151 #site-content {
+    padding-bottom: 0 !important;
+}
+
 /* Headings H1*/
 body.page-slug-privacy-policy #site-content h1,
 body.page-slug-shipping-returns #site-content h1,
@@ -16,6 +20,10 @@ body.page-slug-bulk-ordering #site-content h1,
 body.page-slug-request-quote #site-content h1,
 body.single-resources #site-content h1 {
     margin-block: 48px 30px;
+}
+
+body.page-slug-request-quote #site-content .faq-accordion-block h2 {
+    margin-block: unset !important;
 }
 
 /* Headings H2*/
@@ -99,7 +107,10 @@ body.single-resources #site-content .faq-accordion-block {
     padding-block: 8.5rem;
 }
 
-.page-template-default.page-slug-about-us .title-description-columns,
+.page-template-default.page-slug-about-us #site-content .title-description-columns:first-of-type {
+    padding-top: 2rem;
+}
+
 .page-template-default.page-slug-locations .service-links-grid {
     padding-top: 2rem;
 

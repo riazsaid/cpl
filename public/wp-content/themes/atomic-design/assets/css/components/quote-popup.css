@@ -1,0 +1,165 @@
+/* ============================================================
+   Quote Popup Modal
+   ============================================================ */
+
+.quote-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: none;
+}
+
+.quote-popup__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+}
+
+.quote-popup__modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    width: 90%;
+    max-height: 90vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.quote-popup__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+    background: #f9fafb;
+}
+
+.quote-popup__header h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.quote-popup__close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #6b7280;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+}
+
+.quote-popup__close:hover {
+    background: #e5e7eb;
+    color: #374151;
+}
+
+.quote-popup__content {
+    padding: 1.5rem;
+    overflow-y: auto;
+    flex: 1;
+}
+
+/* Forminator form styling in popup */
+.quote-popup__content .forminator-form {
+    margin: 0;
+}
+
+.quote-popup__content .forminator-field {
+    margin-bottom: 1rem;
+}
+
+.quote-popup__content .forminator-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #374151;
+}
+
+.quote-popup__content .forminator-input,
+.quote-popup__content .forminator-textarea,
+.quote-popup__content .forminator-select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
+}
+
+.quote-popup__content .forminator-input:focus,
+.quote-popup__content .forminator-textarea:focus,
+.quote-popup__content .forminator-select:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.quote-popup__content .forminator-button {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.quote-popup__content .forminator-button:hover {
+    background: #2563eb;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .quote-popup__modal {
+        width: 95%;
+        max-height: 95vh;
+    }
+
+    .quote-popup__header {
+        padding: 1rem;
+    }
+
+    .quote-popup__header h3 {
+        font-size: 1.25rem;
+    }
+
+    .quote-popup__content {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .quote-popup__modal {
+        width: 100%;
+        height: 100vh;
+        max-height: 100vh;
+        border-radius: 0;
+        top: 0;
+        left: 0;
+        transform: none;
+    }
+}

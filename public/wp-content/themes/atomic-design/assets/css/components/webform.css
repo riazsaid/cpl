@@ -22,6 +22,7 @@
     font-size: var(--body-lg);
     color: var(--text);
     margin-block: 1.5rem 1rem !important;
+    line-height: var(--lh-3xs) !important;
 }
 
 .forminator-custom-form .forminator-col {
@@ -110,12 +111,14 @@
 /* arrow icon */
 
 #forminator-module-1114 .forminator-button-upload::after {
-    content: "↑";
+    content: "";
     display: inline-block;
-    color: var(--text);
-    text-align: center;
-    font-size: 30px;
-    margin-top: 5px;
+    width: 40px;
+    height: 40px;
+    background-image: url('../../img/upload-icon.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 /* ===============================

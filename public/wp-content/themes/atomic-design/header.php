@@ -59,6 +59,7 @@
                     <?php echo esc_html($phone_number); ?>
                 </a>
                 <a class="btn btn-primary site-header__topbar-cta"
+                   id="get-quote-btn"
                    href="<?php echo esc_url(home_url('/request-quote/')); ?>">
                     <?php esc_html_e('Get a Quote', 'atomic-design'); ?>
                 </a>
