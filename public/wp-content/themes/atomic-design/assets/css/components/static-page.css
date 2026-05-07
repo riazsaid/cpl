@@ -15,7 +15,7 @@ body.page-slug-terms-of-service #site-content h1,
 body.page-slug-bulk-ordering #site-content h1,
 body.page-slug-request-quote #site-content h1,
 body.single-resources #site-content h1 {
-    margin-top: 48px;
+    margin-block: 48px 30px;
 }
 
 /* Headings H2*/
@@ -25,8 +25,7 @@ body.page-slug-terms-of-service #site-content h2,
 body.page-slug-bulk-ordering #site-content h2,
 body.page-slug-request-quote #site-content h2,
 body.single-resources #site-content h2 {
-    margin-top: 80px;
-    margin-bottom: 20px;
+    margin-block: 80px 20px;
 }
 
 /* h3 */
@@ -36,8 +35,7 @@ body.page-slug-terms-of-service #site-content h3,
 body.page-slug-bulk-ordering #site-content h3,
 body.page-slug-request-quote #site-content h3,
 body.single-resources #site-content h3 {
-    margin-top: 20px;
-    margin-bottom: 16px;
+    margin-block: 20px 16px;
 }
 
 /* Paragraph */
