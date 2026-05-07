@@ -38,27 +38,14 @@
     flex-direction: column;
 }
 
-.quote-popup__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem;
-    border-bottom: 1px solid #e5e7eb;
-    background: #f9fafb;
-}
-
-.quote-popup__header h3 {
-    margin: 0;
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #1f2937;
-}
-
 .quote-popup__close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
     background: none;
     border: none;
     font-size: 1.5rem;
-    color: #6b7280;
+    color: white;
     cursor: pointer;
     padding: 0.5rem;
     border-radius: 4px;
@@ -68,6 +55,7 @@
     justify-content: center;
     width: 2rem;
     height: 2rem;
+    z-index: 10;
 }
 
 .quote-popup__close:hover {
@@ -76,9 +64,10 @@
 }
 
 .quote-popup__content {
-    padding: 1.5rem;
+    padding: 4px;
     overflow-y: auto;
     flex: 1;
+    position: relative;
 }
 
 /* Forminator form styling in popup */
@@ -162,4 +151,10 @@
         left: 0;
         transform: none;
     }
+}
+
+
+
+.quote-popup__modal #forminator-module-1114{
+    border-radius: 4px;
 }
