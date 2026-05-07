@@ -401,6 +401,84 @@ function atomic_design_register_acf_fields()
         'show_in_rest'          => 1,
     ]);
 
+    acf_add_local_field_group([
+        'key'    => 'group_atomic_blog_post_fields',
+        'title'  => 'Blog Post Settings',
+        'fields' => [
+            [
+                'key'          => 'field_post_excerpt_custom',
+                'label'        => 'Excerpt (Custom)',
+                'name'         => 'post_excerpt_custom',
+                'type'         => 'textarea',
+                'instructions' => 'Optional card excerpt. Falls back to the WordPress excerpt if blank.',
+                'required'     => 0,
+                'rows'         => 3,
+            ],
+            [
+                'key'          => 'field_read_time_minutes',
+                'label'        => 'Read Time (Minutes)',
+                'name'         => 'read_time_minutes',
+                'type'         => 'number',
+                'instructions' => 'Optional. Leave blank to auto-calculate from post content at about 200 words per minute.',
+                'required'     => 0,
+                'min'          => 1,
+                'step'         => 1,
+            ],
+            [
+                'key'          => 'field_is_featured',
+                'label'        => 'Featured Post',
+                'name'         => 'is_featured',
+                'type'         => 'true_false',
+                'instructions' => 'Optional editorial control for the blog hero. If none is selected, the newest post is used.',
+                'required'     => 0,
+                'ui'           => 1,
+            ],
+            [
+                'key'          => 'field_article_deck',
+                'label'        => 'Article Deck',
+                'name'         => 'article_deck',
+                'type'         => 'textarea',
+                'instructions' => 'Subtitle below the single post title. Falls back to the custom excerpt or WordPress excerpt if blank.',
+                'required'     => 0,
+                'rows'         => 3,
+            ],
+            [
+                'key'          => 'field_hero_image_caption',
+                'label'        => 'Hero Image Caption',
+                'name'         => 'hero_image_caption',
+                'type'         => 'text',
+                'instructions' => 'Optional caption displayed below the featured image on single posts.',
+                'required'     => 0,
+            ],
+            [
+                'key'           => 'field_show_toc',
+                'label'         => 'Show Table of Contents',
+                'name'          => 'show_toc',
+                'type'          => 'true_false',
+                'instructions'  => 'Shown only when the post has at least three H2 headings.',
+                'required'      => 0,
+                'ui'            => 1,
+                'default_value' => 1,
+            ],
+        ],
+        'location' => [
+            [
+                [
+                    'param'    => 'post_type',
+                    'operator' => '==',
+                    'value'    => 'post',
+                ],
+            ],
+        ],
+        'menu_order'            => 0,
+        'position'              => 'normal',
+        'style'                 => 'default',
+        'label_placement'       => 'top',
+        'instruction_placement' => 'label',
+        'active'                => true,
+        'show_in_rest'          => 1,
+    ]);
+
     // FAQ field group is defined in acf-json/group_atomic_faq_shared.json
     // so it appears as a real editable group in ACF > Field Groups admin.
 }
@@ -517,6 +595,183 @@ function atomic_design_replace_contact_tokens($content)
     return strtr($content, atomic_design_get_contact_token_replacements());
 }
 add_filter('the_content', 'atomic_design_replace_contact_tokens', 12);
+
+function atomic_design_get_post_excerpt($post_id = null, $length = 28)
+{
+    $post_id = $post_id ?: get_the_ID();
+
+    if (function_exists('get_field')) {
+        $custom_excerpt = get_field('post_excerpt_custom', $post_id);
+
+        if (!empty($custom_excerpt)) {
+            return wp_trim_words(wp_strip_all_tags($custom_excerpt), $length);
+        }
+    }
+
+    $excerpt = get_the_excerpt($post_id);
+
+    if (!empty($excerpt)) {
+        return wp_trim_words(wp_strip_all_tags($excerpt), $length);
+    }
+
+    return wp_trim_words(wp_strip_all_tags(get_post_field('post_content', $post_id)), $length);
+}
+
+function atomic_design_calculate_read_time($post_id = null)
+{
+    $post_id = $post_id ?: get_the_ID();
+    $content = wp_strip_all_tags(get_post_field('post_content', $post_id));
+    $words   = str_word_count($content);
+
+    return max(1, (int) ceil($words / 200));
+}
+
+function atomic_design_get_read_time($post_id = null)
+{
+    $post_id = $post_id ?: get_the_ID();
+
+    if (function_exists('get_field')) {
+        $read_time = (int) get_field('read_time_minutes', $post_id);
+
+        if ($read_time > 0) {
+            return $read_time;
+        }
+    }
+
+    return atomic_design_calculate_read_time($post_id);
+}
+
+function atomic_design_save_post_read_time($post_id)
+{
+    if (!function_exists('update_field') || wp_is_post_revision($post_id) || 'post' !== get_post_type($post_id)) {
+        return;
+    }
+
+    $existing_read_time = function_exists('get_field') ? (int) get_field('read_time_minutes', $post_id) : 0;
+
+    if ($existing_read_time <= 0) {
+        update_field('read_time_minutes', atomic_design_calculate_read_time($post_id), $post_id);
+    }
+}
+add_action('save_post_post', 'atomic_design_save_post_read_time');
+
+function atomic_design_get_primary_category($post_id = null)
+{
+    $categories = get_the_category($post_id ?: get_the_ID());
+
+    return !empty($categories) ? $categories[0] : null;
+}
+
+function atomic_design_get_author_initials($author_id = null)
+{
+    $author_id = $author_id ?: get_the_author_meta('ID');
+    $name      = trim(get_the_author_meta('display_name', $author_id));
+
+    if ('' === $name) {
+        return 'AD';
+    }
+
+    $parts    = preg_split('/\s+/', $name);
+    $initials = '';
+
+    foreach (array_slice($parts, 0, 2) as $part) {
+        $initials .= strtoupper(substr($part, 0, 1));
+    }
+
+    return $initials ?: 'AD';
+}
+
+function atomic_design_get_blog_page_url()
+{
+    $posts_page_id = (int) get_option('page_for_posts');
+
+    if ($posts_page_id > 0) {
+        return get_permalink($posts_page_id);
+    }
+
+    return home_url('/blog/');
+}
+
+function atomic_design_get_blog_page_title()
+{
+    $posts_page_id = (int) get_option('page_for_posts');
+
+    if ($posts_page_id > 0) {
+        return get_the_title($posts_page_id);
+    }
+
+    return __('Blog', 'atomic-design');
+}
+
+function atomic_design_get_article_content_with_ids($content)
+{
+    $used_slugs = [];
+
+    return preg_replace_callback(
+        '/<h2([^>]*)>(.*?)<\/h2>/i',
+        function ($matches) use (&$used_slugs) {
+            if (false !== stripos($matches[1], ' id=')) {
+                return $matches[0];
+            }
+
+            $text = wp_strip_all_tags($matches[2]);
+            $slug = sanitize_title($text);
+
+            if ('' === $slug) {
+                return $matches[0];
+            }
+
+            $base_slug = $slug;
+            $counter   = 2;
+
+            while (in_array($slug, $used_slugs, true)) {
+                $slug = $base_slug . '-' . $counter;
+                $counter++;
+            }
+
+            $used_slugs[] = $slug;
+
+            return '<h2' . $matches[1] . ' id="' . esc_attr($slug) . '">' . $matches[2] . '</h2>';
+        },
+        $content
+    );
+}
+
+function atomic_design_generate_article_toc($content)
+{
+    preg_match_all('/<h2[^>]*id=["\']([^"\']+)["\'][^>]*>(.*?)<\/h2>/i', $content, $matches, PREG_SET_ORDER);
+    $toc = [];
+
+    foreach ($matches as $match) {
+        $toc[] = [
+            'slug' => $match[1],
+            'text' => wp_strip_all_tags($match[2]),
+        ];
+    }
+
+    return $toc;
+}
+
+function atomic_design_disable_blog_post_comments($open, $post_id)
+{
+    if (!is_admin() && 'post' === get_post_type($post_id)) {
+        return false;
+    }
+
+    return $open;
+}
+add_filter('comments_open', 'atomic_design_disable_blog_post_comments', 20, 2);
+add_filter('pings_open', 'atomic_design_disable_blog_post_comments', 20, 2);
+
+function atomic_design_hide_blog_post_comment_count($count, $post_id)
+{
+    if (!is_admin() && 'post' === get_post_type($post_id)) {
+        return 0;
+    }
+
+    return $count;
+}
+add_filter('get_comments_number', 'atomic_design_hide_blog_post_comment_count', 20, 2);
 
 /**
  * REST API support for shared CPT ACF fields.
