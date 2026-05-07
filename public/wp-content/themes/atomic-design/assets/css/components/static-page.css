@@ -57,9 +57,10 @@ body.single-resources #site-content p {
     margin-bottom: 12px;
 }
 
-body #site-content p.red,
-body #site-content .red {
-    color: var(--color-accent) !important;
+.red {
+    background-color: #ff0808 !important;
+    font-size: var(--h5);
+    line-height: var(--lh-sm);
 }
 
 /* hr */
