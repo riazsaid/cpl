@@ -18,6 +18,10 @@ body.single-resources #site-content h1 {
     margin-block: 48px 30px;
 }
 
+body.page-slug-request-quote #site-content .faq-accordion-block h2 {
+    margin-block: unset !important;
+}
+
 /* Headings H2*/
 body.page-slug-privacy-policy #site-content h2,
 body.page-slug-shipping-returns #site-content h2,
