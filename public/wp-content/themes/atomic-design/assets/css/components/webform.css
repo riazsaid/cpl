@@ -1,0 +1,167 @@
+/* ===============================
+   WRAPPER (better proportions)
+================================ */
+.forminator-custom-form {
+    padding-block: 2.2rem 1.7rem !important;
+    padding-inline: 1.4rem !important;
+    background-color: var(--accent);
+    border: 1px solid rgba(99, 149, 255, 0.22);
+    box-shadow: var(--shadow) !important;
+}
+
+/* ===============================
+   HEADER (fix spacing + scale)
+================================ */
+.forminator-custom-form h2 {
+    font-size: var(--h1);
+    color: var(--text);
+    margin: 0 !important;
+}
+
+.forminator-custom-form p {
+    font-size: var(--body-lg);
+    color: var(--text);
+    margin-block: 1.5rem 1rem !important;
+}
+
+.forminator-custom-form .forminator-col {
+    padding: 0 !important;
+}
+
+/* Hide ALL labels */
+#forminator-module-1114 .forminator-label {
+    display: none !important;
+}
+
+/* Show ONLY upload label */
+#forminator-module-1114 #upload-1 .forminator-label {
+    display: block !important;
+}
+
+/* ===============================
+   INPUTS (REAL DESIGN LOOK)
+================================ */
+.forminator-custom-form .forminator-input,
+.forminator-custom-form .forminator-textarea {
+    background-color: var(--accent-soft) !important;
+    color: var(--text) !important;
+    border: 0 !important;
+}
+
+/* subtle depth effect */
+.forminator-custom-form .forminator-input:focus,
+.forminator-custom-form .forminator-textarea:focus {
+    outline: none;
+    background: #3a5a90;
+}
+
+/* placeholders */
+.forminator-custom-form ::placeholder {
+    color: var(--text) !important;
+    opacity: 1 !important;
+}
+
+
+
+
+.forminator-ui#forminator-module-1114.forminator-design--default .forminator-file-upload>span {
+    display: none;
+}
+
+/* ===============================
+   UPLOAD SECTION (FIXED PROPERLY)
+================================ */
+.forminator-custom-form #upload-1 {
+    display: flex;
+    align-items: center;
+    margin-top: -5.8rem;
+    justify-content: space-between;
+}
+
+.forminator-custom-form #upload-1 .forminator-label {
+    font-size: var(--h4) !important;
+    color: var(--text);
+    font-weight: 400 !important;
+    margin: 0;
+}
+
+/* layout */
+.forminator-custom-form .forminator-file-upload {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+/* upload box */
+.forminator-custom-form .forminator-button-upload {
+    display: flex !important;
+    align-items: center;
+    gap: 12px;
+    font-size: var(--body-lg) !important;
+    color: var(--text);
+    width: auto !important;
+    font-family: var(--font-body) !important;
+    background: var(--accent-soft);
+    border-radius: 12px;
+    border: none;
+    position: relative;
+}
+
+/* arrow icon */
+
+#forminator-module-1114 .forminator-button-upload::after {
+    content: "↑";
+    display: inline-block;
+    color: var(--text);
+    text-align: center;
+    font-size: 30px;
+    margin-top: 5px;
+}
+
+/* ===============================
+   SUBMIT BUTTON (correct size)
+================================ */
+.forminator-custom-form .forminator-button-submit {
+    background: var(--bg);
+    color: var(--text);
+    padding: 14px 36px;
+    font-size: var(--h6) !important;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.forminator-custom-form .forminator-button-submit:hover {
+    background: #222;
+}
+
+.forminator-custom-form .forminator-row {
+    margin: 0 !important;
+    gap: 1.1rem;
+    padding-bottom: 15px;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+    .forminator-custom-form {
+        padding: 40px 20px;
+    }
+
+    .forminator-custom-form h2 {
+        font-size: 40px;
+    }
+
+    .forminator-custom-form .forminator-col-6 {
+        width: 100%;
+    }
+
+    .forminator-custom-form .forminator-button-upload {
+        width: 90px;
+        height: 90px;
+    }
+
+    .forminator-custom-form #upload-1 {
+        margin-top: 0rem;
+    }
+}

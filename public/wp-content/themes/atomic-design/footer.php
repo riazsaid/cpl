@@ -83,7 +83,7 @@
             <!-- Bottom bar -->
             <div class="site-footer__right">
             <aside class="site-footer__cta">
-                <?php echo do_shortcode('[wpforms id="303"]'); ?>
+                <?php echo do_shortcode('[forminator_form id="1114"]'); ?>
             </aside>
             </div><!-- /.site-footer__bottom -->
 
