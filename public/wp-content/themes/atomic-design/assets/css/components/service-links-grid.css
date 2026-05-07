@@ -55,7 +55,7 @@
 .service-links-grid__items {
     display: grid;
     gap: 4.2rem;
-    row-gap: 3rem;
+    row-gap: 3.8rem;
 }
 
 .service-links-grid.layout-three-column .service-links-grid__items {
@@ -71,7 +71,7 @@
 .service-links-grid__item {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 1rem;
     align-content: start;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     transform-origin: center;
