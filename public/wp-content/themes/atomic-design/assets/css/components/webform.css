@@ -111,7 +111,7 @@
 /* arrow icon */
 
 #forminator-module-1114 .forminator-button-upload::after {
-    content: "↑";
+    content: url(../../img/upload-icon.svg);
     display: inline-block;
     color: var(--text);
     text-align: center;

@@ -95,12 +95,13 @@
    ============================================================ */
 
 .site-header {
-    position:sticky;
+    padding-top: 30px;
+    position: sticky;
     top: 0;
     z-index: 100;
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
-   
+
 }
 
 .site-header__inner {
