@@ -74,7 +74,7 @@
 .forminator-custom-form #upload-1 {
     display: flex;
     align-items: center;
-    margin-top: -3.6rem;
+    margin-top: -5.8rem;
     justify-content: space-between;
 }
 
@@ -159,5 +159,9 @@
     .forminator-custom-form .forminator-button-upload {
         width: 90px;
         height: 90px;
+    }
+
+    .forminator-custom-form #upload-1 {
+        margin-top: 0rem;
     }
 }

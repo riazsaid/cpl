@@ -8,20 +8,25 @@ body.single-resources #site-content {
     padding-bottom: var(--section-space-210);
 }
 
-/* Headings */
+/* Headings H1*/
 body.page-slug-privacy-policy #site-content h1,
-body.page-slug-privacy-policy #site-content h2,
 body.page-slug-shipping-returns #site-content h1,
-body.page-slug-shipping-returns #site-content h2,
 body.page-slug-terms-of-service #site-content h1,
-body.page-slug-terms-of-service #site-content h2,
 body.page-slug-bulk-ordering #site-content h1,
-body.page-slug-bulk-ordering #site-content h2,
 body.page-slug-request-quote #site-content h1,
+body.single-resources #site-content h1 {
+    margin-top: 48px;
+}
+
+/* Headings H2*/
+body.page-slug-privacy-policy #site-content h2,
+body.page-slug-shipping-returns #site-content h2,
+body.page-slug-terms-of-service #site-content h2,
+body.page-slug-bulk-ordering #site-content h2,
 body.page-slug-request-quote #site-content h2,
-body.single-resources #site-content h1,
 body.single-resources #site-content h2 {
-    padding-block: var(--space-md);
+    margin-top: 80px;
+    margin-bottom: 20px;
 }
 
 /* h3 */
@@ -31,7 +36,8 @@ body.page-slug-terms-of-service #site-content h3,
 body.page-slug-bulk-ordering #site-content h3,
 body.page-slug-request-quote #site-content h3,
 body.single-resources #site-content h3 {
-    padding-bottom: var(--space-xmd);
+    margin-top: 20px;
+    margin-bottom: 16px;
 }
 
 /* Paragraph */
@@ -41,7 +47,8 @@ body.page-slug-terms-of-service #site-content p,
 body.page-slug-bulk-ordering #site-content p,
 body.page-slug-request-quote #site-content p,
 body.single-resources #site-content p {
-    padding-bottom: var(--space-xsm);
+    color: var(--text) !important;
+    margin-bottom: 12px;
 }
 
 /* hr */
