@@ -100,6 +100,22 @@
 
 </div><!-- /.site-shell -->
 
+<!-- Quote Popup Modal -->
+<div id="quote-popup" class="quote-popup" style="display: none;">
+    <div class="quote-popup__overlay"></div>
+    <div class="quote-popup__modal">
+        <div class="quote-popup__header">
+            <h3><?php esc_html_e('Get a Fast Free Quote', 'atomic-design'); ?></h3>
+            <button class="quote-popup__close" aria-label="<?php esc_attr_e('Close popup', 'atomic-design'); ?>">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="quote-popup__content">
+            <?php echo do_shortcode('[forminator_form id="1114"]'); ?>
+        </div>
+    </div>
+</div>
+
 <?php wp_footer(); ?>
 </body>
 </html>

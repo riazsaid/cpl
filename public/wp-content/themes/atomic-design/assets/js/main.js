@@ -242,4 +242,118 @@
     window.addEventListener('resize', onTitleDescriptionResize);
     balanceTitleDescriptionColumns();
 
+    // Quote Popup Modal functionality
+    const quotePopup = document.getElementById('quote-popup');
+    const quotePopupClose = document.querySelector('.quote-popup__close');
+    const quotePopupOverlay = document.querySelector('.quote-popup__overlay');
+
+    // Function to check if a link should trigger the quote popup
+    function isQuoteButton(link) {
+        if (!link) return false;
+        
+        const text = (link.textContent || '').toLowerCase();
+        const href = (link.href || '').toLowerCase();
+        
+        // Check text content for quote-related keywords
+        const textPatterns = [
+            'get a quote',
+            'get a fast quote',
+            'get a fast free quote',
+            'request a quote',
+            'request quote',
+            'free quote'
+        ];
+        
+        // Check URL for quote-related paths
+        const urlPatterns = [
+            '/request-quote',
+            '/contact',
+            'quote'
+        ];
+        
+        const hasQuoteText = textPatterns.some(pattern => text.includes(pattern));
+        const hasQuoteUrl = urlPatterns.some(pattern => href.includes(pattern));
+        
+        return hasQuoteText || hasQuoteUrl;
+    }
+
+    // Function to open popup
+    function openQuotePopup(e) {
+        e.preventDefault();
+        if (quotePopup) {
+            quotePopup.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+    }
+
+    // Function to close popup
+    function closeQuotePopup() {
+        if (quotePopup) {
+            quotePopup.style.display = 'none';
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+    }
+
+    // Find and attach event listeners to all quote buttons
+    function initializeQuoteButtons() {
+        // Specific header button
+        const headerQuoteBtn = document.getElementById('get-quote-btn');
+        if (headerQuoteBtn) {
+            headerQuoteBtn.addEventListener('click', openQuotePopup);
+        }
+
+        // Hero primary buttons
+        const heroLinks = document.querySelectorAll('.hero__link--primary');
+        heroLinks.forEach(link => {
+            if (isQuoteButton(link)) {
+                link.addEventListener('click', openQuotePopup);
+            }
+        });
+
+        // Area coverage CTA buttons
+        const areaCtaLinks = document.querySelectorAll('.area-coverage-grid__cta');
+        areaCtaLinks.forEach(link => {
+            if (isQuoteButton(link)) {
+                link.addEventListener('click', openQuotePopup);
+            }
+        });
+
+        // Any other potential quote buttons
+        const allLinks = document.querySelectorAll('a');
+        allLinks.forEach(link => {
+            if (isQuoteButton(link) && !link.hasAttribute('data-quote-initialized')) {
+                link.addEventListener('click', openQuotePopup);
+                link.setAttribute('data-quote-initialized', 'true');
+            }
+        });
+    }
+
+    // Initialize when DOM is ready
+    if (quotePopup) {
+        initializeQuoteButtons();
+
+        // Close popup when clicking close button
+        if (quotePopupClose) {
+            quotePopupClose.addEventListener('click', closeQuotePopup);
+        }
+
+        // Close popup when clicking overlay
+        if (quotePopupOverlay) {
+            quotePopupOverlay.addEventListener('click', closeQuotePopup);
+        }
+
+        // Close popup on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && quotePopup.style.display === 'block') {
+                closeQuotePopup();
+            }
+        });
+
+        // Re-initialize if new content is loaded dynamically
+        const observer = new MutationObserver(() => {
+            initializeQuoteButtons();
+        });
+        observer.observe(document.body, { childList: true, subtree: true });
+    }
+
 })();
