@@ -74,6 +74,11 @@
                     <a href="<?php echo esc_url(home_url('/resources/material-specs/')); ?>"><?php esc_html_e('Material Specs', 'atomic-design'); ?></a>
                     <span aria-hidden="true">|</span>
                     <a href="<?php echo esc_url(home_url('/how-it-works/')); ?>"><?php esc_html_e('How to Order', 'atomic-design'); ?></a>
+                    <span class="site-footer__credit">
+                        <a href="https://atomicdesign.net/" target="_blank" rel="noopener noreferrer" class="site-footer__credit-link">
+                            <?php esc_html_e('Website Design & SEO by Atomic Design', 'atomic-design'); ?>
+                        </a>
+                    </span>
                 </div>
                 <!-- CTA card -->
             
@@ -88,14 +93,6 @@
             </div><!-- /.site-footer__bottom -->
 
         </div><!-- /.container -->
-        
-        <div class="container">
-            <div class="site-footer__credit">
-                <a href="https://atomicdesign.net/" target="_blank" rel="noopener noreferrer" class="site-footer__credit-link">
-                    Website Design &amp; SEO by Atomic Design
-                </a>
-            </div>
-        </div>
     </footer><!-- /.site-footer -->
 
 </div><!-- /.site-shell -->
