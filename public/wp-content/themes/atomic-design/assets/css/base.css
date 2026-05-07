@@ -157,9 +157,9 @@ p {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
+    gap: var(--space-xsm);
     height: var(--btn-height);
-    padding: 0 var(--btn-pad-x);
+    padding: var(--space-xsm) var(--space-sm);
     border-radius: var(--btn-radius);
     font-family: var(--font-heading);
     font-size: var(--btn-font-size);
@@ -170,7 +170,6 @@ p {
     white-space: nowrap;
     color: var(--text);
     transition: background var(--dur-fast) var(--ease);
-    padding: 0.8rem 1.1rem;
 
 }
 

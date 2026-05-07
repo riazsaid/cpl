@@ -69,7 +69,8 @@
 }
 
 .service-links-grid__item {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: 3rem;
     align-content: start;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -110,8 +111,10 @@
 
 .service-links-grid__content {
     display: grid;
+    flex: 1;
+    row-gap: 20px;
     /* gap: var(--space-xmd); */
-    min-height: 15rem;
+    /* min-height: 15rem; */
 }
 
 .service-links-grid__item-title {
