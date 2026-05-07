@@ -402,6 +402,38 @@ function atomic_design_register_acf_fields()
     ]);
 
     acf_add_local_field_group([
+        'key'    => 'group_atomic_testimonials_buttons',
+        'title'  => 'Testimonials Buttons',
+        'fields' => [
+            [
+                'key'          => 'field_testimonials_review_button_url',
+                'label'        => 'Bottom Read Review Button URL',
+                'name'         => 'testimonials_review_button_url',
+                'type'         => 'url',
+                'instructions' => 'URL used by the bottom “Read Review” button under the testimonials slider.',
+                'required'     => 0,
+                'placeholder'  => 'https://',
+            ],
+        ],
+        'location' => [
+            [
+                [
+                    'param'    => 'options_page',
+                    'operator' => '==',
+                    'value'    => 'atomic-design-testimonials',
+                ],
+            ],
+        ],
+        'menu_order'            => 5,
+        'position'              => 'normal',
+        'style'                 => 'default',
+        'label_placement'       => 'top',
+        'instruction_placement' => 'label',
+        'active'                => true,
+        'show_in_rest'          => 1,
+    ]);
+
+    acf_add_local_field_group([
         'key'    => 'group_atomic_blog_post_fields',
         'title'  => 'Blog Post Settings',
         'fields' => [
