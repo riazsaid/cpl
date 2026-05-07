@@ -283,6 +283,15 @@ function atomic_design_register_acf_fields()
                 'rows'              => 3,
             ],
             [
+                'key'               => 'field_material_clarification_message',
+                'label'             => 'Material Clarification Message',
+                'name'              => 'material_clarification_message',
+                'type'              => 'textarea',
+                'instructions'      => 'Shown in the header dropdown beside the phone number.',
+                'required'          => 0,
+                'rows'              => 4,
+            ],
+            [
                 'key'               => 'field_business_hours',
                 'label'             => 'Business Hours',
                 'name'              => 'business_hours',

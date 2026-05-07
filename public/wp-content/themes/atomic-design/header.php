@@ -18,6 +18,9 @@
         $phone_number = function_exists('get_field')
             ? get_field('phone_number', 'option')
             : '';
+        $material_clarification_message = function_exists('get_field')
+            ? get_field('material_clarification_message', 'option')
+            : '';
         if (empty($phone_number)) {
             $phone_number = get_option('atomic_phone_number', '');
         }
@@ -31,6 +34,26 @@
         <!-- TOP BAR: phone + CTA (hidden on mobile) -->
         <div class="site-header__topbar">
             <div class="container site-header__topbar-inner">
+                <?php if (!empty($material_clarification_message)) : ?>
+                    <div class="site-header__material-clarification">
+                        <button
+                            class="site-header__material-toggle"
+                            type="button"
+                            aria-expanded="false"
+                            aria-controls="material-clarification-message"
+                        >
+                            <span><?php esc_html_e('Material Clarification', 'atomic-design'); ?></span>
+                            <span class="site-header__material-icon" aria-hidden="true">+</span>
+                        </button>
+                        <div
+                            id="material-clarification-message"
+                            class="site-header__material-panel"
+                            hidden
+                        >
+                            <?php echo wp_kses_post(wpautop($material_clarification_message)); ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
                 <a class="site-header__phone"
                    href="tel:<?php echo esc_attr($phone_tel); ?>">
                     <?php echo esc_html($phone_number); ?>
@@ -87,4 +110,3 @@
     </header><!-- /.site-header -->
 <div class="site-shell">
     
-

@@ -32,11 +32,14 @@
     flex: 1 1 50%;
 }
 
-.site-footer__copy-wrapper,
 .site-footer__logo {
     flex: 1 1 100%;
     display: flex;
     align-items: center;
+}
+
+.site-footer__copy-wrapper {
+    flex: 1 1 100%;
 }
 
 
@@ -151,6 +154,22 @@
 .site-footer__copy {
     font-size: var(--body-sm);
     color: var(--text-muted);
+    line-height: 1.35;
+}
+
+.site-footer__copy-wrapper {
+    display: block;
+}
+
+.site-footer__copy a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color var(--dur-fast) var(--ease);
+}
+
+.site-footer__copy a:hover {
+    color: var(--text);
+    text-decoration: none;
 }
 
 .site-footer__legal {
@@ -324,11 +343,6 @@
     .site-footer__brand,
     .site-footer__nav {
         flex: 1 1 100%;
-    }
-
-    .site-footer__copy-wrapper {
-        flex-direction: column-reverse;
-        align-items: flex-start;
     }
 
     .wpforms-layout-row {

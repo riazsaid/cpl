@@ -109,7 +109,7 @@ if (is_array($google_logo) && !empty($google_logo['url'])) {
                         </svg>
                     </span>
                     <span class="google-reviews-badge__powered-text">
-                        powered by Google
+                        Powered by Google
                     </span>
                 </div>
 
