@@ -498,6 +498,14 @@
     color: var(--accent-hover);
 }
 
+.testimonials-block img {
+    margin-inline: auto !important;
+}
+
+.testimonials-content .review-btn {
+    margin-inline: auto !important;
+}
+
 /* ----------------------------------------------------------
    RESPONSIVE (card min-width so JS can size correctly)
 ---------------------------------------------------------- */
