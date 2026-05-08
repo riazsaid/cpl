@@ -356,11 +356,6 @@
             color: black !important;
         }
     }
-
-    .site-header__topbar {
-        display: none;
-        /* hide top bar on mobile — saves space */
-    }
 }
 
 @media (max-width: 63.99rem) {

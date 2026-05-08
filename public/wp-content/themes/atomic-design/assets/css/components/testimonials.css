@@ -80,10 +80,16 @@
 .google-reviews-badge {
     color: var(--text);
     display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
     align-items: center;
     justify-content: center;
     gap: 0.4rem;
     /* margin-top: 2rem; */
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    -ms-flex-align: center;
+    -ms-flex-pack: center;
 }
 
 .google-reviews-badge__logo {
@@ -125,8 +131,15 @@
 
 .google-reviews-badge__stars {
     display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
     gap: 2px;
     align-items: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    -ms-flex-align: center;
+    -ms-flex-pack: center;
 }
 
 .google-review-star {
