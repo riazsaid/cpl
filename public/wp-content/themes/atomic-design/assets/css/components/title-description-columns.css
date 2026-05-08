@@ -123,9 +123,10 @@
 
     .title-description-columns__heading {
         padding-bottom: var(--space-xs);
-        font-size: clamp(2rem, 8vw, 2.6rem);
+        font-size: clamp(1.5rem, 8vw, 2.6rem);
         text-align: left;
         padding-inline: 0rem;
+        line-height: 2rem !important;
     }
 
     .title-description-columns__source,
