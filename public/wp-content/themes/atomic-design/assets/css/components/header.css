@@ -191,8 +191,6 @@
     }
 
     .site-header__material-panel {
-        left: 50%;
-        transform: translateX(-50%);
         width: min(18rem, calc(100vw - 2rem));
     }
 }
@@ -257,6 +255,8 @@
    ============================================================ */
 
 .site-header__toggle {
+    position: relative;
+    z-index: 333;
     display: none;
     flex-direction: column;
     justify-content: center;
@@ -369,7 +369,7 @@
         display: flex;
     }
 
-    
+
     /* Mobile nav panel */
     .site-nav {
         position: fixed;
