@@ -57,6 +57,12 @@ body.single-resources #site-content p {
     margin-bottom: 12px;
 }
 
+.red {
+    background-color: #ff0808 !important;
+    font-size: var(--h5);
+    line-height: var(--lh-sm);
+}
+
 /* hr */
 body.page-slug-privacy-policy #site-content hr,
 body.page-slug-shipping-returns #site-content hr,
