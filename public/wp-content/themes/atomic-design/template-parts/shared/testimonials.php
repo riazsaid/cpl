@@ -23,6 +23,7 @@ $bg_type       = get_field('testimonials_bg_type', 'option') ?: 'none';
 $color_1       = get_field('testimonials_color_1', 'option');
 $color_2       = get_field('testimonials_color_2', 'option');
 $read_more     = get_field('testimonials_read_more', 'option');
+$review_button_url = get_field('testimonials_review_button_url', 'option');
 $google_logo   = get_field('google_reviews_logo', 'option');
 $google_name   = get_field('google_reviews_business_name', 'option');
 $google_rating_raw   = get_field('google_reviews_rating', 'option');
@@ -212,7 +213,14 @@ if (is_array($google_logo) && !empty($google_logo['url'])) {
                 </div>
             </div>
     </div>
-     <div class="review-btn"><a href="#">Read Review</a></div>
+     <?php if (!empty($review_button_url)) : ?>
+        <div class="review-btn">
+            <a
+                href="<?php echo esc_url($review_button_url); ?>">
+                <?php esc_html_e('Read Review', 'atomic-design'); ?>
+            </a>
+        </div>
+     <?php endif; ?>
 
     </div> <!-- testimonials-content -->
     

@@ -25,6 +25,14 @@
     line-height: var(--lh-3xs) !important;
 }
 
+.forminator-custom-form #html-2,
+.forminator-custom-form #html-2 p,
+.forminator-custom-form [data-field="html-2"],
+.forminator-custom-form [data-field="html-2"] p {
+    font-size: var(--body-sm) !important;
+    line-height: 1.35 !important;
+}
+
 .forminator-custom-form .forminator-col {
     padding: 0 !important;
 }
