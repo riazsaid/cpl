@@ -13,7 +13,7 @@
 
 html {
     scroll-behavior: smooth;
-    font-size: 20px;
+    font-size: clamp(16px, 2.5vw, 20px);
 }
 
 body {
@@ -128,7 +128,7 @@ p {
 
 .body-lg {
     font-size: var(--body-lg);
-    line-height: 1.75;
+    line-height: var(--lh-sm);
     color: var(--text-soft);
 }
 
