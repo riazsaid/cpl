@@ -335,8 +335,6 @@
 
 
 #menu-header-menu .current-menu-item {
-
-
     a {
         background-color: white;
         padding: 8px 10px;
@@ -349,6 +347,21 @@
    RESPONSIVE — TABLET & MOBILE
    ============================================================ */
 
+@media (max-width: 47.99rem) {
+    #menu-header-menu .current-menu-item {
+        a {
+            background-color: white;
+            padding: 2px 10px;
+            border-radius: 10px;
+            color: black !important;
+        }
+    }
+
+    .site-header__topbar {
+        display: none;
+        /* hide top bar on mobile — saves space */
+    }
+}
 
 @media (max-width: 63.99rem) {
     /* below --bp-desktop */

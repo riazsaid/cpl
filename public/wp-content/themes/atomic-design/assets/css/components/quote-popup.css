@@ -151,20 +151,29 @@
         left: 0;
         transform: none;
     }
+
+}
+
+@media (max-width: 900px) {
+    #forminator-module-1114 .forminator-row.forminator-row-last {
+        width: 100% !important;
+        position: unset !important;
+        bottom: 0 !important;
+        right: 0 !important;
+    }
 }
 
 
-
-.quote-popup__modal #forminator-module-1114{
+.quote-popup__modal #forminator-module-1114 {
     border-radius: 4px;
 }
 
 
-#forminator-module-1114{
+#forminator-module-1114 {
     position: relative;
     margin-block: 0 !important;
 }
-    
+
 
 #forminator-module-1114 .forminator-row:nth-child(6) {
     width: 75%;
