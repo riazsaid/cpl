@@ -162,6 +162,7 @@
 
 #forminator-module-1114{
     position: relative;
+    margin-block: 0 !important;
 }
     
 
@@ -174,4 +175,12 @@
     position: absolute;
     bottom: 25%;
     right: 6%;
+}
+
+.forminator-button.forminator-button-submit{
+    background: black !important;
+}
+
+.forminator-button.forminator-button-upload{
+    background: var(--accent-soft) !important;
 }
