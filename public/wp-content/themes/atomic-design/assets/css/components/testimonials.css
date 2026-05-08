@@ -238,7 +238,9 @@
 .testimonials-slider__track {
     display: flex;
     flex-wrap: nowrap;
-    gap: 1rem;
+    gap: 0.8rem;
+    transition: transform var(--dur-med) var(--ease);
+    will-change: transform;
     transition: -webkit-transform var(--dur-med) var(--ease), transform var(--dur-med) var(--ease);
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
@@ -472,7 +474,7 @@
 }
 
 .testimonials-slider__dot:hover {
-    background: rgba(0, 0, 0, 0.35);
+    background: var(--text);
 }
 
 .testimonials-slider__dot.is-active {
