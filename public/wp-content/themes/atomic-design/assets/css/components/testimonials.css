@@ -80,8 +80,16 @@
 .google-reviews-badge {
     color: var(--text);
     display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    align-items: center;
+    justify-content: center;
     gap: 0.4rem;
     /* margin-top: 2rem; */
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    -ms-flex-align: center;
+    -ms-flex-pack: center;
 }
 
 .google-reviews-badge__logo {
@@ -123,8 +131,15 @@
 
 .google-reviews-badge__stars {
     display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
     gap: 2px;
     align-items: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    -ms-flex-align: center;
+    -ms-flex-pack: center;
 }
 
 .google-review-star {
@@ -226,6 +241,11 @@
     gap: 0.8rem;
     transition: transform var(--dur-med) var(--ease);
     will-change: transform;
+    transition: -webkit-transform var(--dur-med) var(--ease), transform var(--dur-med) var(--ease);
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-transition: -webkit-transform var(--dur-med) var(--ease), transform var(--dur-med) var(--ease);
+    transition: transform var(--dur-med) var(--ease), -webkit-transform var(--dur-med) var(--ease);
 }
 
 /* Card width and track width are set by JS for correct page steps */
@@ -323,6 +343,8 @@
 /* Stars directly under the title (name / date) */
 .star-rating {
     display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 2px;
     /* margin-top: 0.25rem; */
 }
@@ -457,6 +479,7 @@
 
 .testimonials-slider__dot.is-active {
     background: var(--accent);
+    -webkit-transform: scale(1.2);
     transform: scale(1.2);
 }
 
@@ -471,10 +494,6 @@
     z-index: 2;
 }
 
-/* Ensure icon doesn't overlap content in very small widths */
-.testimonial-card__heading {
-    /* padding-top: 0.7rem; */
-}
 
 /* ----------------------------------------------------------
    FOOTER CTA
@@ -496,6 +515,14 @@
 
 .testimonials-read-more:hover {
     color: var(--accent-hover);
+}
+
+.testimonials-block img {
+    margin-inline: auto !important;
+}
+
+.testimonials-content .review-btn {
+    margin-inline: auto !important;
 }
 
 /* ----------------------------------------------------------
