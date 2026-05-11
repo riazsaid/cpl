@@ -111,7 +111,7 @@
     }
 
     .question-text {
-        font-size: 1.25rem;
-        /* ~20px */
+        font-size: var(--h5);
+        line-height: var(--lh-lg);
     }
 }
