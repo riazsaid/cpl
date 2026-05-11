@@ -1440,8 +1440,23 @@ function atomic_design_body_classes($classes)
         $post = get_queried_object();
         if ($post && !empty($post->post_name)) {
             $classes[] = 'page-slug-' . sanitize_html_class($post->post_name);
+
+            // Auto-detect static pages: uses default template (not homepage or custom templates)
+            $template = get_page_template_slug($post->ID);
+            $is_static = empty($template) || $template === 'default';
+
+            // Exclude homepage/front page
+            if ($is_static && !is_front_page()) {
+                $classes[] = 'static-page';
+            }
         }
     }
+
+    // Add static-page class for resources post type (all resources are static content)
+    if (is_singular('resources')) {
+        $classes[] = 'static-page';
+    }
+
     return $classes;
 }
 add_filter('body_class', 'atomic_design_body_classes', 10, 1);
