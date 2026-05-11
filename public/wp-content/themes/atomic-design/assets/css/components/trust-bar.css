@@ -43,7 +43,6 @@
     font-size: var(--h5);
     font-weight: 500;
     color: var(--text);
-    line-height: var(--lh-sm);
     text-align: center;
 }
 

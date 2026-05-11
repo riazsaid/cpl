@@ -19,7 +19,6 @@
 .title-description-columns__column {
     font-family: var(--font-body);
     font-size: clamp(1rem, 1.4vw, 1.3125rem);
-    line-height: 1.7;
     color: var(--text);
 }
 
@@ -59,7 +58,6 @@
     font-family: var(--font-heading);
     font-size: clamp(1rem, 1.2vw, 1.25rem);
     font-weight: 600;
-    line-height: 1.2;
     text-align: center;
     color: #fff;
     background: var(--accent);
@@ -126,7 +124,6 @@
         font-size: clamp(1.5rem, 8vw, 2.6rem);
         text-align: left;
         padding-inline: 0rem;
-        line-height: 2rem !important;
     }
 
     .title-description-columns__source,
