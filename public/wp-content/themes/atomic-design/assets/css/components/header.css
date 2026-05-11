@@ -45,6 +45,7 @@
 }
 
 .site-header__material-panel {
+    z-index: 2;
     position: absolute;
     top: 100%;
     left: 0;
@@ -407,4 +408,9 @@
         color: var(--text);
         padding-left: 0.4rem;
     }
+}
+
+
+.site-header__material-clarification{
+    position: relative;
 }
