@@ -41,7 +41,6 @@
 
 .service-links-grid__overview p {
     font-size: var(--h5);
-    line-height: var(--lh-xs);
 }
 
 .service-links-grid__overview>*:first-child {

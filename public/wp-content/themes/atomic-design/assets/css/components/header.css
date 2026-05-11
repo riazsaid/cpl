@@ -45,6 +45,7 @@
 }
 
 .site-header__material-panel {
+    z-index: 2;
     position: absolute;
     top: 100%;
     left: 0;
@@ -60,7 +61,6 @@
     padding: 0;
     color: #111;
     font-size: 0.75rem;
-    line-height: 1.28;
 }
 
 .site-header__phone {
@@ -407,4 +407,9 @@
         color: var(--text);
         padding-left: 0.4rem;
     }
+}
+
+
+.site-header__material-clarification{
+    position: relative;
 }
