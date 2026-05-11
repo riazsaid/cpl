@@ -21,11 +21,6 @@
     /* padding-block: 0.4rem; */
 }
 
-.site-header__material-clarification {
-    position: relative;
-    z-index: 2;
-    flex-shrink: 0;
-}
 
 .site-header__material-toggle {
     display: inline-flex;
@@ -159,10 +154,6 @@
         padding: 0.5rem 0;
     }
 
-    .site-header__material-clarification {
-        order: 1;
-        flex: 1;
-    }
 
     .site-header__material-toggle {
         font-size: 0.5rem;
@@ -171,22 +162,14 @@
     }
 
     .site-header__phone {
-        order: 2;
         font-size: var(--h6);
         text-align: center;
-        flex: 1;
-    }
-
-    .site-header__cta {
-        order: 3;
-        flex: 1;
     }
 
     .site-header__topbar-cta {
         height: 1.6rem;
         font-size: 0.9rem;
         padding: 0 0.8rem;
-        width: 100%;
         text-align: center;
     }
 
