@@ -541,6 +541,9 @@
     .testimonial-card {
         min-width: 0;
     }
+    .testimonials-slider__track{
+        gap: 1rem;
+    }
 }
 
 
