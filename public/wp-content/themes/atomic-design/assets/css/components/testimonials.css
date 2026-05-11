@@ -37,7 +37,6 @@
 .testimonials-heading {
     font-family: var(--font-heading);
     font-size: var(--h1);
-    line-height: var(--lh-xl);
     color: var(--text);
     text-align: center;
 
@@ -117,7 +116,6 @@
     font-family: var(--font-body);
     font-weight: 600;
     font-size: var(--body-lg);
-    line-height: 1.25;
 }
 
 .google-reviews-badge__rating-row {
@@ -162,7 +160,6 @@
 .google-reviews-badge__review-count {
     font-size: var(--small);
     color: var(--text-soft);
-    line-height: 1.5;
     margin-block-end: 0.4rem;
 }
 
@@ -321,18 +318,15 @@
     font-size: var(--body-lg);
     font-weight: 600;
     color: #1A73E8;
-    line-height: var(--lh-2xs);
 }
 
 .reviewer-title {
     font-size: 0.85rem;
     color: rgba(17, 24, 39, 0.62);
-    line-height: 1.4;
 }
 
 .review-date {
     font-size: var(--body-sm);
-    line-height: var(--lh-3xs);
     color: var(--color-text-primary);
 }
 

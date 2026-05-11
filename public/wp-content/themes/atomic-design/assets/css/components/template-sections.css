@@ -25,7 +25,6 @@
 .cpt-hero__title {
     font-family: var(--font-heading);
     font-size: var(--h1);
-    line-height: var(--lh-heading);
     color: var(--text);
     margin-block-end: var(--space-sm);
     text-align: left;
@@ -43,7 +42,6 @@
 .cpt-hero__subtext {
     font-size: var(--body-lg);
     color: var(--text-soft);
-    line-height: var(--lh-body);
     text-align: left;
 }
 
@@ -62,15 +60,13 @@
 .cpt-intro__heading {
     font-family: var(--font-heading);
     font-size: var(--h2);
-    line-height: var(--lh-heading);
     color: var(--text);
     margin-block-end: var(--space-md);
 }
 
 .cpt-intro__content {
-    font-size: var(--body);
+    font-size: var(--body-lg);
     color: var(--text-soft);
-    line-height: var(--lh-body);
     max-width: 65ch;
 }
 
@@ -110,7 +106,6 @@
 .cpt-repeater__heading {
     font-family: var(--font-heading);
     font-size: var(--h2);
-    line-height: var(--lh-heading);
     color: var(--text);
     margin-block-end: var(--space-lg);
 }
@@ -144,7 +139,6 @@
     font-family: var(--font-body);
     font-size: var(--h3);
     font-weight: 600;
-    line-height: var(--lh-heading);
     color: var(--text);
     margin-block-end: var(--space-sm);
 }
@@ -160,7 +154,6 @@
 .cpt-repeater-card__description {
     font-size: var(--small);
     color: var(--text-soft);
-    line-height: var(--lh-body);
 }
 
 .cpt-repeater-card__description p {
@@ -182,7 +175,6 @@
 .cpt-cta__heading {
     font-family: var(--font-heading);
     font-size: var(--h2);
-    line-height: var(--lh-heading);
     color: var(--text);
     margin-block-end: var(--space-md);
 }

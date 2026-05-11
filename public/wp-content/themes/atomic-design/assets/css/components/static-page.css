@@ -60,7 +60,6 @@ body.single-resources #site-content p {
 .red {
     background-color: #ff0808 !important;
     font-size: var(--h5);
-    line-height: var(--lh-sm);
 }
 
 /* hr */

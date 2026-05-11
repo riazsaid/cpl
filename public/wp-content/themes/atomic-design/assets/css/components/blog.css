@@ -47,7 +47,6 @@
     max-width: 680px;
     color: var(--blog-muted);
     font-size: clamp(0.9rem, 1.4vw, 1rem);
-    line-height: 1.65;
 }
 
 .blog-category-filter {
@@ -161,13 +160,11 @@
 
 .blog-hero-card__title {
     font-size: clamp(1.35rem, 2.3vw, 1.9rem);
-    line-height: 1.2;
     padding-bottom: 0.7rem;
 }
 
 .blog-card__title {
     font-size: clamp(1.45rem, 2.5vw, 1.9rem);
-    line-height: 1.28;
     padding-bottom: 1.1rem;
     font-weight: 700;
 }
@@ -176,7 +173,6 @@
 .blog-card__excerpt {
     color: var(--blog-muted);
     font-size: clamp(0.92rem, 1.4vw, 1.05rem);
-    line-height: 1.65;
 }
 
 .blog-card__byline {
@@ -186,7 +182,6 @@
     padding-bottom: 1.1rem;
     color: var(--blog-muted);
     font-size: clamp(0.75rem, 1vw, 0.85rem);
-    line-height: 1.4;
 }
 
 .blog-card__read-more {
@@ -344,7 +339,6 @@
 .article-title {
     padding-bottom: var(--space-xsm);
     font-size: clamp(2.2rem, 5.2vw, 4rem);
-    line-height: 1.14;
 }
 
 .article-byline {
@@ -355,7 +349,6 @@
     padding-bottom: var(--space-md);
     color: var(--blog-muted);
     font-size: clamp(0.75rem, 1vw, 0.85rem);
-    line-height: 1.4;
 }
 
 .article-content {
@@ -370,7 +363,6 @@
 .article-content li {
     color: var(--blog-muted);
     font-size: 0.8rem;
-    line-height: 1.7;
 }
 
 .article-content h2,
