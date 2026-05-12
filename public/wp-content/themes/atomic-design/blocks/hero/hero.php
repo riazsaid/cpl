@@ -31,8 +31,10 @@ if (empty($title) && empty($subtitle)) {
     return;
 }
 
-$bg_url = '';
+$image_id = 0;
+$bg_url   = '';
 if (!empty($bg_image) && is_array($bg_image) && !empty($bg_image['url'])) {
+    $image_id = !empty($bg_image['ID']) ? (int) $bg_image['ID'] : 0;
     $bg_url = $bg_image['url'];
 }
 
@@ -44,6 +46,7 @@ get_template_part(
         'subtitle'   => $subtitle,
         'primary'    => $primary,
         'secondary'  => $secondary,
+        'image_id'   => $image_id,
         'bg_url'     => $bg_url,
         'align'      => !empty($block['align']) ? $block['align'] : 'full',
         'class_name' => !empty($block['className']) ? $block['className'] : '',
