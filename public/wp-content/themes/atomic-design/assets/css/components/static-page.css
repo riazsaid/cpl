@@ -1,39 +1,18 @@
 /* Apply to all static content pages */
-body.static-page #site-content {
-    padding-bottom: var(--section-space-210);
+body.static-page #site-content ,body.blog #site-content{
+    padding-block: var(--space-lg);
 }
 
-/* Exception: specific resource post */
-body.static-page.postid-1151 #site-content {
-    padding-bottom: 0 !important;
+
+body.static-page.page-slug-industries #site-content ,body.static-page.page-slug-services #site-content{
+    padding-top: 0;
 }
 
-/* Headings H1 */
-body.static-page #site-content h1 {
-    margin-block: 48px 30px;
+
+body.static-page #site-content h1.wp-block-heading:first-of-type {
+  margin-top: 0;
 }
 
-/* Exception: FAQ headings in request-quote page */
-body.page-slug-request-quote #site-content .faq-accordion-block h2,
-body.page-slug-faq #site-content .faq-accordion-block h2 {
-    margin-block: unset !important;
-}
-
-/* Headings H2 */
-body.static-page #site-content h2 {
-    margin-block: 80px 20px;
-}
-
-/* Headings H3 */
-body.static-page #site-content h3 {
-    margin-block: 20px 16px;
-}
-
-/* Paragraphs */
-body.static-page #site-content p {
-    color: var(--text) !important;
-    margin-bottom: 12px;
-}
 
 .red {
     background-color: #ff0808 !important;
@@ -42,7 +21,7 @@ body.static-page #site-content p {
 
 /* Horizontal rules */
 body.static-page #site-content hr {
-    margin-block: var(--space-xsm);
+    margin-bottom: var(--space-xsm);
 }
 
 /* Lists */
@@ -56,19 +35,10 @@ body.static-page .people-behind {
     padding-bottom: var(--section-space-210);
 }
 
-/* Remove last section spacing */
-body.static-page #site-content > section:last-child {
-    padding-bottom: 0 !important;
-}
-
-/* FAQ block spacing */
-body.static-page #site-content .faq-accordion-block {
-    padding-block: 8.5rem;
-}
-
-.page-template-default.page-slug-about-us #site-content .title-description-columns:first-of-type {
+body.static-page.page-slug-request-quote #site-content > .faq-accordion-block{
     padding-top: 2rem;
 }
+
 
 .page-template-default.page-slug-locations .service-links-grid {
     padding-top: 2rem;
@@ -88,4 +58,34 @@ body.static-page #site-content .faq-accordion-block {
     body.static-page #site-content {
         padding-bottom: var(--space-lg);
     }
+}
+
+
+
+
+body.static-page #site-content h1.wp-block-heading {
+    margin-block: 48px 30px; 
+}
+
+body.static-page #site-content h2.wp-block-heading {
+   padding-block: 80px 20px;
+}
+
+body.static-page #site-content h3.wp-block-heading {
+   padding-block: calc(var(--space-md) / 3);
+}
+
+/* Paragraphs */
+body.static-page #site-content p {
+    color: var(--text) !important;
+    margin-bottom: 12px;
+}
+
+body.static-page>.testimonials-content {
+   margin-top: calc(-1 * var(--space-lg));
+    
+}
+
+body.static-page #site-content > section:last-of-type {
+  padding-bottom: 0 !important;
 }
