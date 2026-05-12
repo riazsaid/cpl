@@ -100,7 +100,7 @@
     }
 
     function getWordTokens(text) {
-        const normalized = text.replace(/\s+/g, ' ').trim();
+        const normalized = text.replace(/\s+/g, ' ');
         return normalized ? normalized.match(/\S+\s*/g) || [] : [];
     }
 
@@ -108,12 +108,12 @@
         if (node.nodeType === Node.TEXT_NODE) {
             const tokens = getWordTokens(node.textContent || '');
             const take = Math.min(wordsForLeft, tokens.length);
-            const leftText = tokens.slice(0, take).join('').trim();
-            const rightText = tokens.slice(take).join('').trim();
+            const leftText = tokens.slice(0, take).join('');
+            const rightText = tokens.slice(take).join('');
 
             return {
-                leftNode: leftText ? document.createTextNode(leftText + (take < tokens.length ? ' ' : '')) : null,
-                rightNode: rightText ? document.createTextNode(rightText) : null,
+                leftNode: leftText.trim() ? document.createTextNode(leftText) : null,
+                rightNode: rightText.trim() ? document.createTextNode(rightText) : null,
                 wordsUsed: take,
                 totalWords: tokens.length,
             };

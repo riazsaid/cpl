@@ -35,7 +35,9 @@ add_action('after_setup_theme', 'atomic_design_setup');
 function atomic_design_assets()
 {
     $theme_version = wp_get_theme()->get('Version');
+    $theme_dir     = get_template_directory();
     $theme_uri     = get_template_directory_uri();
+    $main_js_path  = $theme_dir . '/assets/js/main.js';
 
     // Google Fonts — loaded via PHP so WordPress can manage them properly.
     // To change fonts: update the URL here AND update --font-display / --font-body in variables.css.
@@ -72,7 +74,7 @@ function atomic_design_assets()
         'atomic-design-main',
         $theme_uri . '/assets/js/main.js',
         ['atomic-design-aos'],
-        $theme_version,
+        file_exists($main_js_path) ? filemtime($main_js_path) : $theme_version,
         true
     );
 
@@ -622,55 +624,9 @@ function atomic_design_get_contact_token_replacements()
     ];
 }
 
-function atomic_design_contact_token_needs_space_before($content, $offset)
-{
-    if ($offset <= 0) {
-        return false;
-    }
-
-    $previous = substr($content, $offset - 1, 1);
-
-    return !preg_match('/[\s>\(\[]/', $previous);
-}
-
-function atomic_design_contact_token_needs_space_after($content, $offset)
-{
-    if ($offset >= strlen($content)) {
-        return false;
-    }
-
-    $next = substr($content, $offset, 1);
-
-    return !preg_match('/[\s<\.,;:!\?\)\]]/', $next);
-}
-
 function atomic_design_replace_contact_tokens($content)
 {
-    $replacements = atomic_design_get_contact_token_replacements();
-    $tokens = array_map('preg_quote', array_keys($replacements));
-
-    return preg_replace_callback(
-        '/(' . implode('|', $tokens) . ')/',
-        static function ($matches) use ($content, $replacements) {
-            $token = $matches[0][0];
-            $offset = $matches[0][1];
-            $replacement = $replacements[$token] ?? '';
-
-            if ($replacement === '') {
-                return '';
-            }
-
-            $before = atomic_design_contact_token_needs_space_before($content, $offset) ? ' ' : '';
-            $after_offset = $offset + strlen($token);
-            $after = atomic_design_contact_token_needs_space_after($content, $after_offset) ? ' ' : '';
-
-            return $before . $replacement . $after;
-        },
-        $content,
-        -1,
-        $count,
-        PREG_OFFSET_CAPTURE
-    );
+    return strtr($content, atomic_design_get_contact_token_replacements());
 }
 add_filter('the_content', 'atomic_design_replace_contact_tokens', 12);
 

@@ -95,7 +95,7 @@
    /* 28px */
    --lh-xs: clamp(1rem, 2vw, 1.35rem);
    /* 27px */
-   --lh-2xs: clamp(0.8rem, 1.5vw, 0.95rem);
+   --lh-2xs: clamp(1.2rem, 1.5vw, 0.95rem);
    /* 19px */
    --lh-3xs: clamp(0.75rem, 1.4vw, 0.9rem);
    /* 18px */
