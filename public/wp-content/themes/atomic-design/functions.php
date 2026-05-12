@@ -622,9 +622,55 @@ function atomic_design_get_contact_token_replacements()
     ];
 }
 
+function atomic_design_contact_token_needs_space_before($content, $offset)
+{
+    if ($offset <= 0) {
+        return false;
+    }
+
+    $previous = substr($content, $offset - 1, 1);
+
+    return !preg_match('/[\s>\(\[]/', $previous);
+}
+
+function atomic_design_contact_token_needs_space_after($content, $offset)
+{
+    if ($offset >= strlen($content)) {
+        return false;
+    }
+
+    $next = substr($content, $offset, 1);
+
+    return !preg_match('/[\s<\.,;:!\?\)\]]/', $next);
+}
+
 function atomic_design_replace_contact_tokens($content)
 {
-    return strtr($content, atomic_design_get_contact_token_replacements());
+    $replacements = atomic_design_get_contact_token_replacements();
+    $tokens = array_map('preg_quote', array_keys($replacements));
+
+    return preg_replace_callback(
+        '/(' . implode('|', $tokens) . ')/',
+        static function ($matches) use ($content, $replacements) {
+            $token = $matches[0][0];
+            $offset = $matches[0][1];
+            $replacement = $replacements[$token] ?? '';
+
+            if ($replacement === '') {
+                return '';
+            }
+
+            $before = atomic_design_contact_token_needs_space_before($content, $offset) ? ' ' : '';
+            $after_offset = $offset + strlen($token);
+            $after = atomic_design_contact_token_needs_space_after($content, $after_offset) ? ' ' : '';
+
+            return $before . $replacement . $after;
+        },
+        $content,
+        -1,
+        $count,
+        PREG_OFFSET_CAPTURE
+    );
 }
 add_filter('the_content', 'atomic_design_replace_contact_tokens', 12);
 
