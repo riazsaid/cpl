@@ -1,16 +1,18 @@
 /* Apply to all static content pages */
-body.static-page #site-content ,body.blog #site-content{
+body.static-page #site-content,
+body.blog #site-content {
     padding-block: var(--space-lg);
 }
 
 
-body.static-page.page-slug-industries #site-content ,body.static-page.page-slug-services #site-content{
+body.static-page.page-slug-industries #site-content,
+body.static-page.page-slug-services #site-content {
     padding-top: 0;
 }
 
 
 body.static-page #site-content h1.wp-block-heading:first-of-type {
-  margin-top: 0;
+    margin-top: 0;
 }
 
 
@@ -36,9 +38,14 @@ body.static-page .people-behind {
     padding-bottom: var(--section-space-210);
 }
 
-body.static-page.page-slug-request-quote #site-content > .faq-accordion-block{
-    padding-top: 2rem;
+body.static-page.page-slug-request-quote #site-content>.faq-accordion-block {
+    padding-top: var(--section-space-210);
 }
+
+.page-template-default.page-slug-bulk-ordering .faq-accordion-block {
+    padding-block: var(--section-space-210) var(--section-space-142);
+}
+
 
 
 .page-template-default.page-slug-locations .service-links-grid {
@@ -56,24 +63,40 @@ body.static-page.page-slug-request-quote #site-content > .faq-accordion-block{
 
 /* Mobile fix */
 @media (max-width: 767px) {
+    .page-template-default.page-slug-bulk-ordering .faq-accordion-block {
+        padding-block: var(--space-lg);
+    }
+
+
     body.static-page #site-content {
         padding-bottom: var(--space-lg);
     }
+
+    .global-shipping-message {
+        padding-top: 3rem;
+    }
+
+    /* Resources page */
+    .resources-template-default .faq-accordion-block {
+        padding-block: var(--space-lg) !important;
+    }
 }
 
-
+.global-shipping-message {
+    padding-top: 5rem;
+}
 
 
 body.static-page #site-content h1.wp-block-heading {
-    margin-block: 48px 30px; 
+    margin-block: 48px 30px;
 }
 
 body.static-page #site-content h2.wp-block-heading {
-   padding-block: 80px 20px;
+    padding-block: 60px 20px;
 }
 
 body.static-page #site-content h3.wp-block-heading {
-   padding-block: calc(var(--space-md) / 3);
+    padding-block: calc(var(--space-md) / 3);
 }
 
 /* Paragraphs */
@@ -83,10 +106,16 @@ body.static-page #site-content p {
 }
 
 body.static-page>.testimonials-content {
-   margin-top: calc(-1 * var(--space-lg));
-    
+    margin-top: calc(-1 * var(--space-lg));
+
 }
 
-body.static-page #site-content > section:last-of-type {
-  padding-bottom: 0 !important;
+body.page-template-default #site-content>section:last-of-type:not(.testimonials-block) {
+    padding-bottom: 0 !important;
+}
+
+
+/* Resources page */
+.resources-template-default .faq-accordion-block {
+    padding-block: var(--section-space-210) var(--section-space-142);
 }
