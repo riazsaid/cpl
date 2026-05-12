@@ -8,7 +8,8 @@
  * - subtitle (string) Optional.
  * - primary (array) Optional ACF link array.
  * - secondary (array) Optional ACF link array.
- * - bg_url (string) Optional background image URL.
+ * - image_id (int) Optional hero image attachment ID.
+ * - bg_url (string) Optional fallback image URL.
  * - align (string) Optional Gutenberg alignment slug, defaults to full.
  * - class_name (string) Optional extra class names.
  */
@@ -31,9 +32,13 @@ $secondary = isset($args['secondary']) && is_array($args['secondary'])
     ? $args['secondary']
     : (function_exists('get_field') ? (get_field('hero_secondary_link', $hero_post_id) ?: []) : []);
 
-$bg_url = isset($args['bg_url']) ? (string) $args['bg_url'] : '';
-if ($bg_url === '' && function_exists('get_field')) {
+$image_id = isset($args['image_id']) ? (int) $args['image_id'] : 0;
+$bg_url   = isset($args['bg_url']) ? (string) $args['bg_url'] : '';
+if (($image_id <= 0 || $bg_url === '') && function_exists('get_field')) {
     $hero_media = get_field('hero_media', $hero_post_id);
+    if ($image_id <= 0 && is_array($hero_media) && !empty($hero_media['ID'])) {
+        $image_id = (int) $hero_media['ID'];
+    }
     if (is_array($hero_media) && !empty($hero_media['url'])) {
         $bg_url = (string) $hero_media['url'];
     }
@@ -46,16 +51,36 @@ if ($title === '' && $subtitle === '') {
     return;
 }
 
-$style_attr = '';
-if ($bg_url !== '') {
-    $style_attr = ' style="background-image: linear-gradient(90deg, rgba(2, 6, 23, 0.92) 0%, rgba(2, 6, 23, 0.78) 40%, rgba(2, 6, 23, 0.35) 70%, rgba(2, 6, 23, 0.05) 100%), url(' . esc_url($bg_url) . ');"';
-}
-
 $align_class   = 'align' . $align;
-$section_class = trim('hero ' . $align_class . ' ' . $class_name);
+$has_image     = $image_id > 0 || $bg_url !== '';
+$section_class = trim('hero ' . ($has_image ? 'hero--has-image ' : '') . $align_class . ' ' . $class_name);
 ?>
 
-<section class="<?php echo esc_attr($section_class); ?>"<?php echo $style_attr; ?>>
+<section class="<?php echo esc_attr($section_class); ?>">
+    <?php if ($image_id > 0) : ?>
+        <?php
+        echo wp_get_attachment_image(
+            $image_id,
+            'full',
+            false,
+            [
+                'class'         => 'hero__image',
+                'loading'       => 'eager',
+                'fetchpriority' => 'high',
+                'decoding'      => 'async',
+            ]
+        );
+        ?>
+    <?php elseif ($bg_url !== '') : ?>
+        <img
+            class="hero__image"
+            src="<?php echo esc_url($bg_url); ?>"
+            alt=""
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+        >
+    <?php endif; ?>
     <div class="container hero__inner hero__inner--single">
         <div class="hero__content">
             <?php if ($title !== '') : ?>
