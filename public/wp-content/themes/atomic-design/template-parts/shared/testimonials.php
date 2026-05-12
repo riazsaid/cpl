@@ -217,7 +217,7 @@ if (is_array($google_logo) && !empty($google_logo['url'])) {
         <div class="review-btn">
             <a
                 href="<?php echo esc_url($review_button_url); ?>">
-                <?php esc_html_e('Read Review', 'atomic-design'); ?>
+                <?php esc_html_e('Read Reviews', 'atomic-design'); ?>
             </a>
         </div>
      <?php endif; ?>
