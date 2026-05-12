@@ -41,7 +41,6 @@
 
 .service-links-grid__overview p {
     font-size: var(--h5);
-    line-height: var(--lh-xs);
 }
 
 .service-links-grid__overview>*:first-child {
@@ -125,8 +124,13 @@
     font-weight: 700;
     color: #fff;
     text-align: center;
+    height: 100%;
 }
-
+.wp-block-image img{
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+}
 .service-links-grid__item-body {
     color: rgba(255, 255, 255, 0.82);
     font-size: 0.98rem;

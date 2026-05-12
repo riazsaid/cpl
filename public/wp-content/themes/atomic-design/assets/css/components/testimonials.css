@@ -37,7 +37,6 @@
 .testimonials-heading {
     font-family: var(--font-heading);
     font-size: var(--h1);
-    line-height: var(--lh-xl);
     color: var(--text);
     text-align: center;
 
@@ -80,8 +79,16 @@
 .google-reviews-badge {
     color: var(--text);
     display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    align-items: center;
+    justify-content: center;
     gap: 0.4rem;
     /* margin-top: 2rem; */
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    -ms-flex-align: center;
+    -ms-flex-pack: center;
 }
 
 .google-reviews-badge__logo {
@@ -109,7 +116,6 @@
     font-family: var(--font-body);
     font-weight: 600;
     font-size: var(--body-lg);
-    line-height: 1.25;
 }
 
 .google-reviews-badge__rating-row {
@@ -123,8 +129,15 @@
 
 .google-reviews-badge__stars {
     display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
     gap: 2px;
     align-items: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    -ms-flex-align: center;
+    -ms-flex-pack: center;
 }
 
 .google-review-star {
@@ -147,7 +160,6 @@
 .google-reviews-badge__review-count {
     font-size: var(--small);
     color: var(--text-soft);
-    line-height: 1.5;
     margin-block-end: 0.4rem;
 }
 
@@ -223,9 +235,10 @@
 .testimonials-slider__track {
     display: flex;
     flex-wrap: nowrap;
-    gap: 1rem;
-    transition: transform var(--dur-med) var(--ease);
-    will-change: transform;
+    gap: 0.8rem;
+    transition: -webkit-transform var(--dur-med) var(--ease), transform var(--dur-med) var(--ease);
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
 }
 
 /* Card width and track width are set by JS for correct page steps */
@@ -305,24 +318,23 @@
     font-size: var(--body-lg);
     font-weight: 600;
     color: #1A73E8;
-    line-height: var(--lh-2xs);
 }
 
 .reviewer-title {
     font-size: 0.85rem;
     color: rgba(17, 24, 39, 0.62);
-    line-height: 1.4;
 }
 
 .review-date {
     font-size: var(--body-sm);
-    line-height: var(--lh-3xs);
     color: var(--color-text-primary);
 }
 
 /* Stars directly under the title (name / date) */
 .star-rating {
     display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 2px;
     /* margin-top: 0.25rem; */
 }
@@ -452,11 +464,12 @@
 }
 
 .testimonials-slider__dot:hover {
-    background: rgba(0, 0, 0, 0.35);
+    background: var(--text);
 }
 
 .testimonials-slider__dot.is-active {
     background: var(--accent);
+    -webkit-transform: scale(1.2);
     transform: scale(1.2);
 }
 
@@ -471,10 +484,6 @@
     z-index: 2;
 }
 
-/* Ensure icon doesn't overlap content in very small widths */
-.testimonial-card__heading {
-    /* padding-top: 0.7rem; */
-}
 
 /* ----------------------------------------------------------
    FOOTER CTA
@@ -498,6 +507,14 @@
     color: var(--accent-hover);
 }
 
+.testimonials-block img {
+    margin-inline: auto !important;
+}
+
+.testimonials-content .review-btn {
+    margin-inline: auto !important;
+}
+
 /* ----------------------------------------------------------
    RESPONSIVE (card min-width so JS can size correctly)
 ---------------------------------------------------------- */
@@ -517,6 +534,9 @@
 
     .testimonial-card {
         min-width: 0;
+    }
+    .testimonials-slider__track{
+        gap: 1rem;
     }
 }
 

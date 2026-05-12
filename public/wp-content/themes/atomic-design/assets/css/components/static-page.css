@@ -1,58 +1,36 @@
-/* Apply only to selected pages */
-body.page-slug-privacy-policy #site-content,
-body.page-slug-shipping-returns #site-content,
-body.page-slug-terms-of-service #site-content,
-body.page-slug-bulk-ordering #site-content,
-body.page-slug-request-quote #site-content,
-body.single-resources #site-content {
+/* Apply to all static content pages */
+body.static-page #site-content {
     padding-bottom: var(--section-space-210);
 }
 
-body.single-resources.postid-1151 #site-content {
+/* Exception: specific resource post */
+body.static-page.postid-1151 #site-content {
     padding-bottom: 0 !important;
 }
 
-/* Headings H1*/
-body.page-slug-privacy-policy #site-content h1,
-body.page-slug-shipping-returns #site-content h1,
-body.page-slug-terms-of-service #site-content h1,
-body.page-slug-bulk-ordering #site-content h1,
-body.page-slug-request-quote #site-content h1,
-body.single-resources #site-content h1 {
+/* Headings H1 */
+body.static-page #site-content h1 {
     margin-block: 48px 30px;
 }
 
-body.page-slug-request-quote #site-content .faq-accordion-block h2 {
+/* Exception: FAQ headings in request-quote page */
+body.page-slug-request-quote #site-content .faq-accordion-block h2,
+body.page-slug-faq #site-content .faq-accordion-block h2 {
     margin-block: unset !important;
 }
 
-/* Headings H2*/
-body.page-slug-privacy-policy #site-content h2,
-body.page-slug-shipping-returns #site-content h2,
-body.page-slug-terms-of-service #site-content h2,
-body.page-slug-bulk-ordering #site-content h2,
-body.page-slug-request-quote #site-content h2,
-body.single-resources #site-content h2 {
+/* Headings H2 */
+body.static-page #site-content h2 {
     margin-block: 80px 20px;
 }
 
-/* h3 */
-body.page-slug-privacy-policy #site-content h3,
-body.page-slug-shipping-returns #site-content h3,
-body.page-slug-terms-of-service #site-content h3,
-body.page-slug-bulk-ordering #site-content h3,
-body.page-slug-request-quote #site-content h3,
-body.single-resources #site-content h3 {
+/* Headings H3 */
+body.static-page #site-content h3 {
     margin-block: 20px 16px;
 }
 
-/* Paragraph */
-body.page-slug-privacy-policy #site-content p,
-body.page-slug-shipping-returns #site-content p,
-body.page-slug-terms-of-service #site-content p,
-body.page-slug-bulk-ordering #site-content p,
-body.page-slug-request-quote #site-content p,
-body.single-resources #site-content p {
+/* Paragraphs */
+body.static-page #site-content p {
     color: var(--text) !important;
     margin-bottom: 12px;
 }
@@ -63,53 +41,29 @@ body.single-resources #site-content p {
     line-height: var(--lh-sm);
 }
 
-/* hr */
-body.page-slug-privacy-policy #site-content hr,
-body.page-slug-shipping-returns #site-content hr,
-body.page-slug-terms-of-service #site-content hr,
-body.page-slug-bulk-ordering #site-content hr,
-body.page-slug-request-quote #site-content hr,
-body.single-resources #site-content hr {
+/* Horizontal rules */
+body.static-page #site-content hr {
     margin-block: var(--space-xsm);
 }
 
-/* ul */
-body.page-slug-privacy-policy #site-content ul,
-body.page-slug-shipping-returns #site-content ul,
-body.page-slug-terms-of-service #site-content ul,
-body.page-slug-bulk-ordering #site-content ul,
-body.page-slug-request-quote #site-content ul,
-body.single-resources #site-content ul {
+/* Lists */
+body.static-page #site-content ul {
     padding-left: 0.8rem;
     font-size: var(--h6);
 }
 
 /* People section */
-body.page-slug-privacy-policy .people-behind,
-body.page-slug-shipping-returns .people-behind,
-body.page-slug-terms-of-service .people-behind,
-body.page-slug-bulk-ordering .people-behind,
-body.page-slug-request-quote .people-behind {
+body.static-page .people-behind {
     padding-bottom: var(--section-space-210);
 }
 
 /* Remove last section spacing */
-body.page-slug-privacy-policy #site-content>section:last-child,
-body.page-slug-shipping-returns #site-content>section:last-child,
-body.page-slug-terms-of-service #site-content>section:last-child,
-body.page-slug-bulk-ordering #site-content>section:last-child,
-body.page-slug-request-quote #site-content>section:last-child,
-body.single-resources #site-content>section:last-child {
+body.static-page #site-content > section:last-child {
     padding-bottom: 0 !important;
 }
 
 /* FAQ block spacing */
-body.page-slug-privacy-policy #site-content .faq-accordion-block,
-body.page-slug-shipping-returns #site-content .faq-accordion-block,
-body.page-slug-terms-of-service #site-content .faq-accordion-block,
-body.page-slug-bulk-ordering #site-content .faq-accordion-block,
-body.page-slug-request-quote #site-content .faq-accordion-block,
-body.single-resources #site-content .faq-accordion-block {
+body.static-page #site-content .faq-accordion-block {
     padding-block: 8.5rem;
 }
 
@@ -132,13 +86,7 @@ body.single-resources #site-content .faq-accordion-block {
 
 /* Mobile fix */
 @media (max-width: 767px) {
-
-    body.page-slug-privacy-policy #site-content,
-    body.page-slug-shipping-returns #site-content,
-    body.page-slug-terms-of-service #site-content,
-    body.page-slug-bulk-ordering #site-content,
-    body.page-slug-request-quote #site-content,
-    body.single-resources #site-content {
+    body.static-page #site-content {
         padding-bottom: var(--space-lg);
     }
 }

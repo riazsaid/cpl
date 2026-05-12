@@ -83,21 +83,21 @@
    --shadow-soft: var(--shadow);
 
    /* Line heights */
-   --lh-xxl: 3.6rem;
+   --lh-xxl: clamp(2.8rem, 5vw, 3.6rem);
    /* 72px */
-   --lh-xl: 3rem;
+   --lh-xl: clamp(2.4rem, 4.5vw, 3rem);
    /* 60px */
-   --lh-lg: 1.8rem;
+   --lh-lg: clamp(1.4rem, 3vw, 1.8rem);
    /* 36px */
-   --lh-md: 1.5rem;
+   --lh-md: clamp(1.2rem, 2.5vw, 1.5rem);
    /* 30px */
-   --lh-sm: 1.4rem;
+   --lh-sm: clamp(1.1rem, 2.2vw, 1.4rem);
    /* 28px */
-   --lh-xs: 1.35rem;
+   --lh-xs: clamp(1rem, 2vw, 1.35rem);
    /* 27px */
-   --lh-2xs: 0.95rem;
+   --lh-2xs: clamp(0.8rem, 1.5vw, 0.95rem);
    /* 19px */
-   --lh-3xs: 0.9rem;
+   --lh-3xs: clamp(0.75rem, 1.4vw, 0.9rem);
    /* 18px */
 
    /* ----------------------------------------------------------

@@ -4,7 +4,6 @@
    Text wraps by column width. Same CSS for template and block.
    ============================================================ */
 
-.trust-bar-block {}
 
 .trust-bar-block__inner {
     overflow-x: auto;
@@ -25,9 +24,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
-    min-width: 140px;
-    max-width: 200px;
+    width: 45%;
 }
 
 .trust-bar-block__icon {
@@ -46,7 +43,6 @@
     font-size: var(--h5);
     font-weight: 500;
     color: var(--text);
-    line-height: var(--lh-sm);
     text-align: center;
 }
 
@@ -68,6 +64,11 @@
     .trust-bar-block__grid {
         justify-content: flex-start;
         padding-inline-end: var(--gutter);
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        row-gap: 30px;
+        column-gap: 12px;
     }
 
     .trust-bar-block__item {
