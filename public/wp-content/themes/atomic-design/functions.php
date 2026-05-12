@@ -35,7 +35,9 @@ add_action('after_setup_theme', 'atomic_design_setup');
 function atomic_design_assets()
 {
     $theme_version = wp_get_theme()->get('Version');
+    $theme_dir     = get_template_directory();
     $theme_uri     = get_template_directory_uri();
+    $main_js_path  = $theme_dir . '/assets/js/main.js';
 
     // Google Fonts — loaded via PHP so WordPress can manage them properly.
     // To change fonts: update the URL here AND update --font-display / --font-body in variables.css.
@@ -72,7 +74,7 @@ function atomic_design_assets()
         'atomic-design-main',
         $theme_uri . '/assets/js/main.js',
         ['atomic-design-aos'],
-        $theme_version,
+        file_exists($main_js_path) ? filemtime($main_js_path) : $theme_version,
         true
     );
 

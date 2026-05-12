@@ -100,7 +100,7 @@
     }
 
     function getWordTokens(text) {
-        const normalized = text.replace(/\s+/g, ' ').trim();
+        const normalized = text.replace(/\s+/g, ' ');
         return normalized ? normalized.match(/\S+\s*/g) || [] : [];
     }
 
