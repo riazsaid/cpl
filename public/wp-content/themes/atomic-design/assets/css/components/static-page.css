@@ -16,7 +16,8 @@ body.static-page #site-content h1.wp-block-heading:first-of-type {
 
 .red {
     background-color: #ff0808 !important;
-    font-size: var(--h5);
+    font-size: var(--h6);
+    line-height: var(--lh-sm);
 }
 
 /* Horizontal rules */
