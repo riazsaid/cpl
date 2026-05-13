@@ -78,7 +78,7 @@
 
 @media (max-width: 767px) {
     .area-coverage-grid {
-        padding: var(--space-lg) 0;
+        padding-bottom: var(--space-lg) 0;
     }
 
     .area-coverage-grid__areas {

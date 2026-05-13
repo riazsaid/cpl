@@ -30,6 +30,7 @@
 .site-footer__brand,
 .site-footer__nav {
     flex: 1 1 50%;
+    line-height: var(--lh-3xs);
 }
 
 .site-footer__logo {
@@ -100,7 +101,8 @@
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    /* gap: 3px; */
+    line-height: var(--lh-3xs);
 }
 
 .site-footer__menu a {
@@ -150,6 +152,7 @@
 .site-footer__copy {
     font-size: var(--body-sm);
     color: var(--text-muted);
+    line-height: var(--lh-3xs);
 }
 
 .site-footer__copy-wrapper {
