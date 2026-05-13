@@ -61,6 +61,16 @@ body.static-page.page-slug-request-quote #site-content>.faq-accordion-block {
     display: none;
 }
 
+.behind-the-operation h2 {
+    padding-block: unset !important;
+    padding-bottom: var(--space-lg) !important;
+}
+
+.behind-the-operation .wp-block-columns.is-layout-flex {
+    gap: 3em;
+}
+
+
 /* Mobile fix */
 @media (max-width: 767px) {
     .page-template-default.page-slug-bulk-ordering .faq-accordion-block {
