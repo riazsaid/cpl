@@ -58,26 +58,29 @@
                     ?>
                 </nav>
                 <div class="site-footer__copy-wrapper site-footer__copy">
-                    <span>
+                    <span class="site-footer__copyright">
                         &copy; <?php echo esc_html(wp_date('Y')); ?>
                         <?php esc_html_e('Custom Phenolic Labels — All rights reserved.', 'atomic-design'); ?>
                     </span>
-                    <span aria-hidden="true">|</span>
-                    <a href="<?php echo esc_url(home_url('/privacy-policy/')); ?>"><?php esc_html_e('Privacy Policy', 'atomic-design'); ?></a>
-                    <span aria-hidden="true">|</span>
-                    <a href="<?php echo esc_url(home_url('/terms-of-service/')); ?>"><?php esc_html_e('Terms of Service', 'atomic-design'); ?></a>
-                    <span aria-hidden="true">|</span>
-                    <a href="<?php echo esc_url(home_url('/shipping-returns/')); ?>"><?php esc_html_e('Shipping & Returns', 'atomic-design'); ?></a>
-                    <span aria-hidden="true">|</span>
-                    <a href="<?php echo esc_url(home_url('/resources/color-chart/')); ?>"><?php esc_html_e('Phenolic Color Chart', 'atomic-design'); ?></a>
-                    <span aria-hidden="true">|</span>
-                    <a href="<?php echo esc_url(home_url('/resources/material-specs/')); ?>"><?php esc_html_e('Material Specs', 'atomic-design'); ?></a>
-                    <span aria-hidden="true">|</span>
-                    <a href="<?php echo esc_url(home_url('/how-it-works/')); ?>"><?php esc_html_e('How to Order', 'atomic-design'); ?></a>
+                    <br>
                     <span class="site-footer__credit">
                         <a href="https://atomicdesign.net/" target="_blank" rel="noopener noreferrer" class="site-footer__credit-link">
                             <?php esc_html_e('Website Design & SEO by Atomic Design', 'atomic-design'); ?>
                         </a>
+                    </span>
+                    <br>
+                    <span class="site-footer__legal">
+                        <a href="<?php echo esc_url(home_url('/privacy-policy/')); ?>"><?php esc_html_e('Privacy Policy', 'atomic-design'); ?></a>
+                        <span aria-hidden="true">|</span>
+                        <a href="<?php echo esc_url(home_url('/terms-of-service/')); ?>"><?php esc_html_e('Terms of Service', 'atomic-design'); ?></a>
+                        <span aria-hidden="true">|</span>
+                        <a href="<?php echo esc_url(home_url('/shipping-returns/')); ?>"><?php esc_html_e('Shipping & Returns', 'atomic-design'); ?></a>
+                        <span aria-hidden="true">|</span>
+                        <a href="<?php echo esc_url(home_url('/resources/color-chart/')); ?>"><?php esc_html_e('Phenolic Color Chart', 'atomic-design'); ?></a>
+                        <span aria-hidden="true">|</span>
+                        <a href="<?php echo esc_url(home_url('/resources/material-specs/')); ?>"><?php esc_html_e('Material Specs', 'atomic-design'); ?></a>
+                        <span aria-hidden="true">|</span>
+                        <a href="<?php echo esc_url(home_url('/how-it-works/')); ?>"><?php esc_html_e('How to Order', 'atomic-design'); ?></a>
                     </span>
                 </div>
                 <!-- CTA card -->
