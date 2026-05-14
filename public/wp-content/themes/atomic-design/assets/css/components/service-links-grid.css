@@ -177,7 +177,7 @@
 @media (max-width: 767px) {
     .service-links-grid__items {
         grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
-        gap: 1rem !important;
+        gap: 3rem !important;
 
     }
     .behind-the-operation{
