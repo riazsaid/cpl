@@ -88,4 +88,7 @@
     .area-coverage-grid__area {
         font-size: 1.15rem;
     }
+    .area-coverage-grid__actions{
+        padding-block: var(--space-lg);
+    }
 }
