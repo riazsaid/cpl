@@ -152,7 +152,7 @@
 .site-footer__copy {
     font-size: var(--body-sm);
     color: var(--text-muted);
-    line-height: var(--lh-3xs);
+    /* line-height: var(--lh-3xs); */
 }
 
 .site-footer__copyright {
