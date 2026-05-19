@@ -32,6 +32,13 @@ add_action('after_setup_theme', 'atomic_design_setup');
 /**
  * Enqueue scripts and styles
  */
+function atomic_design_asset_version($relative_path)
+{
+    $file_path = get_template_directory() . $relative_path;
+
+    return file_exists($file_path) ? filemtime($file_path) : wp_get_theme()->get('Version');
+}
+
 function atomic_design_assets()
 {
     $theme_version = wp_get_theme()->get('Version');
@@ -59,8 +66,42 @@ function atomic_design_assets()
         'atomic-design-main',
         $theme_uri . '/assets/css/main.css',
         ['atomic-design-fonts', 'atomic-design-aos'],
-        $theme_version
+        atomic_design_asset_version('/assets/css/main.css')
     );
+
+    $component_styles = [
+        'fonts',
+        'variables',
+        'base',
+        'layout',
+        'components/header',
+        'components/footer',
+        'components/area-coverage-grid',
+        'components/hero',
+        'components/faq-accordion',
+        'components/testimonials',
+        'components/industry-solutions',
+        'components/trust-bar',
+        'components/contact-us',
+        'components/static-page',
+        'components/blog',
+        'components/numbered-process-grid',
+        'components/webform',
+        'components/service-links-grid',
+        'components/title-description-columns',
+        'components/why-choose-grid',
+        'components/page-specific',
+        'components/quote-popup',
+    ];
+
+    foreach ($component_styles as $style_path) {
+        wp_enqueue_style(
+            'atomic-design-' . sanitize_title(str_replace('/', '-', $style_path)),
+            $theme_uri . '/assets/css/' . $style_path . '.css',
+            ['atomic-design-main'],
+            atomic_design_asset_version('/assets/css/' . $style_path . '.css')
+        );
+    }
 
     wp_enqueue_script(
         'atomic-design-aos',
@@ -83,7 +124,7 @@ function atomic_design_assets()
         'atomic-design-faq-accordion',
         $theme_uri . '/assets/js/faq-accordion.js',
         [],
-        $theme_version,
+        atomic_design_asset_version('/assets/js/faq-accordion.js'),
         true
     );
 
@@ -92,7 +133,7 @@ function atomic_design_assets()
         'atomic-design-testimonials-slider',
         $theme_uri . '/assets/js/testimonials-slider.js',
         [],
-        $theme_version,
+        atomic_design_asset_version('/assets/js/testimonials-slider.js'),
         true
     );
 }
