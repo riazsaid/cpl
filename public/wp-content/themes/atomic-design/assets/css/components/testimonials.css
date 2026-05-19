@@ -79,8 +79,6 @@
 .google-reviews-badge {
     color: var(--text);
     display: flex;
-    display: -webkit-box;
-    display: -ms-flexbox;
     align-items: center;
     justify-content: center;
     gap: 0.4rem;
@@ -535,7 +533,8 @@
     .testimonial-card {
         min-width: 0;
     }
-    .testimonials-slider__track{
+
+    .testimonials-slider__track {
         gap: 1rem;
     }
 }

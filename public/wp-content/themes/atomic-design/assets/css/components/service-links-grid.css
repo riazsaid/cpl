@@ -126,10 +126,11 @@
     text-align: center;
     height: 100%;
 }
-.wp-block-image img{
+.behind-the-operation .wp-block-image img{
     width: 100% !important;
     height: 100% !important;
     object-fit: cover;
+    aspect-ratio: 1 / 1 !important;
 }
 .service-links-grid__item-body {
     color: rgba(255, 255, 255, 0.82);
@@ -176,8 +177,11 @@
 @media (max-width: 767px) {
     .service-links-grid__items {
         grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
-        gap: 1rem !important;
+        gap: 3rem !important;
 
+    }
+    .behind-the-operation{
+        padding-bottom: var(--space-lg) !important;
     }
 
 }

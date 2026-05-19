@@ -110,7 +110,7 @@
 }
 
 .industry-solution-card__link:hover {
-    color: var(--accent);
+    color: var(--accent-hover);
 }
 
 .industry-solution-card__arrow {

@@ -8,8 +8,6 @@
     line-height: 1.1;
     text-align: center;
     color: var(--text);
-    width: 55%;
-    justify-self: center;
 }
 
 .numbered-process-grid__description {

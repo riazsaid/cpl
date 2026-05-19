@@ -139,4 +139,3 @@
 
     document.addEventListener('content-loaded', init);
 })();
-element.style.width = percent + "%";

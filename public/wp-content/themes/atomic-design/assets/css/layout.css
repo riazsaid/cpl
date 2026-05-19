@@ -75,7 +75,9 @@ section {
 .wp-block-group.is-style-section-142 {
     padding-bottom: var(--section-space-142);
 }
-
+.page-slug-locations .wp-block-group.is-style-section-142{
+    padding: 0 !important;
+}
 .wp-block-group.is-style-section-flush {
     padding-bottom: 0;
 }
